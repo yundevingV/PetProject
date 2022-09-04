@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+
 const ContainerWrapper = styled.div`
 text-align : center;
 `
@@ -23,6 +24,11 @@ const Input = styled.input`
 display : block;
 width : 500px;
 height: 50px;
+
+::placeholder {
+    font-weight : bold;
+    font-size : 1rem;
+}
 `
 
 const SubmitButton = styled.button`
