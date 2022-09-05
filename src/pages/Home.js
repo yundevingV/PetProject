@@ -1,18 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Nav from "./Nav"
 
-const LinkLogin = styled(Link)`
-color : red;
-`
+
 
 function Home(){
     return(
-        <div>
-            Home
-            <LinkLogin to='/Login'>Log in</LinkLogin>
+        <Nav>
+            
 
-        </div>
+        </Nav>
     )
 }
 

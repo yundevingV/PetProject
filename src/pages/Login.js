@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 
 const ContainerWrapper = styled.div`
-text-align : center;
 `
 const Container = styled.div`
 width : 50%;
