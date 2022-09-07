@@ -1,0 +1,22 @@
+{ 
+    "whopper":
+        {
+            "taste":"good", 
+            "url":"https://d1cua0vf0mkpiy.cloudfront.net/images/menu/normal/156321c9-1cfd-430a-934f-3da472e6e56c.png",
+            "category":"hamburger"
+        },
+    "whopper2":
+        { 
+            "taste":"good2", 
+            "url":"https://d1cua0vf0mkpiy.cloudfront.net/images/menu/normal/fb0f6dd6-5086-42c4-ab5b-4d368fda3146.png",
+            "category":"hamburger"
+        },
+    "pizza":
+        { 
+            "taste":"bad",
+            "url":"https://d1cua0vf0mkpiy.cloudfront.net/images/menu/normal/e000ddc5-ef62-4cd1-abaf-f36ecd96dd07.png",
+            "category": "pizza"
+        }
+    
+    
+}
