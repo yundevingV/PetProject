@@ -1,8 +1,7 @@
 import React , {useState} from "react";
 import styled ,{css} from "styled-components";
 import { Link } from "react-router-dom";
-import items from '../json/test'
-
+import DogMenuMain from "./DogMenuMain";
 
 const Button = styled.button`
 
@@ -216,26 +215,28 @@ const Oi = styled.ol`
 display : inline-block;
 
 `
+const DogMenuMainWrapper = styled.div`
+display: ${props => props.display ? 'block' : 'none'};
+position: absolute;
+top:30%;
+`
 
 function Home(){
 
     const [isOpenDog, setMenuDog] = useState(false)
-    
+    const [showMenuDog,setShowMenuDog] = useState(false)
     const [isOpenCat, setMenuCat] = useState(false)
 
     const ToggleMenuDog = () =>{
         setMenuDog(isOpenDog => !isOpenDog)
         setMenuCat(false)
-        console.log('isOpenDog',isOpenDog)
-        console.log(isOpenCat)
-
+        setShowMenuDog(showMenuDog => !showMenuDog)
     }
     const ToggleMenuCat = () =>{
         setMenuCat(isOpenCat => !isOpenCat)
         setMenuDog(false)
-        console.log('isOpenDog',isOpenDog)
-        console.log(isOpenCat)
     }
+    
 
 
 
@@ -247,7 +248,7 @@ function Home(){
                     PetProject
                 </StyledLink>
                 <ButtonGroup>
-                    <StyledLink to='/'>
+                    <StyledLink to='/Test'>
                         <Button logout>
                             Log out
                         </Button>
@@ -262,7 +263,7 @@ function Home(){
             </NavTopContainer>
             </NavTopContainerWrapper>
             <NavMiddleContainer>
-                <StyledLink to='/Best' Best>
+                <StyledLink to='/' Best>
                     Best
                 </StyledLink>
                 <StyledLink to='/' Dog
@@ -332,9 +333,13 @@ function Home(){
             </CatMenu>
             <NavBottomContainer>
                 <SearchInput placeholder='검색어를 입력하세요 ...'>
-                   
+
                 </SearchInput>
             </NavBottomContainer>
+
+            <DogMenuMainWrapper display={showMenuDog} >
+            <DogMenuMain />
+            </DogMenuMainWrapper>
 
         </NavContainer>
     )
