@@ -2,6 +2,8 @@ import React  from 'react';
 import Dog from '../json/Dog.json'
 import styled from 'styled-components';
 
+
+
 const Frame = styled.div`
 width : 10rem;
 height : 15rem;

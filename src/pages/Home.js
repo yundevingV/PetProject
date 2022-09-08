@@ -1,6 +1,8 @@
 import React , {useState} from "react";
 import styled ,{css} from "styled-components";
 import { Link } from "react-router-dom";
+
+
 import DogMenuMain from "./DogMenuMain";
 
 const Button = styled.button`
@@ -95,7 +97,7 @@ ${(props) =>
       margin-left : 10%;
       &:hover{
         color: #000000;
-        background-image : url(${Foot});
+        background-image : url('img/dogSolid.svg');
         background-repeat: no-repeat;
         border-bottom: 0.1px solid #FF6600;
 
