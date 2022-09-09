@@ -1,9 +1,13 @@
 import React , {useState} from "react";
-import styled ,{css} from "styled-components";
+import styled ,{css , keyframes} from "styled-components";
 import { Link } from "react-router-dom";
 
-
 import DogMenuMain from "./DogMenuMain";
+
+
+import Foot from '../img/footprint30.png'
+import Crown from '../img/crown30.png'
+import DogFoot from '../img/dog-Solid.svg'
 
 const Button = styled.button`
 
@@ -53,6 +57,8 @@ ${(props) =>
 `
 
 
+
+
 const StyledLink = styled(Link)`
 text-decoration : none;
 ${(props) =>
@@ -97,11 +103,12 @@ ${(props) =>
       margin-left : 10%;
       &:hover{
         color: #000000;
-        background-image : url('img/dogSolid.svg');
+        
+        background-image : url(${DogFoot});
         background-repeat: no-repeat;
         border-bottom: 0.1px solid #FF6600;
-
-        transition: 0.3s;
+        background-position: top right;
+        transition: 1s;
       }
       
     `}
@@ -125,8 +132,7 @@ ${(props) =>
 
 `
 
-const Foot = './img/footprint30.png'
-const Crown = './img/crown30.png'
+
 
 const NavContainer = styled.div`
 
@@ -271,6 +277,7 @@ function Home(){
                 <StyledLink to='/' Dog
                     onClick={()=>ToggleMenuDog()}>
                     강이지
+                    
                 </StyledLink>   
 
 

@@ -71,6 +71,8 @@ margin-bottom : ${(props) => props.marginBottom};
 
 `
 
+const Img = '/img/KakaoLoginImg.png'
+
 function Login(){
     return(
     <ContainerWrapper>
@@ -111,7 +113,7 @@ function Login(){
             </Wrapper>
 
             <Wrapper>
-                <img src='img/KakaoLoingImg.png' alt='X'></img>
+                <img src={Img} alt='X'></img>
             </Wrapper>
         </Container>
     </ContainerWrapper>    
