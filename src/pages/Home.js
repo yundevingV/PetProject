@@ -249,8 +249,11 @@ top:30%;
 
 function Home(){
 
+    //세부메뉴
     const [isOpenDog, setMenuDog] = useState(false)
+    //상품목록
     const [showMenuDog,setShowMenuDog] = useState(false)
+    
     const [isOpenCat, setMenuCat] = useState(false)
 
     const ToggleMenuDog = () =>{

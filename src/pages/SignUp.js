@@ -1,4 +1,4 @@
-import React , {useState} from "react";
+import React , {useState , useCallback} from "react";
 import styled , {css} from "styled-components";
 
 const ContainerWrapper = styled.div`
@@ -19,7 +19,7 @@ padding-bottom: 3rem;
 `
 
 const Input = styled.input`
-display : block;
+color : block;
 height: 40px;
 width: 90%;
 
@@ -30,14 +30,14 @@ margin: 0 auto;
 }
 `
 const Wrapper = styled.div`
-display: inline-block;
+color: inline-block;
 
 width: 100%;
 margin-bottom : ${(props) => props.marginBottom};
 `
 const Button = styled.button`
 margin: 0 auto;
-display : block;
+color : block;
 height : 3rem;
 width : 70%;
 font-weight : bold;
@@ -88,13 +88,60 @@ ${(props) =>
     `}
 
 `
+const Message = styled.span`
+
+color: ${props => props.color ? '#ff2727' : '#8f8c8b'};
+
+`
 
 function SignUp(){
-    const [text, setText] = useState('')
 
-    const onChange = (e) => {
-        setText(e.target.value)
+    //비밀번호
+    const [password,setPassword] = useState('')
+    //비밀번호 오류메시지 저장
+    const [passwordMessage, setPasswordMessage] = useState('')
+
+    const [passwordConfirm, setPasswordConfirm] = useState('')
+    const [passwordConfirmMessage, setPasswordConfirmMessage] = useState('')
+
+    //메시지 색깔
+    const [messageColor,setMessageColor] = useState('false')
+    const [messageConfirmColor,setMessageConfirmColor] = useState('false')
+
+    // 비밀번호
+    const onChangePassword = useCallback((e) => {
+    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/
+    const passwordCurrent = e.target.value
+    setPassword(passwordCurrent)
+
+    if (!passwordRegex.test(passwordCurrent)) {
+        setPasswordMessage('숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요!')
+        setMessageColor(true)
+
+    } else {
+        setPasswordMessage('안전한 비밀번호입니다.')
+        setMessageColor(false)
+
     }
+    }, [])
+
+      // 비밀번호 확인
+    const onChangePasswordConfirm = useCallback((e) => {
+        const passwordConfirmCurrent = e.target.value
+        setPasswordConfirm(passwordConfirmCurrent)
+
+        if (password === passwordConfirmCurrent) {
+            setPasswordConfirmMessage('비밀번호가 일치합니다.')
+            setMessageConfirmColor(false)
+
+        } else {
+            setPasswordConfirmMessage('비밀번호가 틀려요. 다시 확인해주세요.')
+            setMessageConfirmColor(true)
+
+    }
+    },
+    [password])
+
 
     return(
 
@@ -115,20 +162,27 @@ function SignUp(){
             <Wrapper marginBottom='2rem'>
                 <Input
                     marginBottom='3rem'
-                    placeholder='비밀번호를 입력하세요.' 
-                    onChange={onChange}
-                    value={text}
+                    placeholder='비밀번호' 
+                    onChange={onChangePassword}
+                    passwordText='비밀번호 (숫자+영문자+특수문자 조합으로 8자리 이상'
                     />
-
+            <br />
+            {password.length > 0 && (
+                <Message color={messageColor}>{passwordMessage}</Message>
+            )}
             </Wrapper>
             
             <Wrapper marginBottom='2rem'>
                 <Input
                     marginBottom='3rem'
-                    placeholder='비밀번호를 다시 입력하세요.' 
-                    onChange={onChange}
-                    value={text}
+                    placeholder='비밀번호 확인' 
+                    onChange={onChangePasswordConfirm}
+                    passwordText=' '
                     />
+            <br />
+            {passwordConfirm.length > 0 && (
+                <Message color={messageConfirmColor}>{passwordConfirmMessage}</Message>
+            )}
             </Wrapper>
 
             <Wrapper marginBottom='2rem'>
