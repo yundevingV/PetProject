@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+import KakaoLogin from '../img/KakaoLoginImg.png'
 
 const ContainerWrapper = styled.div`
 `
@@ -70,9 +71,6 @@ text-align : ${(props) => props.textAlign};
 margin-bottom : ${(props) => props.marginBottom};
 
 `
-
-const Img = '/img/KakaoLoginImg.png'
-
 function Login(){
     return(
     <ContainerWrapper>
@@ -113,7 +111,7 @@ function Login(){
             </Wrapper>
 
             <Wrapper>
-                <img src={Img} alt='X'></img>
+                <img src={KakaoLogin} alt='X' />
             </Wrapper>
         </Container>
     </ContainerWrapper>    

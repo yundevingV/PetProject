@@ -1,13 +1,14 @@
 import React , {useState} from "react";
-import styled ,{css , keyframes} from "styled-components";
+import styled ,{css } from "styled-components";
 import { Link } from "react-router-dom";
 
 import DogMenuMain from "./DogMenuMain";
 
 
-import Foot from '../img/footprint30.png'
 import Crown from '../img/crown30.png'
 import DogFoot from '../img/dog-Solid.svg'
+import CatFoot from '../img/cat-solid.svg'
+
 
 const Button = styled.button`
 
@@ -21,39 +22,55 @@ outline : 0;
 ${(props) =>
     props.login &&
     css`
-      color: #9ED6C0;
-      background: #FFFFFF;
-      border: 1px solid #9ED6C0;
-      margin-left: auto;
-      margin-top: 0.2rem;
-      position: absolute;
+    color: #9ED6C0;
+    background: #FFFFFF;
+    border: 1px solid #9ED6C0;
+    margin-left: auto;
+    margin-top: 0.2rem;
+    position: absolute;
 
-
-      &:hover{
+    &:hover{
         color: #FFFFFF;
         background: #9ED6C0;
         border: 1px solid #FFFFFF;
         transition: 0.3s;
-      }
+    }
     `}
 
 ${(props) =>
     props.logout &&
     css`
-      color: #FFFFFF;
-      background: #9ED6C0;
-      border: 1px solid #FFFFFF;
+    display : none;
+    color: #FFFFFF;
+    background: #9ED6C0;
+    border: 1px solid #FFFFFF;
+    margin-top: 0.2rem;
+    margin-right : 1rem;
 
-      margin-top: 0.2rem;
-      margin-right : 1rem;
-
-      &:hover{
+    &:hover{
         color: #9ED6C0;
         background: #FFFFFF;
         border: 1px solid #9ED6C0;
         transition: 0.3s;
-      }
+    }
     `}
+${(props) =>
+    props.SignUp &&
+    css`
+    color: #FFFFFF;
+    background: #9ED6C0;
+    border: 1px solid #FFFFFF;
+    margin-top: 0.2rem;
+    margin-right : 1rem;
+
+    &:hover{
+        color: #9ED6C0;
+        background: #FFFFFF;
+        border: 1px solid #9ED6C0;
+        transition: 0.3s;
+    }
+    `}
+
 `
 
 
@@ -123,10 +140,11 @@ ${(props) =>
       margin-left : 10%;
       &:hover{
         color: #000000;
-        background-image : url(${Foot});
+        background-image : url(${CatFoot});
         background-repeat: no-repeat;
         border-bottom: 0.1px solid #FF6600;
-        transition: 0.3s;
+        background-position: top right;
+        transition: 1s;
       }
     `}
 
@@ -246,16 +264,21 @@ function Home(){
     }
     
 
-
-
     return(
         <NavContainer>
             <NavTopContainerWrapper>
             <NavTopContainer>
-                <StyledLink to='/' PetProject>
+                <StyledLink to='/Test' PetProject>
                     PetProject
                 </StyledLink>
                 <ButtonGroup>
+                    
+                    <StyledLink to='/SignUp'>
+                        <Button SignUp>
+                            Sign Up
+                        </Button>
+                    </StyledLink>
+
                     <StyledLink to='/Test'>
                         <Button logout>
                             Log out
@@ -267,6 +290,7 @@ function Home(){
                             Log in
                         </Button>
                     </StyledLink>
+
                 </ButtonGroup>
             </NavTopContainer>
             </NavTopContainerWrapper>
