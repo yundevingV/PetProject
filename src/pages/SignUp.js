@@ -8,14 +8,15 @@ width : 40%;
 height : 20%;
 margin : 0 auto;
 margin-top : 2rem ;
-background : #FCCCCC;
+background : #FFFFFF;
+border : 3px solid #146132;
 `
 
 const Title = styled.div`
 font-weight : bold;
 text-align : center;
 font-size : 3rem;
-padding-bottom: 3rem;
+padding-bottom: 2rem;
 `
 
 const Input = styled.input`
@@ -30,11 +31,40 @@ margin: 0 auto;
 }
 `
 const Wrapper = styled.div`
-color: inline-block;
-
+display: inline-block;
+padding: 1rem;
 width: 100%;
 margin-bottom : ${(props) => props.marginBottom};
+
+${(props) =>
+    props.Submit &&
+    css`
+    padding: 0rem;
+    width: 90%;
+    display:flex;
+    padding: 1rem;
+    `}
+
+
+${(props) =>
+    props.Success &&
+    css`
+    padding: 0rem;
+    
+    `}
+
+${(props) =>
+    props.Button &&
+    css`
+    padding: 0rem;
+    width: 50%;
+    display:inline-block;
+
+
+    `}
+
 `
+
 const Button = styled.button`
 margin: 0 auto;
 color : block;
@@ -48,7 +78,7 @@ ${(props) =>
     color: #9ED6C0;
     background: #FFFFFF;
     border: 4px solid #9ED6C0;
-
+    width: 25%;
     &:hover{
         color: #FFFFFF;
         background: #9ED6C0;
@@ -63,6 +93,7 @@ ${(props) =>
     color: #9ED6C0;
     background: #FFFFFF;
     border: 4px solid #9ED6C0;
+    width: 25%;
 
     &:hover{
         color: #FFFFFF;
@@ -75,9 +106,11 @@ ${(props) =>
 ${(props) =>
     props.Success &&
     css`
+    width: 100%;
     color: #9ED6C0;
     background: #FFFFFF;
     border: 4px solid #9ED6C0;
+    
 
     &:hover{
         color: #FFFFFF;
@@ -150,18 +183,15 @@ function SignUp(){
             <Title>
                 회원가입
             </Title>
-            <Wrapper marginBottom='2rem'>
+
+            <Wrapper>
                 <Input 
                     placeholder='아이디를 입력하세요.'
                 /> 
-                <Wrapper>
-                    <Button OverLap> 중복 확인하기 </Button>
                 </Wrapper>
-            </Wrapper>
 
-            <Wrapper marginBottom='2rem'>
+            <Wrapper >
                 <Input
-                    marginBottom='3rem'
                     placeholder='비밀번호' 
                     onChange={onChangePassword}
                     passwordText='비밀번호 (숫자+영문자+특수문자 조합으로 8자리 이상'
@@ -172,9 +202,8 @@ function SignUp(){
             )}
             </Wrapper>
             
-            <Wrapper marginBottom='2rem'>
+            <Wrapper>
                 <Input
-                    marginBottom='3rem'
                     placeholder='비밀번호 확인' 
                     onChange={onChangePasswordConfirm}
                     passwordText=' '
@@ -185,26 +214,24 @@ function SignUp(){
             )}
             </Wrapper>
 
-            <Wrapper marginBottom='2rem'>
-                <Input marginBottom='3rem' placeholder='이름을 입력하세요.' />
+            <Wrapper >
+                <Input placeholder='이름을 입력하세요.' />
             </Wrapper>
 
-            <Wrapper marginBottom='2rem'>
-                <Input marginBottom='3rem' placeholder='전화번호를 입력하세요.' />
-                <Wrapper>
+            <Wrapper Submit>
+                <Input placeholder='전화번호를 입력하세요.' />
                     <Button Submit> 인증번호 보내기</Button>
-                </Wrapper>
             </Wrapper>
 
-            <Wrapper marginBottom='2rem'>
-                <Input marginBottom='3rem' placeholder='인증번호 입력하세요.' />
+            <Wrapper >
+                <Input  placeholder='인증번호 입력하세요.' />
             </Wrapper>
 
-            <Wrapper marginBottom='2rem'>
-                <Input marginBottom='3rem' placeholder='이메일을 입력하세요.' />
+            <Wrapper >
+                <Input placeholder='이메일을 입력하세요.' />
             </Wrapper>
 
-            <Wrapper>
+            <Wrapper Success>
                 <Button Success> 회원가입하기 </Button>
             </Wrapper>
 

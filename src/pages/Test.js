@@ -1,17 +1,13 @@
 import React ,{useState} from "react";
+import DogMenuMain from "./DogMenuMain";
+import DogMenuSnack from "./DogMenuSnack";
 
 function Test() {
-    const [text, setText] = useState('')
 
-    const onChange = (e) => {
-        setText(e.target.value)
-    }
     return(
         <>
-        <input onChange={onChange} value={text} />
-        <div>
-            <b>값 : {text} </b>
-        </div>
+            <DogMenuSnack />
+            
         </>
     )
 }

@@ -239,6 +239,7 @@ display : inline-block;
 `
 const Oi = styled.ol`
 display : inline-block;
+cursor : pointer;
 
 `
 const DogMenuMainWrapper = styled.div`
@@ -265,6 +266,15 @@ function Home(){
         setMenuCat(isOpenCat => !isOpenCat)
         setMenuDog(false)
     }
+    
+    
+    //세부 카테고리별 필터링
+    const [snack , setSnack] = useState(false)
+    const ToggleSnack = () =>{
+        setSnack(snack => !snack)
+        const filter = snack
+    }
+
     
 
     return(
@@ -327,8 +337,8 @@ function Home(){
                     <Oi>
                         먹이
                     </Oi>
-                    <Oi>
-                        간식
+                    <Oi onClick={()=>ToggleSnack()}>
+                        간식(snack)
                     </Oi>
                     <Oi>
                         장난감

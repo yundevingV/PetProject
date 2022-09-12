@@ -32,12 +32,12 @@ function Menu({item}){
     )
 }
 
-function DogMenuMain(filter) {
+function DogMenuSnack() {
 
     return(
         <div>
             {Dog.DogItems
-            .filter((item) => item.category === {filter})
+            .filter((item) => item.category === 'snack')
             .map(item =>(
                 <Menu item={item} key={item.id} />
         ))}
@@ -46,4 +46,4 @@ function DogMenuMain(filter) {
     )
 }
 
-export default DogMenuMain
+export default DogMenuSnack
