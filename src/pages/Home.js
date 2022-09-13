@@ -255,7 +255,7 @@ const OiButton = styled.button`
 background: #FFFFFF;
 border : 0px;
 &:focus{
-    border: 1px solid red;
+    border-bottom: 1px solid red;
 }
 `
 const OiButtonSpan = styled.span`
