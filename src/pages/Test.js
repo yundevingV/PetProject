@@ -1,16 +1,17 @@
-import React ,{useState} from "react";
+import React from "react";
 import DogMenuMain from "./DogMenuMain";
-import DogMenuSnack from "./DogMenuSnack";
 
 function Test() {
 
     return(
         <>
-            <DogMenuSnack />
-            
+            <DogMenuMain category='bag'/>  
+
         </>
     )
 }
-
+DogMenuMain.defaultProps = {
+    category : ''
+  }
 export default Test
 

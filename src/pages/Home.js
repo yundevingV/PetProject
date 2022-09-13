@@ -240,8 +240,19 @@ display : inline-block;
 const Oi = styled.ol`
 display : inline-block;
 cursor : pointer;
+`
+
+const OiButton = styled.button`
+background: #FFFFFF;
+border : 0px;
+width: 3rem;
 
 `
+const OiButtonSpan = styled.span`
+font-size: 1rem;
+`
+
+
 const DogMenuMainWrapper = styled.div`
 display: ${props => props.display ? 'block' : 'none'};
 position: absolute;
@@ -249,7 +260,6 @@ top:30%;
 `
 
 function Home(){
-
     //세부메뉴
     const [isOpenDog, setMenuDog] = useState(false)
     //상품목록
@@ -261,6 +271,7 @@ function Home(){
         setMenuDog(isOpenDog => !isOpenDog)
         setMenuCat(false)
         setShowMenuDog(showMenuDog => !showMenuDog)
+        setCategoryDog('')
     }
     const ToggleMenuCat = () =>{
         setMenuCat(isOpenCat => !isOpenCat)
@@ -269,13 +280,11 @@ function Home(){
     
     
     //세부 카테고리별 필터링
-    const [snack , setSnack] = useState(false)
+    const [categoryDog , setCategoryDog] = useState('')
     const ToggleSnack = () =>{
-        setSnack(snack => !snack)
-        const filter = snack
+        setCategoryDog('snack')
+        setMenuDog(true)
     }
-
-    
 
     return(
         <NavContainer>
@@ -337,9 +346,15 @@ function Home(){
                     <Oi>
                         먹이
                     </Oi>
-                    <Oi onClick={()=>ToggleSnack()}>
-                        간식(snack)
+                    
+                    <Oi>
+                        <OiButton onClick={()=>ToggleSnack()}>
+                            <OiButtonSpan>
+                                간식
+                            </OiButtonSpan>
+                        </OiButton>
                     </Oi>
+                    
                     <Oi>
                         장난감
                     </Oi>
@@ -384,12 +399,15 @@ function Home(){
             </NavBottomContainer>
 
             <DogMenuMainWrapper display={showMenuDog} >
-            <DogMenuMain />
+            <DogMenuMain category={categoryDog}/>
             </DogMenuMainWrapper>
 
         </NavContainer>
     )
 
 }
+DogMenuMain.defaultProps = {
+    category : ''
+  }
 
 export default Home

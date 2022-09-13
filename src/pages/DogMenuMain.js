@@ -2,8 +2,6 @@ import React  from 'react';
 import Dog from '../json/Dog.json'
 import styled from 'styled-components';
 
-
-
 const Frame = styled.div`
 width : 10rem;
 height : 15rem;
@@ -32,12 +30,17 @@ function Menu({item}){
     )
 }
 
-function DogMenuMain(filter) {
+function DogMenuMain({category}) {
 
     return(
         <div>
-            {Dog.DogItems
-            .filter((item) => item.category === {filter})
+            {category === '' ?
+            Dog.DogItems
+            .map(item =>(
+                <Menu item={item} key={item.id} />
+        )) :
+            Dog.DogItems
+            .filter((item) => item.category === `${category}`)
             .map(item =>(
                 <Menu item={item} key={item.id} />
         ))}
