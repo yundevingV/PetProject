@@ -185,7 +185,11 @@ height : 5%;
 margin : 0 auto;
 background: #FFFFFF;
 position: absolute;
-top : 18%;
+top : 20%;
+@media (max-width : 1000px) {
+    top : 25%;
+}
+
 `
 
 const SearchInput = styled.input`
@@ -230,7 +234,9 @@ const CatMenu = styled.div`
 display: ${props => props.display ? 'block' : 'none'};
 position: absolute;
 top:12%;
-
+@media (max-width : 1000px) {
+    display: none;
+}
 `
 
 
@@ -240,16 +246,21 @@ display : inline-block;
 const Oi = styled.ol`
 display : inline-block;
 cursor : pointer;
+width : 5.5rem;
+
+
 `
 
 const OiButton = styled.button`
 background: #FFFFFF;
 border : 0px;
-width: 3rem;
-
+&:focus{
+    border: 1px solid red;
+}
 `
 const OiButtonSpan = styled.span`
 font-size: 1rem;
+text-align: center;
 `
 
 
@@ -268,21 +279,21 @@ function Home(){
     const [isOpenCat, setMenuCat] = useState(false)
 
     const ToggleMenuDog = () =>{
-        setMenuDog(isOpenDog => !isOpenDog)
+        setMenuDog(true)
         setMenuCat(false)
-        setShowMenuDog(showMenuDog => !showMenuDog)
+        setShowMenuDog(true)
         setCategoryDog('')
     }
     const ToggleMenuCat = () =>{
-        setMenuCat(isOpenCat => !isOpenCat)
+        setMenuCat(true)
         setMenuDog(false)
     }
     
     
     //세부 카테고리별 필터링
     const [categoryDog , setCategoryDog] = useState('')
-    const ToggleSnack = () =>{
-        setCategoryDog('snack')
+    const ToggleCategory = (category) =>{
+        setCategoryDog(category)
         setMenuDog(true)
     }
 
@@ -337,33 +348,55 @@ function Home(){
 
             <DogMenu display={isOpenDog}>
                 <Ul>
-                    <Oi>
-                        집
-                    </Oi>
-                    <Oi>
-                        옷
-                    </Oi>
-                    <Oi>
-                        먹이
-                    </Oi>
-                    
-                    <Oi>
-                        <OiButton onClick={()=>ToggleSnack()}>
-                            <OiButtonSpan>
-                                간식
-                            </OiButtonSpan>
-                        </OiButton>
-                    </Oi>
-                    
-                    <Oi>
-                        장난감
-                    </Oi>
-                    <Oi>
-                        배변패드
-                    </Oi>
-                    <Oi>
-                        애견 용품
-                    </Oi>
+                <Oi>
+                    <OiButton onClick={()=>ToggleCategory('house')}>
+                        <OiButtonSpan>
+                            집
+                        </OiButtonSpan>
+                    </OiButton>
+                </Oi>
+                <Oi>
+                    <OiButton onClick={()=>ToggleCategory('cover')}>
+                        <OiButtonSpan>
+                            옷
+                        </OiButtonSpan>
+                    </OiButton>
+                </Oi>
+                <Oi>
+                    <OiButton onClick={()=>ToggleCategory('food')}>
+                        <OiButtonSpan>
+                            먹이
+                        </OiButtonSpan>
+                    </OiButton>
+                </Oi>        
+                <Oi>
+                    <OiButton onClick={()=>ToggleCategory('snack')}>
+                        <OiButtonSpan>
+                            간식
+                        </OiButtonSpan>
+                    </OiButton>
+                </Oi>
+                <Oi>
+                    <OiButton onClick={()=>ToggleCategory('toy')}>
+                        <OiButtonSpan>
+                            장난감
+                        </OiButtonSpan>
+                    </OiButton>
+                </Oi>
+                <Oi>
+                    <OiButton onClick={()=>ToggleCategory('pad')}>
+                        <OiButtonSpan>
+                            배변패드
+                        </OiButtonSpan>
+                    </OiButton>
+                </Oi>
+                <Oi>
+                    <OiButton onClick={()=>ToggleCategory('dogTool')}>
+                        <OiButtonSpan>
+                            애견 용품
+                        </OiButtonSpan>
+                    </OiButton>
+                </Oi>
                 </Ul>    
             </DogMenu>
 
