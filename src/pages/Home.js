@@ -8,7 +8,7 @@ import DogMenuMain from "./DogMenuMain";
 import Crown from '../img/crown30.png'
 import DogFoot from '../img/dog-Solid.svg'
 import CatFoot from '../img/cat-solid.svg'
-
+import Shopping from '../img/cart-shopping-solid.svg'
 
 const Button = styled.button`
 
@@ -40,12 +40,12 @@ ${(props) =>
 ${(props) =>
     props.logout &&
     css`
-    display : none;
     color: #FFFFFF;
     background: #9ED6C0;
     border: 1px solid #FFFFFF;
     margin-top: 0.2rem;
     margin-right : 1rem;
+    position: absolute;
 
     &:hover{
         color: #9ED6C0;
@@ -54,6 +54,7 @@ ${(props) =>
         transition: 0.3s;
     }
     `}
+
 ${(props) =>
     props.SignUp &&
     css`
@@ -69,6 +70,16 @@ ${(props) =>
         border: 1px solid #9ED6C0;
         transition: 0.3s;
     }
+    `}
+    
+    ${(props) =>
+    props.Shopping &&
+    css`
+    margin-top: 0.2rem;
+    margin-right : 1rem;
+    background: #FFFFFF;
+    border : 0px;   
+    
     `}
 
 `
@@ -105,8 +116,8 @@ ${(props) =>
         background-repeat : no-repeat ;
         border-bottom: 0.1px solid #FFCC66;
         transition: 0.3s;
-      }
-      
+    }
+    
     `}
 
     ${(props) =>
@@ -129,7 +140,7 @@ ${(props) =>
       }
       
     `}
-    ${(props) =>
+${(props) =>
     props.Cat &&
     css`
       width: 15%;
@@ -147,6 +158,7 @@ ${(props) =>
         transition: 1s;
       }
     `}
+
 
 `
 
@@ -271,6 +283,12 @@ top:30%;
 `
 
 function Home(){
+
+    //로그인정보
+    //test를 위해 true
+    const [login , setLogin] = useState(true)
+
+
     //세부메뉴
     const [isOpenDog, setMenuDog] = useState(false)
     //상품목록
@@ -304,27 +322,40 @@ function Home(){
                 <StyledLink to='/Test' PetProject>
                     PetProject
                 </StyledLink>
-                <ButtonGroup>
-                    
-                    <StyledLink to='/SignUp'>
-                        <Button SignUp>
-                            Sign Up
-                        </Button>
-                    </StyledLink>
+                {login === false ?
+                    /*로그인 성공하면*/
+                    <ButtonGroup>
+                        <StyledLink to='/SignUp'>
+                            <Button SignUp>
+                                Sign Up
+                            </Button>
+                        </StyledLink>
+                        <StyledLink to='/Test'>
+                            <Button login>
+                                Log in
+                            </Button>
+                        </StyledLink>
+                    </ButtonGroup>
+                    :
+                    /*로그인 하기전*/
+                    <ButtonGroup>
+                        <StyledLink to='/ShoppingList'>
+                            <Button Shopping>
+                                <img src={Shopping} alt='X' />
+                            </Button>
+                        </StyledLink>
+                        <StyledLink to='/'>
+                            <Button logout>
+                                Log Out
+                            </Button>
+                        </StyledLink>
+                    </ButtonGroup>
+                }
+                
 
-                    <StyledLink to='/Test'>
-                        <Button logout>
-                            Log out
-                        </Button>
-                    </StyledLink>
 
-                    <StyledLink to='/Login'>
-                        <Button login>
-                            Log in
-                        </Button>
-                    </StyledLink>
 
-                </ButtonGroup>
+
             </NavTopContainer>
             </NavTopContainerWrapper>
             <NavMiddleContainer>
