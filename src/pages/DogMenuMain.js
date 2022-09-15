@@ -1,7 +1,7 @@
-import React  from 'react';
+import React  ,{useState} from 'react';
 import Dog from '../json/Dog.json'
 import styled from 'styled-components';
-import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const Frame = styled.div`
 width : 10rem;
@@ -13,55 +13,55 @@ vertical-align: top;
 border-radius: 0.5rem;
 padding: 1rem;
 position : relative;
+
+&:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
+    }
 `
-const FrameButton = styled.button`
-width: 100%;
-position: absolute;
-bottom : 0%;
-left : 0%;
-`
+
 const Img = styled.img`
 width: 10rem;
 height: 5rem;
 margin : auto 0;
+text-decoration : none;
+`
+const StyledLink = styled(Link)`
+text-decoration : none;
+color : #FFFFFF;
+
+&:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
+        color : #FFFFFF;
+
+    }
+`
+const B = styled.b`
+&:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
+        color : #FFFFFF;
+    }
+`
+const Span = styled.span`
+color : #f12356;
+&:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
+        color : #f12356;
+    }
 `
 
-const Order = (item) => {
-    Swal.fire({
-        title: "확인",
-        html: `
-        <b>'${item.name}'</b> 을 주문합니다.
-        <br>
-        계속 해서 주문하시겠습니까 ?
-        `,
-        showCancelButton: true,
-        confirmButtonText: "네, 계속해서 주문하겠습니다.",
-        cancelButtonText : "아니오. 주문을 마치겠습니다."
-    }).then((res) => {
-        /* Read more about isConfirmed, isDenied below */
-        if (res.isConfirmed) {
-            console.log('a')
-        }
-        else{
-            
-            //취소
-        }
-    });
-}
-
-
 function Menu({item}){
+    const [DogData] = useState(Dog)
+
     return(
-        <Frame>
-            <Img src={item.src} alt='X' /> 
-            <hr />
-            <b>{item.name}</b> <br />
-            <span>({item.price})</span>
-            <FrameButton 
-                onClick={()=>Order(item)}>
-                주문하기
-            </FrameButton>
-        </Frame>
+        <StyledLink to={`/OrderPage/${item.id}`}>
+            <Frame>
+                <Img src={item.src} alt='X' /> 
+                <hr />
+                <B>{item.name}</B> <br />
+                <Span>({item.price})</Span>
+            </Frame>
+        </StyledLink>
+        
     )
 }
 

@@ -45,12 +45,10 @@ ${(props) =>
     padding: 1rem;
     `}
 
-
 ${(props) =>
     props.Success &&
     css`
     padding: 0rem;
-    
     `}
 
 ${(props) =>
@@ -59,8 +57,6 @@ ${(props) =>
     padding: 0rem;
     width: 50%;
     display:inline-block;
-
-
     `}
 
 `

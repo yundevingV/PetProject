@@ -351,10 +351,6 @@ function Home(){
                         </StyledLink>
                     </ButtonGroup>
                 }
-                
-
-
-
 
             </NavTopContainer>
             </NavTopContainerWrapper>
