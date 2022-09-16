@@ -1,5 +1,5 @@
-import React  ,{useState} from 'react';
-import Dog from '../json/Dog.json'
+import React  from 'react';
+import Data from '../json/Data.json'
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
@@ -50,10 +50,9 @@ color : #f12356;
 `
 
 function Menu({item}){
-    const [DogData] = useState(Dog)
 
     return(
-        <StyledLink to={`/OrderPage/${item.id}`}>
+        <StyledLink to={`/OrderPage/${item.animal}/${item.id}`}>
             <Frame>
                 <Img src={item.src} alt='X' /> 
                 <hr />
@@ -65,17 +64,19 @@ function Menu({item}){
     )
 }
 
-function DogMenuMain({category}) {
+function DogMenuMain({category,animal}) {
 
     return(
         <div>
-            {category === '' ?
-            Dog.DogItems
+            {category === '' && animal === 'dog' ?
+            Data.Items
+            .filter((item) => item.animal === `${animal}`)
             .map(item =>(
                 <Menu item={item} key={item.id} />
         )) :
-            Dog.DogItems
-            .filter((item) => item.category === `${category}`)
+            Data.Items
+            .filter((item) => item.category === `${category}`
+            && item.animal ===`${animal}`)
             .map(item =>(
                 <Menu item={item} key={item.id} />
         ))}

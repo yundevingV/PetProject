@@ -140,10 +140,10 @@ ${(props) =>
     `}
 `
 function OrderPage(props){
-    const {id} = useParams()
+    const {id , animal} = useParams()
     const [num, setNum] = useState(parseInt(props.DogData.DogItems[id].amount))
     const [totalPrice , setTotalPrice] = useState(parseInt(props.DogData.DogItems[id].price))
-
+    
     let price = parseInt(props.DogData.DogItems[id].price)
     
     const Plus = () => {
