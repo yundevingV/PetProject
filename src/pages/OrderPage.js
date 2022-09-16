@@ -141,6 +141,9 @@ ${(props) =>
 `
 function OrderPage(props){
     const {id , animal} = useParams()
+
+    console.log(id,animal)
+    
     const [num, setNum] = useState(parseInt(props.DogData.DogItems[id].amount))
     const [totalPrice , setTotalPrice] = useState(parseInt(props.DogData.DogItems[id].price))
     
