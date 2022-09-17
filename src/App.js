@@ -7,19 +7,23 @@ import Test from './pages/Test';
 import SignUp from './pages/SignUp';
 import OrderPage from './pages/OrderPage';
 
-import Data from './json/Data.json'
+import DogData from './json/Dog.json'
+import CatData from './json/Cat.json'
 
 function App() {
   /*Dog.json 불러오기 */
   
-  const [data] = useState(Data)
+  const Data = {...DogData, ...CatData }
+
+
+  
   return (
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/Login' element={<Login />} />
       <Route path='/Test' element={<Test />} />
       <Route path='/SignUp' element={<SignUp />} />
-      <Route path='/OrderPage/:animal/:id' element={<OrderPage data={data} />} />
+      <Route path='/OrderPage/:animal/:id' element={<OrderPage data={Data} />} />
 
     </Routes>
   );

@@ -1,5 +1,5 @@
 import React  from 'react';
-import Data from '../json/Data.json'
+import Data from '../json/Dog.json'
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
@@ -69,12 +69,12 @@ function DogMenuMain({category,animal}) {
     return(
         <div>
             {category === '' && animal === 'dog' ?
-            Data.Items
+            Data.dog
             .filter((item) => item.animal === `${animal}`)
             .map(item =>(
                 <Menu item={item} key={item.id} />
         )) :
-            Data.Items
+            Data.dog
             .filter((item) => item.category === `${category}`
             && item.animal ===`${animal}`)
             .map(item =>(

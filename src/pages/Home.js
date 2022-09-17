@@ -246,9 +246,7 @@ const CatMenu = styled.div`
 display: ${props => props.display ? 'block' : 'none'};
 position: absolute;
 top:12%;
-@media (max-width : 1000px) {
-    display: none;
-}
+
 `
 
 
@@ -299,46 +297,47 @@ function Home(){
     //상품목록
     const [showMenuDog,setShowMenuDog] = useState(false)
     
+
     const [isOpenCat, setMenuCat] = useState(false)
     const [showMenuCat,setShowMenuCat] = useState(false)
 
+    //동물정보 불러오기
     const [isAnimal, setIsAnimal] = useState('')
+
+
     const ToggleMenuDog = (dog) =>{
         setIsAnimal(isAnimal => isAnimal = dog)
-
         setMenuDog(true)
         setMenuCat(false)
         setShowMenuDog(true)
         setShowMenuCat(false)
         setCategoryDog('')
-        console.log(isAnimal)
+
     }
+
     const ToggleMenuCat = (cat) =>{
         setIsAnimal(isAnimal => isAnimal = cat)
-
         setMenuCat(true)
         setMenuDog(false)
         setShowMenuCat(true)
         setShowMenuDog(false)
         setCategoryCat('')
-        console.log(isAnimal)
+
     }
     
     
     //세부 카테고리별 필터링
     const [categoryDog , setCategoryDog] = useState('')
-    const ToggleCategoryDog = (category,dog) =>{
+    const ToggleCategoryDog = (category) =>{
         setCategoryDog(category)
         setMenuDog(true)
-        setIsAnimal(dog)
 
     }
 
     const [categoryCat , setCategoryCat] = useState('')
-    const ToggleCategoryCat = (category,cat) =>{
+    const ToggleCategoryCat = (category) =>{
         setCategoryCat(category)
         setMenuCat(true)
-        setIsAnimal(cat)
 
     }
     return(
@@ -511,26 +510,21 @@ function Home(){
 
                 </SearchInput>
             </NavBottomContainer>
-            {isAnimal === 'dog' ?
+
             <DogMenuMainWrapper display={showMenuDog} >
             <DogMenuMain category={categoryDog} animal={isAnimal} />
             </DogMenuMainWrapper>
-            :
-            <></>
-            }
-            {isAnimal === 'cat' ?
+
             <CatMenuMainWrapper display={showMenuCat} >
             <CatMenuMain category={categoryCat} animal={isAnimal} />
             </CatMenuMainWrapper>
-            :
-            <></>
-            }
+
         </NavContainer>
     )
 
 }
-DogMenuMain.defaultProps = {
-    category : ''
-  }
+
+
+
 
 export default Home

@@ -1,6 +1,8 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import { useParams } from 'react-router-dom';
 import styled ,{css} from "styled-components";
+import DogData from '../json/Dog.json'
+import CatData from '../json/Cat.json'
 
 const Container = styled.div`
 width: 60%;
@@ -140,15 +142,16 @@ ${(props) =>
     `}
 `
 function OrderPage(props){
+    /* json 합치기 */
+    const Data = {...DogData, ...CatData }
+
+
     const {id , animal} = useParams()
 
-    console.log(id,animal)
+    const [num, setNum] = useState(parseInt(Data[animal][id].amount))
+    const [totalPrice , setTotalPrice] = useState(parseInt(Data[animal][id].price))
     
-    const [num, setNum] = useState(parseInt(props.DogData.DogItems[id].amount))
-    const [totalPrice , setTotalPrice] = useState(parseInt(props.DogData.DogItems[id].price))
-    
-    let price = parseInt(props.DogData.DogItems[id].price)
-    
+    let price = parseInt(Data[animal][id].price)
     const Plus = () => {
         setNum(num => num +1)        
         setTotalPrice(price * (num+1))
@@ -167,11 +170,11 @@ function OrderPage(props){
     return(
         <Container>
             <ImgWrapper>
-                <Img src={props.DogData.DogItems[id].src} alt='X' />
+                <Img src={Data[animal][id].src} alt='X' />
             </ImgWrapper>
 
             <NameWrapper>
-                <Font Name>{props.DogData.DogItems[id].name}</Font>
+                <Font Name>{Data[animal][id].name}</Font>
             </NameWrapper>
 
             <PriceWrapper>
@@ -203,9 +206,10 @@ function OrderPage(props){
             </BottomWrapper>
             
             <InfoWrapper>
-                <Font Name>{props.DogData.DogItems[id].info}</Font>
+                <Font Name>{Data[animal][id].info}</Font>
             </InfoWrapper>
         </Container>
+
     )
 }
 export default OrderPage
