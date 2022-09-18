@@ -123,13 +123,13 @@ ${(props) =>
     ${(props) =>
     props.Dog &&
     css`
-      width: 15%;
-      color: #000000;
-      font-weight : bold;
-      border: 1px solid #FFFFFF;
-      font-size : 1.5rem;
-      margin-left : 10%;
-      &:hover{
+        width: 15%;
+        color: #000000;
+        font-weight : bold;
+        border: 1px solid #FFFFFF;
+        font-size : 1.5rem;
+        margin-left : 10%;
+    &:hover{
         color: #000000;
         
         background-image : url(${DogFoot});
@@ -137,26 +137,32 @@ ${(props) =>
         border-bottom: 0.1px solid #FF6600;
         background-position: top right;
         transition: 1s;
-      }
-      
+    }
+    &:focus{
+        border-bottom: 1px solid red;
+    }   
+
     `}
 ${(props) =>
     props.Cat &&
     css`
-      width: 15%;
-      color: #000000;
-      font-weight : bold;
-      border: 1px solid #FFFFFF;
-      font-size : 1.5rem;
-      margin-left : 10%;
-      &:hover{
+        width: 15%;
+        color: #000000;
+        font-weight : bold;
+        border: 1px solid #FFFFFF;
+        font-size : 1.5rem;
+        margin-left : 10%;
+    &:hover{
         color: #000000;
         background-image : url(${CatFoot});
         background-repeat: no-repeat;
         border-bottom: 0.1px solid #FF6600;
         background-position: top right;
         transition: 1s;
-      }
+    }
+    &:focus{
+        border-bottom: 1px solid red;
+    }
     `}
 
 
@@ -262,9 +268,12 @@ width : 5.5rem;
 const OiButton = styled.button`
 background: #FFFFFF;
 border : 0px;
+cursor : pointer;
+
 &:focus{
     border-bottom: 1px solid red;
 }
+
 `
 const OiButtonSpan = styled.span`
 font-size: 1rem;
