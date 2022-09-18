@@ -62,3 +62,4 @@ cat 메뉴까지 구현
 0918
 setState 동적으로 구현
 localStroage 를 이용해 뒤로가기 눌러도 내브바 유지
+redux 이용 장바구니

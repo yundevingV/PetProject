@@ -2,7 +2,7 @@ import React,{useEffect, useState} from "react";
 import { useParams , useLocation } from 'react-router-dom';
 import styled ,{css} from "styled-components";
 
-
+import Nav from "./Nav";
 /*데이터불러오기*/
 import DogData from '../json/Dog.json'
 import CatData from '../json/Cat.json'
@@ -11,7 +11,7 @@ const Container = styled.div`
 width: 60%;
 height: 100%;
 margin: 0 auto;
-position: relative;
+
 /*1000이상일경우*/
 @media (min-width : 1000px){
     width: 50%;
@@ -30,12 +30,24 @@ position: relative;
         width: 90%;
 }
 `
+const NavTopContainerWrapper = styled.div`
+position: relative;
+display: block;
+
+
+`
+const Wrapper = styled.div`
+position: relative;
+top:5rem;
+`
+
 const Img = styled.img`
 width: 100%;
 height : 20rem;
 
 `
 const ImgWrapper = styled.div`
+
 `
 const NameWrapper = styled.div`
 border: 1px solid black;
@@ -97,8 +109,6 @@ const Button = styled.button`
 position: absolute;
 margin-top: 0.5rem;
 
-
-
 ${(props) =>
     props.Plus &&
     css`
@@ -144,6 +154,7 @@ ${(props) =>
     border : 2px solid #E7E6D2;
     `}
 `
+
 function OrderPage(props){
     
     /* json 합치기 */
@@ -160,7 +171,6 @@ function OrderPage(props){
         setTotalPrice(price * (num+1))
     }
 
-
     const Minus = () => {
         num > 1 ? setNum(num -1) :
         setNum(num => num = 1)
@@ -168,52 +178,58 @@ function OrderPage(props){
         setTotalPrice(price)
     }
 
-    const location = useLocation()
-
-
     return(
+        
+        <>
+
+        <NavTopContainerWrapper>
+            <Nav />
+        </NavTopContainerWrapper>
+
         <Container>
-            <ImgWrapper>
-                <Img src={Data[animal][id].src} alt='X' />
-            </ImgWrapper>
+            <Wrapper>
+                <ImgWrapper>
+                    <Img src={Data[animal][id].src} alt='X' />
+                </ImgWrapper>
 
-            <NameWrapper>
-                <Font Name>{Data[animal][id].name}</Font>
-            </NameWrapper>
+                <NameWrapper>
+                    <Font Name>{Data[animal][id].name}</Font>
+                </NameWrapper>
 
-            <PriceWrapper>
-                <Font Price>{totalPrice} 원 </Font>
-            </PriceWrapper>
-            <BottomWrapper>
-                <NumWrapper>
-                    <Font Num>
-                        수량 : {num}
-                    </Font>
-                </NumWrapper>
+                <PriceWrapper>
+                    <Font Price>{totalPrice} 원 </Font>
+                </PriceWrapper>
+                <BottomWrapper>
+                    <NumWrapper>
+                        <Font Num>
+                            수량 : {num}
+                        </Font>
+                    </NumWrapper>
 
-                <ButtonGroup>
-                    <Button Plus
-                        onClick={()=>Plus()}>
-                        +
-                    </Button>
-                    <Button Minus
-                        onClick={()=>Minus()}>
-                        -
-                    </Button>
-                    <Button Add>
-                        장바구니 추가
-                    </Button>
-                    <Button Buy>
-                        바로 구매하기
-                    </Button>
-                </ButtonGroup>
-            </BottomWrapper>
-            
-            <InfoWrapper>
-                <Font Name>{Data[animal][id].info}</Font>
-            </InfoWrapper>
+                    <ButtonGroup>
+                        <Button Plus
+                            onClick={()=>Plus()}>
+                            +
+                        </Button>
+                        <Button Minus
+                            onClick={()=>Minus()}>
+                            -
+                        </Button>
+                        <Button Add>
+                            장바구니 추가
+                        </Button>
+                        <Button Buy>
+                            바로 구매하기
+                        </Button>
+                    </ButtonGroup>
+                </BottomWrapper>
+                
+                <InfoWrapper>
+                    <Font Name>{Data[animal][id].info}</Font>
+                </InfoWrapper>
+            </Wrapper>
         </Container>
-
+        </>
     )
 }
 export default OrderPage

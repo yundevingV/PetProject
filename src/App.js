@@ -16,8 +16,6 @@ function App() {
   
   const Data = {...DogData, ...CatData }
 
-
-  
   return (
     <Routes>
       <Route path='/' element={<Home />} />
