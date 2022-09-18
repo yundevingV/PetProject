@@ -1,6 +1,6 @@
-import React , {useState} from "react";
+import React , {useEffect, useState} from "react";
 import styled ,{css } from "styled-components";
-import { Link } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
 
 import DogMenuMain from "./DogMenuMain";
 import CatMenuMain from "./CatMenuMain";
@@ -236,14 +236,12 @@ position: absolute;
 
 const DogMenu = styled.div`
 
-display: ${props => props.display ? 'block' : 'none'};
 position: absolute;
 top:12%;
 
 `
 const CatMenu = styled.div`
 
-display: ${props => props.display ? 'block' : 'none'};
 position: absolute;
 top:12%;
 
@@ -273,33 +271,23 @@ font-size: 1rem;
 text-align: center;
 `
 
-
-const DogMenuMainWrapper = styled.div`
-display: ${props => props.display ? 'block' : 'none'};
-position: absolute;
-top:33%;
-`
-const CatMenuMainWrapper = styled.div`
-display: ${props => props.display ? 'block' : 'none'};
+const MenuMainWrapper = styled.div`
 position: absolute;
 top:33%;
 `
 function Home(){
-
     //로그인정보
     //test를 위해 true
     const [login , setLogin] = useState(true)
 
 
-    //세부메뉴
-    const [isOpenDog, setMenuDog] = useState(false)
+    //세부메뉴 강아지,고양이 클릭시 밑에 메뉴
+    const [isOpenMenu, setIsOpenMenu] = useState('')
 
     //상품목록
-    const [showMenuDog,setShowMenuDog] = useState(false)
+    const [showMenu,setShowMenu] = useState('')
     
 
-    const [isOpenCat, setMenuCat] = useState(false)
-    const [showMenuCat,setShowMenuCat] = useState(false)
 
     //동물정보 불러오기
     const [isAnimal, setIsAnimal] = useState('')
@@ -307,39 +295,48 @@ function Home(){
 
     const ToggleMenuDog = (dog) =>{
         setIsAnimal(isAnimal => isAnimal = dog)
-        setMenuDog(true)
-        setMenuCat(false)
-        setShowMenuDog(true)
-        setShowMenuCat(false)
-        setCategoryDog('')
-
+        setIsOpenMenu(dog)
+        setShowMenu(dog)
+        setCategory(dog)
+        window.localStorage.setItem('1','dog')
+        window.localStorage.setItem('2','dog')
+        window.localStorage.setItem('3','dog')
+        window.localStorage.setItem('4','dog')
     }
 
+
     const ToggleMenuCat = (cat) =>{
+        
         setIsAnimal(isAnimal => isAnimal = cat)
-        setMenuCat(true)
-        setMenuDog(false)
-        setShowMenuCat(true)
-        setShowMenuDog(false)
-        setCategoryCat('')
+        setIsOpenMenu(cat)
+        setShowMenu(cat)
+        setCategory(cat)
+        window.localStorage.setItem('1','cat')
+        window.localStorage.setItem('2','cat')
+        window.localStorage.setItem('3','cat')
+        window.localStorage.setItem('4','cat')
 
     }
     
     
     //세부 카테고리별 필터링
-    const [categoryDog , setCategoryDog] = useState('')
-    const ToggleCategoryDog = (category) =>{
-        setCategoryDog(category)
-        setMenuDog(true)
-
+    const [category , setCategory] = useState('')
+    const ToggleCategory = (category) =>{
+        setCategory(category)
     }
 
-    const [categoryCat , setCategoryCat] = useState('')
-    const ToggleCategoryCat = (category) =>{
-        setCategoryCat(category)
-        setMenuCat(true)
-
+    const reopen = () =>{
+        setIsAnimal(window.localStorage.getItem('1'))
+        setIsOpenMenu(window.localStorage.getItem('2'))
+        setShowMenu(window.localStorage.getItem('3'))
+        setCategory(window.localStorage.getItem('4'))
     }
+
+    useEffect(()=>{
+        reopen()
+
+    },[])
+
     return(
         <NavContainer>
             <NavTopContainerWrapper>
@@ -397,53 +394,53 @@ function Home(){
                 </StyledLink>
 
             </NavMiddleContainer>
-
-            <DogMenu display={isOpenDog}>
+            {isOpenMenu === 'dog' ?
+            <DogMenu>
                 <Ul>
                 <Oi>
-                    <OiButton onClick={()=>ToggleCategoryDog('house')}>
+                    <OiButton onClick={()=>ToggleCategory('dog_house')}>
                         <OiButtonSpan>
                             집
                         </OiButtonSpan>
                     </OiButton>
                 </Oi>
                 <Oi>
-                    <OiButton onClick={()=>ToggleCategoryDog('cover')}>
+                    <OiButton onClick={()=>ToggleCategory('dog_cover')}>
                         <OiButtonSpan>
                             옷
                         </OiButtonSpan>
                     </OiButton>
                 </Oi>
                 <Oi>
-                    <OiButton onClick={()=>ToggleCategoryDog('food')}>
+                    <OiButton onClick={()=>ToggleCategory('dog_food')}>
                         <OiButtonSpan>
                             먹이
                         </OiButtonSpan>
                     </OiButton>
                 </Oi>        
                 <Oi>
-                    <OiButton onClick={()=>ToggleCategoryDog('snack')}>
+                    <OiButton onClick={()=>ToggleCategory('dog_snack')}>
                         <OiButtonSpan>
                             간식
                         </OiButtonSpan>
                     </OiButton>
                 </Oi>
                 <Oi>
-                    <OiButton onClick={()=>ToggleCategoryDog('toy')}>
+                    <OiButton onClick={()=>ToggleCategory('dog_toy')}>
                         <OiButtonSpan>
                             장난감
                         </OiButtonSpan>
                     </OiButton>
                 </Oi>
                 <Oi>
-                    <OiButton onClick={()=>ToggleCategoryDog('pad')}>
+                    <OiButton onClick={()=>ToggleCategory('dog_pad')}>
                         <OiButtonSpan>
                             배변패드
                         </OiButtonSpan>
                     </OiButton>
                 </Oi>
                 <Oi>
-                    <OiButton onClick={()=>ToggleCategoryDog('dogTool')}>
+                    <OiButton onClick={()=>ToggleCategory('dog_dogTool')}>
                         <OiButtonSpan>
                             애견 용품
                         </OiButtonSpan>
@@ -451,53 +448,57 @@ function Home(){
                 </Oi>
                 </Ul>    
             </DogMenu>
-
-            <CatMenu display={isOpenCat}>
+            :
+            <></>
+            }   
+            
+            {isOpenMenu === 'cat' ?
+            <CatMenu >
             <Ul>
                 <Oi>
-                    <OiButton onClick={()=>ToggleCategoryCat('house')}>
+                    <OiButton onClick={()=>ToggleCategory('cat_house')}>
                         <OiButtonSpan>
                             집
                         </OiButtonSpan>
                     </OiButton>
                 </Oi>
                 <Oi>
-                    <OiButton onClick={()=>ToggleCategoryCat('cover')}>
+                    <OiButton onClick={()=>ToggleCategory('cat_cover')}>
                         <OiButtonSpan>
                             옷
                         </OiButtonSpan>
                     </OiButton>
                 </Oi>
                 <Oi>
-                    <OiButton onClick={()=>ToggleCategoryCat('food')}>
+                    <OiButton onClick={()=>ToggleCategory('cat_food')}>
                         <OiButtonSpan>
                             먹이
                         </OiButtonSpan>
                     </OiButton>
                 </Oi>        
                 <Oi>
-                    <OiButton onClick={()=>ToggleCategoryCat('snack')}>
+                    <OiButton onClick={()=>ToggleCategory('cat_snack')}>
                         <OiButtonSpan>
                             간식
                         </OiButtonSpan>
                     </OiButton>
                 </Oi>
                 <Oi>
-                    <OiButton onClick={()=>ToggleCategoryCat('toy')}>
+                    <OiButton onClick={()=>ToggleCategory('cat_toy')}>
                         <OiButtonSpan>
                             장난감
                         </OiButtonSpan>
                     </OiButton>
                 </Oi>
                 <Oi>
-                    <OiButton onClick={()=>ToggleCategoryCat('pad')}>
+                    <OiButton onClick={()=>ToggleCategory('cat_pad')}>
                         <OiButtonSpan>
                             배변패드
                         </OiButtonSpan>
                     </OiButton>
                 </Oi>
                 <Oi>
-                    <OiButton onClick={()=>ToggleCategoryCat('catTool')}>
+                    <OiButton onClick={()=>ToggleCategory('cat_catTool')}>
                         <OiButtonSpan>
                             애묘 용품
                         </OiButtonSpan>
@@ -505,19 +506,30 @@ function Home(){
                 </Oi>
                 </Ul>
             </CatMenu>
+            :
+            <></>
+            }
             <NavBottomContainer>
                 <SearchInput placeholder='검색어를 입력하세요 ...'>
 
                 </SearchInput>
             </NavBottomContainer>
 
-            <DogMenuMainWrapper display={showMenuDog} >
-            <DogMenuMain category={categoryDog} animal={isAnimal} />
-            </DogMenuMainWrapper>
+            {showMenu === 'dog' ?
+            <MenuMainWrapper>
+            <DogMenuMain category={category} animal={isAnimal} />
+            </MenuMainWrapper>
+            :
+            <></>
+            }
 
-            <CatMenuMainWrapper display={showMenuCat} >
-            <CatMenuMain category={categoryCat} animal={isAnimal} />
-            </CatMenuMainWrapper>
+            {showMenu === 'cat' ?
+            <MenuMainWrapper >
+            <CatMenuMain category={category} animal={isAnimal} />
+            </MenuMainWrapper>
+            :
+            <></>
+            }
 
         </NavContainer>
     )

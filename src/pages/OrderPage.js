@@ -1,6 +1,9 @@
 import React,{useEffect, useState} from "react";
-import { useParams } from 'react-router-dom';
+import { useParams , useLocation } from 'react-router-dom';
 import styled ,{css} from "styled-components";
+
+
+/*데이터불러오기*/
 import DogData from '../json/Dog.json'
 import CatData from '../json/Cat.json'
 
@@ -142,9 +145,9 @@ ${(props) =>
     `}
 `
 function OrderPage(props){
+    
     /* json 합치기 */
     const Data = {...DogData, ...CatData }
-
 
     const {id , animal} = useParams()
 
@@ -163,8 +166,9 @@ function OrderPage(props){
         setNum(num => num = 1)
         num > 1 ? setTotalPrice(price * (num-1)) :
         setTotalPrice(price)
-        
     }
+
+    const location = useLocation()
 
 
     return(

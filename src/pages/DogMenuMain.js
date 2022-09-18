@@ -1,7 +1,7 @@
 import React  from 'react';
 import Data from '../json/Dog.json'
 import styled from 'styled-components';
-import { Link } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
 
 const Frame = styled.div`
 width : 10rem;
@@ -51,9 +51,19 @@ color : #f12356;
 
 function Menu({item}){
 
+    const navigate = useNavigate()
+
+    const move = () => {
+        navigate(`/OrderPage/${item.animal}/${item.id}`,{
+            state : {
+                id: 1,
+                job: '개발자'
+            }
+        })
+    }
     return(
         <StyledLink to={`/OrderPage/${item.animal}/${item.id}`}>
-            <Frame>
+            <Frame onClick={()=>move()}>
                 <Img src={item.src} alt='X' /> 
                 <hr />
                 <B>{item.name}</B> <br />
@@ -68,7 +78,7 @@ function DogMenuMain({category,animal}) {
 
     return(
         <div>
-            {category === '' && animal === 'dog' ?
+            {category === 'dog' && animal === 'dog' ?
             Data.dog
             .filter((item) => item.animal === `${animal}`)
             .map(item =>(

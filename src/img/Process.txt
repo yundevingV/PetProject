@@ -58,3 +58,7 @@ filter 컴포넌트에 props로 값넘겨서 해보기 - 완료
 orderpage로 넘어가고 뒤로오면 페이지가 렌더링 되지않음
 -> setState 무한 반복으로 인한 오류
 cat 메뉴까지 구현
+
+0918
+setState 동적으로 구현
+localStroage 를 이용해 뒤로가기 눌러도 내브바 유지

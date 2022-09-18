@@ -6,7 +6,7 @@
             "price" : "159000",
             "amount" : "1",
             "src":"https://img.catpre.com/mobile/catpre/product/40/39773_originalView_01470930.jpg",
-            "category":"catTool",
+            "category":"cat_catTool",
             "info" : "설명 준비중입니다.",
             "animal" : "cat"
         },
@@ -16,7 +16,7 @@
             "price" : "18000",
             "amount" : "1",
             "src":"https://img.catpre.com/mobile/catpre/product/42/41663_originalView_01439629.jpg",
-            "category":"food",
+            "category":"cat_food",
             "info" : "설명 준비중입니다.",
             "animal" : "cat"
         }

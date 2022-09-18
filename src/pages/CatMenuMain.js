@@ -68,7 +68,7 @@ function CatMenuMain({category,animal}) {
 
     return(
         <div>
-            {category === '' && animal === 'cat' ?
+            {category === 'cat' && animal === 'cat' ?
             Data.cat
             .filter((item) => item.animal === `${animal}`)
             .map(item =>(

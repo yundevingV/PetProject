@@ -6,7 +6,7 @@
             "price" : "15000",
             "amount" : "1",
             "src":"https://schpet.co.kr/data/goods/1/2019/11/181_20191108143351449.jpg",
-            "category":"snack",
+            "category":"dog_snack",
             "info" : "설명 준비중입니다.",
             "animal" : "dog"
         },
@@ -16,7 +16,7 @@
             "price" : "149000",
             "amount" : "1",
             "src":"https://schpet.co.kr/data/goods/1/2019/08/133_2019080811251089.jpg",
-            "category":"house",
+            "category":"dog_house",
             "info" : "설명 준비중입니다.",
             "animal" : "dog"
         },
@@ -26,7 +26,7 @@
             "price" : "69000",
             "amount" : "1",
             "src":"https://schpet.co.kr/data/goods/1/2020/12/291_20201207104718227.jpg",
-            "category": "cover",
+            "category": "dog_cover",
             "info" : "설명 준비중입니다.",
             "animal" : "dog"
         }
