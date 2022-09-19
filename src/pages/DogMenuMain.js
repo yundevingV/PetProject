@@ -50,20 +50,10 @@ color : #f12356;
 `
 
 function Menu({item}){
-
-    const navigate = useNavigate()
-
-    const move = () => {
-        navigate(`/OrderPage/${item.animal}/${item.id}`,{
-            state : {
-                id: 1,
-                job: '개발자'
-            }
-        })
-    }
+   
     return(
         <StyledLink to={`/OrderPage/${item.animal}/${item.id}`}>
-            <Frame onClick={()=>move()}>
+            <Frame >
                 <Img src={item.src} alt='X' /> 
                 <hr />
                 <B>{item.name}</B> <br />

@@ -64,7 +64,6 @@ margin-right : ${(props) => props.space};
     color : blue;
 }
 `
-
 const Wrapper = styled.div`
 display: inline-block;
 text-align : ${(props) => props.textAlign};
@@ -73,6 +72,7 @@ margin-bottom : ${(props) => props.marginBottom};
 `
 function Login(){
     return(
+        
     <ContainerWrapper>
         <Container>
             <Title>
