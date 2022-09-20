@@ -50,7 +50,6 @@ color : #f12356;
 `
 
 function Menu({item}){
-   
     return(
         <StyledLink to={`/OrderPage/${item.animal}/${item.id}`}>
             <Frame >

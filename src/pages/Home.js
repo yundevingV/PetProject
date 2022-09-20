@@ -108,6 +108,7 @@ margin : 0 auto;
 background: #FFFFFF;
 position: absolute;
 top : 7%;
+background: #FFFFaa;
 `
 
 const NavBottomContainer = styled.div`
