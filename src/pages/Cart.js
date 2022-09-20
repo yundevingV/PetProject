@@ -37,12 +37,40 @@ ${(props) =>
     css`
         display: inline-block;
         width : 33%;
+        text-align : center;
     `}    
 ${(props) =>
     props.Price &&
     css`
         display: inline-block;
         width : 33%;
+        text-align : center;
+    `}    
+`
+
+const CartListTableName = styled.div`
+${(props) =>
+    props.Img &&
+    css`
+        display: inline-block;
+        width : 33%;
+    `}
+${(props) =>
+    props.Name &&
+    css`
+        display: inline-block;
+        width : 33%;
+        text-align : center;
+        vertical-align : top;
+    `}    
+${(props) =>
+    props.Price &&
+    css`
+        display: inline-block;
+        width : 33%;
+        text-align : center;
+        vertical-align : top;
+
     `}    
 `
 
@@ -50,25 +78,33 @@ const Img = styled.img`
 height: 70px;
 `
 const Name = styled.span`
-font-size: 0.7rem;
+font-size: 0.85rem;
 `
 
 const Hr = styled.hr`
 border-top : 1px dotted #bbb;
 `
+
+const ResultWrapper = styled.div`
+
+`
+
+const Result = styled.div`
+
+`
 function CartList({item}){
     console.log(item.src)
     return (
         <>
-            <CartTableName Img>
+            <CartListTableName Img>
                 <Img src={item.src} alt="X" />
-            </CartTableName>
-            <CartTableName Name>
+            </CartListTableName>
+            <CartListTableName Name>
                 <Name>{item.name}</Name>
-            </CartTableName>
-            <CartTableName Price>
+            </CartListTableName>
+            <CartListTableName Price>
                 <Name>{item.price}</Name>
-            </CartTableName>
+            </CartListTableName>
             <Hr />
         </>
     )
@@ -100,6 +136,11 @@ function Cart(){
                     </CartTable>
                 </CartWrapper>
                 
+                <ResultWrapper>
+                    <Result>
+
+                    </Result>
+                </ResultWrapper>
         </CartContainer>
     )
 }
