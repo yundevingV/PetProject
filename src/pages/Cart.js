@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Nav from "./Nav";
 import styled ,{css} from "styled-components";
 
@@ -84,16 +84,11 @@ font-size: 0.85rem;
 const Hr = styled.hr`
 border-top : 1px dotted #bbb;
 `
-
-const ResultWrapper = styled.div`
-
+const Result = styled.span`
+font-weight : 1000;
 `
 
-const Result = styled.div`
-
-`
 function CartList({item}){
-    console.log(item.src)
     return (
         <>
             <CartListTableName Img>
@@ -110,7 +105,17 @@ function CartList({item}){
     )
 }
 
+
 function Cart(){
+    
+    const [result , setResult] = useState(0)
+    
+    Dog.dog.map((item) =>
+    useEffect(()=>
+        setResult(result += item.price)
+        ,[item])
+    )
+
     return(
         <CartContainer>
             <Nav />
@@ -134,13 +139,16 @@ function Cart(){
                             <CartList item={item} key={item.id} />
                     ))}
                     </CartTable>
+
+                    <CartTable>
+                        <Result>
+                            값 : {result}
+                        </Result>
+                    </CartTable>
+
                 </CartWrapper>
                 
-                <ResultWrapper>
-                    <Result>
-
-                    </Result>
-                </ResultWrapper>
+                
         </CartContainer>
     )
 }
