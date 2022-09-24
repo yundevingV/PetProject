@@ -8,7 +8,8 @@
             "src":"https://schpet.co.kr/data/goods/1/2019/11/181_20191108143351449.jpg",
             "category":"dog_snack",
             "info" : "설명 준비중입니다.",
-            "animal" : "dog"
+            "animal" : "dog",
+            "cartin" : "NO"
         },
         { 
             "id" : 1,
@@ -18,7 +19,8 @@
             "src":"https://schpet.co.kr/data/goods/1/2019/08/133_2019080811251089.jpg",
             "category":"dog_house",
             "info" : "설명 준비중입니다.",
-            "animal" : "dog"
+            "animal" : "dog",
+            "cartin" : "NO"
         },
         {   
             "id" : 2,
@@ -28,7 +30,8 @@
             "src":"https://schpet.co.kr/data/goods/1/2020/12/291_20201207104718227.jpg",
             "category": "dog_cover",
             "info" : "설명 준비중입니다.",
-            "animal" : "dog"
+            "animal" : "dog",
+            "cartin" : "NO"
         }
     ]
     

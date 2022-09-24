@@ -166,6 +166,7 @@ function OrderPage(props){
     const [totalPrice , setTotalPrice] = useState(parseInt(Data[animal][id].price))
     
     let price = parseInt(Data[animal][id].price)
+
     const Plus = () => {
         setNum(num => num +1)        
         setTotalPrice(price * (num+1))
@@ -176,6 +177,10 @@ function OrderPage(props){
         setNum(num => num = 1)
         num > 1 ? setTotalPrice(price * (num-1)) :
         setTotalPrice(price)
+    }
+
+    const Add = () => {
+        console.log('yes')
     }
 
     return(
@@ -215,7 +220,8 @@ function OrderPage(props){
                             onClick={()=>Minus()}>
                             -
                         </Button>
-                        <Button Add>
+                        <Button Add
+                            onClick={()=>Add()}>
                             장바구니 추가
                         </Button>
                         <Button Buy>

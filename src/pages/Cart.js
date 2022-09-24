@@ -117,33 +117,24 @@ font-weight : 1000;
 function CartList({item}){
 
     const [amount,setAmount] = useState(1)
+    const [price ,setPrice] = useState(parseInt(item.price))
 
     const plus = (item) =>{
         setAmount(amount => amount +1)
         setPrice(price => price += parseInt(item.price))
+        console.log(item.price)
+        console.log(price)
     }
-    const minus = () =>{
+
+    const minus = (item) =>{
         amount > 1 ?
         setAmount(amount => amount - 1) : setAmount(1)
 
         price > item.price ?
-        setPrice(price => price -= parseInt(item.price)) : setPrice(parseInt(item.price))
-
+        setPrice(price => price -= parseInt(item.price))
+        : setPrice(parseInt(item.price))
     }
 
-    const [price ,setPrice] = useState(parseInt(item.price))
-
-    const [total,setTotal] = useState(0)
-    useEffect(()=>{
-        setTotal(total => total += price)
-        console.log(total)
-    },[])
-    
-    useEffect(()=>{
-        setTotal(total => total += price)
-        console.log('price',price)
-        console.log(total)
-    },[price])
 
     return (
         <>
@@ -157,20 +148,20 @@ function CartList({item}){
                 <Name Price>{price}원 </Name>
                 <Button 플러스 onClick={()=>plus(item)}> + </Button>
                 <Name>{amount}개 </Name>
-                <Button onClick={()=>minus()}> - </Button>
+                <Button onClick={()=>minus(item)}> - </Button>
                 <Hr1 />
                 <Button 딜리트 onClick={()=>minus()}> 삭제 </Button>
             </CartListTableName>
 
             <Hr />
-
         </>
     )
 }
 
-
 function Cart(){
+    const [resultPrice , setResultPrice] = useState(1)
     
+
     return(
         <CartContainer>
             <Nav />
@@ -196,9 +187,7 @@ function Cart(){
                     </CartTable>
 
                     <CartTable>
-                        <Result>
-                            총 결제 금액 : 
-                        </Result>
+                        가격 : 
                     </CartTable>
 
 
