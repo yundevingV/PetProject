@@ -138,9 +138,6 @@ function CartList({item}){
 
     /*redux*/
 
-    const dispatch = useDispatch()
-    const list = useSelector((state) => state.cart.list)
-
     return (
         <>
             <CartListTableName Img>
@@ -150,9 +147,9 @@ function CartList({item}){
                 <Name>{item.name}</Name>
             </CartListTableName>
             <CartListTableName Price>
-                <Name Price>{price}원 </Name>
+                <Name Price>{item.price}원 </Name>
                 <Button 플러스 onClick={()=>plus(item)}> + </Button>
-                <Name>{amount}개 </Name>
+                <Name>{item.amount}개 </Name>
                 <Button onClick={()=>minus(item)}> - </Button>
                 <Hr1 />
                 <Button 딜리트 onClick={()=>minus()}> 삭제 </Button>
@@ -164,7 +161,10 @@ function CartList({item}){
 }
 
 function Cart(){
+    const dispatch = useDispatch()
+    const list = useSelector((state) => state.cart.list)
 
+    console.log(list)
     return(
         <CartContainer>
             <Nav />
@@ -183,8 +183,7 @@ function Cart(){
                     </CartTable>
                     
                     <CartTable>
-                    {Dog.dog
-                        .map(item =>(
+                    {list.map(item =>(
                             <CartList item={item} key={item.id} />
                     ))}
                     </CartTable>

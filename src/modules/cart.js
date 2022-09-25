@@ -42,7 +42,7 @@ export default function counter(state = initialState, action) {
                         name : action.name,
                         price : action.price,
                         amount : action.amount,
-                        src : action.amount,
+                        src : action.src,
                         category : action.category
 
                     }

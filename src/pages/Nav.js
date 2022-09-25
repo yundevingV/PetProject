@@ -142,7 +142,7 @@ function Nav(){
             :
             /*로그인 하기전*/
             <ButtonGroup>
-                <StyledLink to='/Test'>
+                <StyledLink to='/Cart'>
                     <Button Shopping>
                         <img src={Shopping} alt='X' />
                     </Button>

@@ -21,16 +21,16 @@ function Test(){
                     (add('id','name','price','amount','src','categoey'))}}>
                         add</button>
             <div>
-            {list.map((lst) => {
+            {list.map((item) => {
                 return(
                     <div>
-                        <h2> id : {lst.id} </h2>
-                        <h2> name : {lst.name} </h2>
-                        <h2> price : {lst.price} </h2>
+                        <h2> id : {item.id} </h2>
+                        <h2> name : {item.name} </h2>
+                        <h2> price : {item.price} </h2>
                         
-                        <h2> amount : {lst.amount} </h2>
-                        <h2> src : {lst.src} </h2>
-                        <h2> category : {lst.category} </h2>
+                        <h2> amount : {item.amount} </h2>
+                        <h2> src : {item.src} </h2>
+                        <h2> category : {item.category} </h2>
 
                     </div>
                 )
