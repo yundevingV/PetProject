@@ -1,35 +1,55 @@
-// Actions
-const INCREMENT = "INCREMENT";
-const DECREMENT = "DECREMENT";
 
-// Action Creator
-export const increment = () => {
-  return {
-    type: INCREMENT,
-  };
-}
-export const decrement = () => {
-  return {
-    type: DECREMENT,
-  };
+// Actions
+export const ADD = "ADD"
+
+
+export const add = (id,name,price,amount,src,category) => {
+    return {
+        type: ADD,
+        id,
+        name,
+        price,
+        amount,
+        src,
+        category
+
+    }
+    
 }
 
 // 초기값 설정
 const initialState = {
-    number: 1,
-  };
-  
-  export default function counter(state = initialState, action) {
+    list : [
+        {
+            id : '',
+            name : '',
+            price : '',
+            amount : '',
+            src : '',
+            category : ''
+
+        }
+    ]
+};
+
+export default function counter(state = initialState, action) {
     switch (action.type) {
-      case INCREMENT:
-        return {
-          number: state.number + 1,
-        };
-      case DECREMENT:
-        return {
-          number: state.number - 1,
-        };
-      default:
-        return state;
+        case ADD:
+            return {
+                list : [...state.list ,
+                    {
+                        id : action.id,
+                        name : action.name,
+                        price : action.price,
+                        amount : action.amount,
+                        src : action.amount,
+                        category : action.category
+
+                    }
+                ]
+            };
+        
+        default:
+            return state;
     }
 }

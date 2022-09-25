@@ -1,15 +1,45 @@
 import React from "react";
-import {useLocation} from 'react-router-dom'
+import { useDispatch, useSelector } from "react-redux";
+import { increment,decrement  } from "../modules/amount";
+import {add} from "../modules/cart"
 
-function Test({cart}){
-    const location = useLocation()
-    console.log(location)
+function Test(){
+    const amount = useSelector((state) => state.amount.amount)
+
+    const dispatch = useDispatch()
+    const list = useSelector((state) => state.cart.list)
+
     return(
         <div>
-            <p>{location.state.cart[0].id}</p>
-            <p>{location.state.cart[0].price}</p>
-            <p>{location.state.cart[0].amount}</p>
-            <p>{location.state.cart[0].image}</p>
+            <div>            
+            <button onClick={()=>{dispatch(increment())}}> + ++</button>
+        
+            <button onClick={()=>{dispatch(decrement())}}> ---</button>
+            {amount}
+
+            <button onClick={()=>{dispatch
+                    (add('id','name','price','amount','src','categoey'))}}>
+                        add</button>
+            <div>
+            {list.map((lst) => {
+                return(
+                    <div>
+                        <h2> id : {lst.id} </h2>
+                        <h2> name : {lst.name} </h2>
+                        <h2> price : {lst.price} </h2>
+                        
+                        <h2> amount : {lst.amount} </h2>
+                        <h2> src : {lst.src} </h2>
+                        <h2> category : {lst.category} </h2>
+
+                    </div>
+                )
+            })}
+            
+            </div>
+
+            </div>
+
         </div>
     )
 }

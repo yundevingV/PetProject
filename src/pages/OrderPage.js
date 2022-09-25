@@ -1,12 +1,14 @@
 import React,{useEffect, useState} from "react";
 import { useParams , useLocation } from 'react-router-dom';
 import styled ,{css} from "styled-components";
-import { Link } from "react-router-dom";
-import Test from "./Test";
+import { useDispatch, useSelector } from "react-redux";
+
 import Nav from "./Nav";
 /*데이터불러오기*/
 import DogData from '../json/Dog.json'
 import CatData from '../json/Cat.json'
+
+import {add} from "../modules/cart"
 
 const Container = styled.div`
 width: 60%;
@@ -180,23 +182,9 @@ function OrderPage(props){
         setTotalPrice(price)
     }
 
-    const [cart,setCart] = useState([])
-
-    const handleCart = () => {
-        
-        const cartItem = {
-            id : Data[animal][id].id,
-            image : Data[animal][id].src,
-            amount : num,
-            price : parseInt(Data[animal][id].price * num),
-
-        }
-        
-        setCart([...cart , cartItem])
-        console.log(cart)
-    }
-
-
+    /*redux */
+    const dispatch = useDispatch()
+    const list = useSelector((state) => state.cart.list)
 
     return(
         
@@ -236,7 +224,8 @@ function OrderPage(props){
                             -
                         </Button>
                         <Button Add
-                            onClick={()=>handleCart()}>
+                            onClick={()=>{dispatch
+                                (add(id,Data[animal][id].name,Data[animal][id].price,num,Data[animal][id].src,Data[animal][id].category))}}>
                             장바구니 추가
                         </Button>
                         <Button Buy>
@@ -251,7 +240,6 @@ function OrderPage(props){
             </Wrapper>
         </Container>
 
-        <Link to='/Test' state={{cart}}> Test</Link>
         </>
     )
 }

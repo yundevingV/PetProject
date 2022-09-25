@@ -3,7 +3,7 @@ import Nav from "./Nav";
 import styled ,{css} from "styled-components";
 
 import Dog from '../json/Dog.json'
-
+import { useDispatch, useSelector } from "react-redux";
 
 
 const CartContainer = styled.div`
@@ -116,6 +116,7 @@ font-weight : 1000;
 
 function CartList({item}){
 
+    
     const [amount,setAmount] = useState(1)
     const [price ,setPrice] = useState(parseInt(item.price))
 
@@ -135,6 +136,10 @@ function CartList({item}){
         : setPrice(parseInt(item.price))
     }
 
+    /*redux*/
+
+    const dispatch = useDispatch()
+    const list = useSelector((state) => state.cart.list)
 
     return (
         <>
@@ -159,8 +164,6 @@ function CartList({item}){
 }
 
 function Cart(){
-    const [resultPrice , setResultPrice] = useState(1)
-    
 
     return(
         <CartContainer>
