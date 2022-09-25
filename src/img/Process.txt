@@ -73,3 +73,23 @@ redux 이용 장바구니
  
 0921 - 0925
 결과값 출력하는 div생성 , 갯수 +- 카운터
+
+0925~
+const [cart,setCart] = useState([])
+
+const handleCart = () => {
+    
+    const cartItem = {
+        id : Data[animal][id].id,
+        image : Data[animal][id].src,
+        price : Data[animal][id].price,
+        amount : Data[animal][id].amount            
+    }
+    setCart([...cart , cartItem])
+    console.log(cart)
+}
+이코드를 redux로 변환하기.xxxxx
+->
+Link 를 이용해서 props 넘겨준 후 useLocation 활용하기.
+
+추가해야할 로직은 동일 상품 방지, 꾸미기 정도

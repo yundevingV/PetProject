@@ -1,7 +1,8 @@
 import React,{useEffect, useState} from "react";
 import { useParams , useLocation } from 'react-router-dom';
 import styled ,{css} from "styled-components";
-
+import { Link } from "react-router-dom";
+import Test from "./Test";
 import Nav from "./Nav";
 /*데이터불러오기*/
 import DogData from '../json/Dog.json'
@@ -156,7 +157,7 @@ ${(props) =>
 `
 
 function OrderPage(props){
-    
+
     /* json 합치기 */
     const Data = {...DogData, ...CatData }
 
@@ -179,9 +180,23 @@ function OrderPage(props){
         setTotalPrice(price)
     }
 
-    const Add = () => {
-        console.log('yes')
+    const [cart,setCart] = useState([])
+
+    const handleCart = () => {
+        
+        const cartItem = {
+            id : Data[animal][id].id,
+            image : Data[animal][id].src,
+            amount : num,
+            price : parseInt(Data[animal][id].price * num),
+
+        }
+        
+        setCart([...cart , cartItem])
+        console.log(cart)
     }
+
+
 
     return(
         
@@ -221,7 +236,7 @@ function OrderPage(props){
                             -
                         </Button>
                         <Button Add
-                            onClick={()=>Add()}>
+                            onClick={()=>handleCart()}>
                             장바구니 추가
                         </Button>
                         <Button Buy>
@@ -235,6 +250,8 @@ function OrderPage(props){
                 </InfoWrapper>
             </Wrapper>
         </Container>
+
+        <Link to='/Test' state={{cart}}> Test</Link>
         </>
     )
 }
