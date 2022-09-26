@@ -20,15 +20,7 @@ export const add = (id,name,price,amount,src,category) => {
 // 초기값 설정
 const initialState = {
     list : [
-        {
-            id : '',
-            name : '',
-            price : '',
-            amount : '',
-            src : '',
-            category : ''
-
-        }
+        
     ]
 };
 

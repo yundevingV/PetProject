@@ -116,30 +116,34 @@ font-weight : 1000;
 
 function CartList({item}){
 
-    
-    const [amount,setAmount] = useState(1)
-    const [price ,setPrice] = useState(parseInt(item.price))
 
-    const plus = (item) =>{
-        setAmount(amount => amount +1)
-        setPrice(price => price += parseInt(item.price))
-        console.log(item.price)
-        console.log(price)
+    const [amount , setAmount] = useState(item.amount)
+    // item.amount = amount
+    const [price,setPrice] = useState(item.price)
+    
+
+    const plus = () => {
+        setAmount(amount => amount + 1)
+        setPrice(price => price += Math.floor(price/amount))
     }
 
-    const minus = (item) =>{
+    const minus = () => {
         amount > 1 ?
-        setAmount(amount => amount - 1) : setAmount(1)
+        setAmount(amount => amount - 1)
+        : setAmount(1)
+        
+        amount > 1 ?
+        setPrice(price => price += Math.floor(price/amount))
+        : setAmount(price)
 
-        price > item.price ?
-        setPrice(price => price -= parseInt(item.price))
-        : setPrice(parseInt(item.price))
     }
 
     /*redux*/
 
     return (
+        
         <>
+        
             <CartListTableName Img>
                 <Img src={item.src} alt="X" />
             </CartListTableName>
@@ -147,9 +151,9 @@ function CartList({item}){
                 <Name>{item.name}</Name>
             </CartListTableName>
             <CartListTableName Price>
-                <Name Price>{item.price}원 </Name>
-                <Button 플러스 onClick={()=>plus(item)}> + </Button>
-                <Name>{item.amount}개 </Name>
+                <Name Price>{price}원 </Name>
+                <Button 플러스 onClick={()=>plus()}> + </Button>
+                <Name>{amount}개 </Name>
                 <Button onClick={()=>minus(item)}> - </Button>
                 <Hr1 />
                 <Button 딜리트 onClick={()=>minus()}> 삭제 </Button>
@@ -164,7 +168,6 @@ function Cart(){
     const dispatch = useDispatch()
     const list = useSelector((state) => state.cart.list)
 
-    console.log(list)
     return(
         <CartContainer>
             <Nav />
@@ -183,6 +186,7 @@ function Cart(){
                     </CartTable>
                     
                     <CartTable>
+                    
                     {list.map(item =>(
                             <CartList item={item} key={item.id} />
                     ))}

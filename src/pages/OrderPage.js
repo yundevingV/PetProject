@@ -226,7 +226,7 @@ function OrderPage(props){
                         <Button Add
                             onClick={()=>{dispatch
                                 (add(id,Data[animal][id].name,
-                                Data[animal][id].price,
+                                (parseInt(Data[animal][id].price) *parseInt(num)) ,
                                 num,
                                 Data[animal][id].src,
                                 Data[animal][id].category

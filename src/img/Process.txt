@@ -97,3 +97,25 @@ Link 를 이용해서 props 넘겨준 후 useLocation 활용하기.xxxxx
 ->
 이제 데이터를 디자인 맞춰서 넣어주기만 하면 될듯!
 수량 +- 에서 1ㅇ이상일때 -못하는 로직
+
+const [amount , setAmount] = useState(item.amount)
+    // item.amount = amount
+    const [price,setPrice] = useState(item.price)
+    
+
+    const plus = () => {
+        setAmount(amount => amount + 1)
+        setPrice(price => price += Math.floor(price/amount))
+    }
+
+    const minus = () => {
+        amount > 1 ?
+        setAmount(amount => amount - 1)
+        : setAmount(1)
+        
+        amount > 1 ?
+        setPrice(price => price += Math.floor(price/amount))
+        : setAmount(price)
+
+    }
+리덕스로 해서 뒤로나갔다가 와도 저장되게끔..ㅠ
