@@ -4,6 +4,7 @@ import styled ,{css} from "styled-components";
 
 import Dog from '../json/Dog.json'
 import { useDispatch, useSelector } from "react-redux";
+import { decrement, increment } from "../modules/amount";
 
 
 const CartContainer = styled.div`
@@ -116,34 +117,19 @@ font-weight : 1000;
 
 function CartList({item}){
 
-
-    const [amount , setAmount] = useState(item.amount)
-    // item.amount = amount
-    const [price,setPrice] = useState(item.price)
+    const dispatch = useDispatch()
     
+    const amount = useSelector((state) => state.amount.amount)
 
-    const plus = () => {
-        setAmount(amount => amount + 1)
-        setPrice(price => price += Math.floor(price/amount))
-    }
+    const [price , setPrice] = useState(parseInt(item.price))
 
-    const minus = () => {
-        amount > 1 ?
-        setAmount(amount => amount - 1)
-        : setAmount(1)
-        
-        amount > 1 ?
-        setPrice(price => price += Math.floor(price/amount))
-        : setAmount(price)
-
-    }
-
-    /*redux*/
+    useEffect(()=> {
+        setPrice(price => item.price)
+        setPrice(price => price * parseInt(amount))
+    },[amount])
 
     return (
-        
         <>
-        
             <CartListTableName Img>
                 <Img src={item.src} alt="X" />
             </CartListTableName>
@@ -151,12 +137,12 @@ function CartList({item}){
                 <Name>{item.name}</Name>
             </CartListTableName>
             <CartListTableName Price>
-                <Name Price>{price}원 </Name>
-                <Button 플러스 onClick={()=>plus()}> + </Button>
+                <Name Price>{price} 원 </Name>
+                <Button 플러스 onClick={()=>{dispatch(increment(item.price))}}> + </Button>
                 <Name>{amount}개 </Name>
-                <Button onClick={()=>minus(item)}> - </Button>
+                <Button onClick={()=>{dispatch(decrement(item.price))}}> - </Button>
                 <Hr1 />
-                <Button 딜리트 onClick={()=>minus()}> 삭제 </Button>
+                <Button 딜리트 onClick={()=>decrement()}> 삭제 </Button>
             </CartListTableName>
 
             <Hr />
@@ -165,7 +151,6 @@ function CartList({item}){
 }
 
 function Cart(){
-    const dispatch = useDispatch()
     const list = useSelector((state) => state.cart.list)
 
     return(
@@ -193,7 +178,7 @@ function Cart(){
                     </CartTable>
 
                     <CartTable>
-                        가격 : 
+                        가격 : {list.price}
                     </CartTable>
 
 

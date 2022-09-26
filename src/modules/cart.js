@@ -28,6 +28,7 @@ export default function counter(state = initialState, action) {
     switch (action.type) {
         case ADD:
             return {
+                
                 list : [...state.list ,
                     {
                         id : action.id,
@@ -39,6 +40,7 @@ export default function counter(state = initialState, action) {
 
                     }
                 ]
+                
             };
         
         default:
