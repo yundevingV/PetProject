@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Nav from "./Nav";
 import styled ,{css} from "styled-components";
 
-import Dog from '../json/Dog.json'
 import { useDispatch, useSelector } from "react-redux";
 import { decrement, increment } from "../modules/amount";
 
@@ -119,8 +118,9 @@ function CartList({item}){
 
     const dispatch = useDispatch()
     
-    const amount = useSelector((state) => state.amount.amount)
-
+    let amount = useSelector((state) => state.amount.amount)
+    // init 상태값을 가져와서 1로 초기화됨
+    
     const [price , setPrice] = useState(parseInt(item.price))
 
     useEffect(()=> {

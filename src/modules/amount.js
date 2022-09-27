@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 
 // Actions
 const INCREMENT = "INCREMENT";
@@ -10,6 +11,7 @@ export const increment = (price) => {
     price
   };
 }
+
 export const decrement = (price) => {
   return {
     type: DECREMENT,
