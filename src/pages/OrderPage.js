@@ -184,7 +184,6 @@ function OrderPage(props){
 
     /*redux */
     const dispatch = useDispatch()
-    const list = useSelector((state) => state.cart.list)
 
     return(
         

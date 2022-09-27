@@ -115,18 +115,8 @@ font-weight : 1000;
 `
 
 function CartList({item}){
-
     const dispatch = useDispatch()
     
-    let amount = useSelector((state) => state.amount.amount)
-    // init 상태값을 가져와서 1로 초기화됨
-    
-    const [price , setPrice] = useState(parseInt(item.price))
-
-    useEffect(()=> {
-        setPrice(price => item.price)
-        setPrice(price => price * parseInt(amount))
-    },[amount])
 
     return (
         <>
@@ -137,10 +127,10 @@ function CartList({item}){
                 <Name>{item.name}</Name>
             </CartListTableName>
             <CartListTableName Price>
-                <Name Price>{price} 원 </Name>
-                <Button 플러스 onClick={()=>{dispatch(increment(item.price))}}> + </Button>
-                <Name>{amount}개 </Name>
-                <Button onClick={()=>{dispatch(decrement(item.price))}}> - </Button>
+                <Name Price>{item.price} 원 </Name>
+                <Button 플러스 onClick={()=>{dispatch(increment(item.name))}}> + </Button>
+                <Name>{item.amount}개 </Name>
+                <Button onClick={()=>{dispatch(decrement())}}> - </Button>
                 <Hr1 />
                 <Button 딜리트 onClick={()=>decrement()}> 삭제 </Button>
             </CartListTableName>
@@ -152,6 +142,7 @@ function CartList({item}){
 
 function Cart(){
     const list = useSelector((state) => state.cart.list)
+    
 
     return(
         <CartContainer>
