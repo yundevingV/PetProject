@@ -3,7 +3,7 @@ import Nav from "./Nav";
 import styled ,{css} from "styled-components";
 
 import { useDispatch, useSelector } from "react-redux";
-import { decrement, increment } from "../modules/amount";
+import { decrement, deletion, increment } from "../modules/cart";
 
 
 const CartContainer = styled.div`
@@ -118,6 +118,7 @@ function CartList({item}){
     const dispatch = useDispatch()
     
 
+
     return (
         <>
             <CartListTableName Img>
@@ -127,12 +128,12 @@ function CartList({item}){
                 <Name>{item.name}</Name>
             </CartListTableName>
             <CartListTableName Price>
-                <Name Price>{item.price} 원 </Name>
+                <Name Price>{item.price * item.amount} 원 </Name>
                 <Button 플러스 onClick={()=>{dispatch(increment(item.name))}}> + </Button>
                 <Name>{item.amount}개 </Name>
-                <Button onClick={()=>{dispatch(decrement())}}> - </Button>
+                <Button onClick={()=>{dispatch(decrement(item.name))}}> - </Button>
                 <Hr1 />
-                <Button 딜리트 onClick={()=>decrement()}> 삭제 </Button>
+                <Button 딜리트 onClick={()=>{dispatch(deletion(item))}}> 삭제 </Button>
             </CartListTableName>
 
             <Hr />
@@ -143,6 +144,7 @@ function CartList({item}){
 function Cart(){
     const list = useSelector((state) => state.cart.list)
     
+    const total = useSelector((state) => state.cart.total)
 
     return(
         <CartContainer>
@@ -169,7 +171,7 @@ function Cart(){
                     </CartTable>
 
                     <CartTable>
-                        가격 : {list.price}
+                        가격 : {total}
                     </CartTable>
 
 

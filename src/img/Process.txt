@@ -74,7 +74,7 @@ redux 이용 장바구니
 0921 - 0925
 결과값 출력하는 div생성 , 갯수 +- 카운터
 
-0925~
+0925~0929
 const [cart,setCart] = useState([])
 
 const handleCart = () => {
@@ -121,3 +121,8 @@ const [amount , setAmount] = useState(item.amount)
 리덕스로 해서 뒤로나갔다가 와도 저장되게끔..ㅠ
 ->완
 이제는 총합 totalPrice를 구현..과 장바구니 중복
+
+0929
+거의다 완성 삭제 버튼만 기능 구현하면 완료.
+이제는 함수 파라미터로 넣은 수많은 것들을 한개로 통일시키기
+상품이 하나도 없을때 나오는 장바구니 페이지작성
