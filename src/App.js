@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 import {Route , Routes} from 'react-router-dom'
 
 import Home from "./pages/Home";
@@ -11,12 +11,17 @@ import Cart from './pages/Cart';
 import DogData from './json/Dog.json'
 import CatData from './json/Cat.json'
 
+import GlobalStyle from './fonts/GlobalStyle'
+import './App.css' 
+
 function App() {
   /*Dog.json 불러오기 */
   
   const Data = {...DogData, ...CatData }
 
   return (
+    <>
+    <GlobalStyle />
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/Login' element={<Login />} />
@@ -26,6 +31,7 @@ function App() {
       <Route path='/OrderPage/:animal/:id' element={<OrderPage data={Data} />} />
 
     </Routes>
+    </>
   );
 }
 

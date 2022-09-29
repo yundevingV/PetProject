@@ -1,7 +1,7 @@
-import React,{useEffect, useState} from "react";
-import { useParams , useLocation } from 'react-router-dom';
+import React,{useState} from "react";
+import { useParams } from 'react-router-dom';
 import styled ,{css} from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 
 import Nav from "./Nav";
 /*데이터불러오기*/

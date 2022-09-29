@@ -1,6 +1,6 @@
 import React , {useEffect, useState} from "react";
 import styled ,{css } from "styled-components";
-import { Link ,useNavigate} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import DogMenuMain from "./DogMenuMain";
 import CatMenuMain from "./CatMenuMain";
@@ -9,6 +9,7 @@ import Crown from '../img/crown30.png'
 import DogFoot from '../img/dog-Solid.svg'
 import CatFoot from '../img/cat-solid.svg'
 
+import GlobalStyle from '../fonts/GlobalStyle'
 
 const StyledLink = styled(Link)`
 text-decoration : none;
@@ -248,6 +249,9 @@ function Home(){
     },[])
 
     return(
+        <>
+        <GlobalStyle />
+        
         <NavContainer>
             <NavTopContainerWrapper>
 
@@ -410,6 +414,7 @@ function Home(){
             }
 
         </NavContainer>
+        </>
     )
 
 }

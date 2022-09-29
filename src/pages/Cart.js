@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Nav from "./Nav";
 import styled ,{css} from "styled-components";
 
@@ -8,6 +8,7 @@ import { decrement, deletion, increment } from "../modules/cart";
 
 const CartContainer = styled.div`
 position: relative;
+font-family: 'Dalseo';
 `
 
 const CartWrapper = styled.div`
@@ -17,12 +18,23 @@ position: relative;
 `
 
 const CartTable = styled.div`
-position: inherit;
+position: relative;
 top:5rem;
-background-color: antiquewhite;
+background-color: #FFFFFF;
 width: 70%;
-
+box-shadow: 1px 1px 5px 5px #CCDDCC;
+border-radius: 1rem;
 margin: 0 auto;
+margin-bottom: 1rem;
+display: block;
+${(props) =>
+    props.Total &&
+    css`
+        font-size : 1.5rem;
+        box-shadow : 0 0 0 0;
+        width : 70%;
+    `}
+
 `
 
 const CartTableName = styled.div`
@@ -30,21 +42,22 @@ ${(props) =>
     props.Img &&
     css`
         display: inline-block;
-        width : 33%;
+        width : 20%;
     `}
 ${(props) =>
     props.Name &&
     css`
         display: inline-block;
-        width : 33%;
+        width : 40%;
         text-align : center;
     `}    
 ${(props) =>
     props.Price &&
     css`
         display: inline-block;
-        width : 33%;
+        width : 40%;
         text-align : center;
+        
     `}    
 `
 
@@ -72,6 +85,12 @@ ${(props) =>
         vertical-align : top;
 
     `}    
+${(props) =>
+    props.total &&
+    css`
+        float : right;
+        
+    `}  
 `
 
 const Img = styled.img`
@@ -84,6 +103,7 @@ ${(props) =>
     css`
         width : 100%;
         display: block;
+        
     `}    
 `
 const Button = styled.button`
@@ -103,22 +123,10 @@ ${(props) =>
 
 `
 
-const Hr = styled.hr`
-border-top : 1px dotted #bbb;
-`
 
-const Hr1 = styled.hr`
-border-top : 0.1px dotted #bbb;
-`
-const Result = styled.span`
-font-weight : 1000;
-`
 
 function CartList({item}){
     const dispatch = useDispatch()
-    
-
-
     return (
         <>
             <CartListTableName Img>
@@ -129,14 +137,14 @@ function CartList({item}){
             </CartListTableName>
             <CartListTableName Price>
                 <Name Price>{item.price * item.amount} 원 </Name>
-                <Button 플러스 onClick={()=>{dispatch(increment(item.name))}}> + </Button>
+                <Button 플러스 onClick={()=>{dispatch(increment(item))}}> + </Button>
                 <Name>{item.amount}개 </Name>
-                <Button onClick={()=>{dispatch(decrement(item.name))}}> - </Button>
-                <Hr1 />
+                <Button onClick={()=>{dispatch(decrement(item))}}> - </Button>
+
                 <Button 딜리트 onClick={()=>{dispatch(deletion(item))}}> 삭제 </Button>
             </CartListTableName>
 
-            <Hr />
+
         </>
     )
 }
@@ -160,7 +168,7 @@ function Cart(){
                         <CartTableName Price>
                             상품 가격
                         </CartTableName>
-                        <Hr />
+
                     </CartTable>
                     
                     <CartTable>
@@ -170,8 +178,10 @@ function Cart(){
                     ))}
                     </CartTable>
 
-                    <CartTable>
-                        가격 : {total}
+                    <CartTable Total>
+                        <CartListTableName total>
+                            가격 : {total}
+                        </CartListTableName>
                     </CartTable>
 
 

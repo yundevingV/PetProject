@@ -17,18 +17,17 @@ export const add = (id,name,price,amount,src,category) => {
 }
 
 // Action Creator
-export const increment = (name) => {
+export const increment = (item) => {
     return {
         type: INCREMENT,
-        name
+        item
     };
 }
 
-export const decrement = (name) => {
+export const decrement = (item) => {
     return {
         type: DECREMENT,
-        name
-        
+        item
     };
 }
 
@@ -73,11 +72,11 @@ export default function counter(state = initialState, action) {
                     total : state.total + (action.price * action.amount)
                 };
             }
-
+            
         /*장바구니 페이지에서 갯수추가*/
         case INCREMENT:
             
-            const plus = state.list.find((item) => item.name === action.name )
+            const plus = state.list.find((item) => item.name === action.item.name )
             
             if (plus) {
                 plus.amount +=1
@@ -96,7 +95,7 @@ export default function counter(state = initialState, action) {
             /*장바구니 페이지에서 갯수감소*/
             case DECREMENT : {
 
-                const minus = state.list.find((item) => item.name === action.name)
+                const minus = state.list.find((item) => item.name === action.item.name)
             
                 if (minus) {
                     if (minus.amount > 1){
