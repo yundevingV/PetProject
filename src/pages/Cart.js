@@ -8,7 +8,6 @@ import { decrement, deletion, increment } from "../modules/cart";
 
 const CartContainer = styled.div`
 position: relative;
-font-family: 'Dalseo';
 `
 
 const CartWrapper = styled.div`
@@ -143,7 +142,7 @@ function CartList({item}){
 
                 <Button 딜리트 onClick={()=>{dispatch(deletion(item))}}> 삭제 </Button>
             </CartListTableName>
-
+            <hr />
 
         </>
     )
