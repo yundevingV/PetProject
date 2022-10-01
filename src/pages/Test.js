@@ -1,47 +1,34 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { increment,decrement  } from "../modules/amount";
-import {add} from "../modules/cart"
+import { cat, dogCategory, catCategory, dog} from '../modules/category'
 
 function Test(){
-    const amount = useSelector((state) => state.amount.amount)
-
+    
+    const animal = useSelector((state) => state.category.animalState)
+    const category = useSelector((state) => state.category.categoryState)
     const dispatch = useDispatch()
-    const list = useSelector((state) => state.cart.list)
-
+    
     return(
-        <div>
-            <div>            
-            <button onClick={()=>{dispatch(increment())}}> + ++</button>
-        
-            <button onClick={()=>{dispatch(decrement())}}> ---</button>
-            {amount}
+    <div>
+    <button
+        onClick={()=>{dispatch(dog('food'))}}>
+    </button>
+    <button
+        onClick={()=>{dispatch(dogCategory('food'))}}>
+    </button>
+    <button
+        onClick={()=>{dispatch(cat('food'))}}>
+    </button>
+    <button
+        onClick={()=>{dispatch(catCategory('food'))}}>
+    </button>
 
-            <button onClick={()=>{dispatch
-                    (add('id','name','price','amount','src','categoey'))}}>
-                        add</button>
-            <div>
-            {list.map((item) => {
-                return(
-                    <div>
-                        <h2> id : {item.id} </h2>
-                        <h2> name : {item.name} </h2>
-                        <h2> price : {item.price} </h2>
-                        
-                        <h2> amount : {item.amount} </h2>
-                        <h2> src : {item.src} </h2>
-                        <h2> category : {item.category} </h2>
+        <p>{category}</p>
+        <p>{animal}</p>
 
-                    </div>
-                )
-            })}
-            
-            </div>
-
-            </div>
-
-        </div>
+    </div>
     )
+        
 }
 
 export default Test

@@ -12,7 +12,6 @@ import DogData from './json/Dog.json'
 import CatData from './json/Cat.json'
 
 import GlobalStyle from './fonts/GlobalStyle'
-import './App.css' 
 
 function App() {
   /*Dog.json 불러오기 */

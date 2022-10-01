@@ -4,6 +4,7 @@ import styled ,{css} from "styled-components";
 
 import { useDispatch, useSelector } from "react-redux";
 import { decrement, deletion, increment } from "../modules/cart";
+import NotFoundCart from "./NotFountCart";
 
 
 const CartContainer = styled.div`
@@ -126,6 +127,7 @@ ${(props) =>
 
 function CartList({item}){
     const dispatch = useDispatch()
+
     return (
         <>
             <CartListTableName Img>
@@ -157,6 +159,7 @@ function Cart(){
         <CartContainer>
             <Nav />
                 <CartWrapper>
+                    {total > 0 ?
                     <CartTable>
                         <CartTableName Img>
                             상품사진
@@ -169,19 +172,30 @@ function Cart(){
                         </CartTableName>
 
                     </CartTable>
-                    
-                    <CartTable>
-                    
-                    {list.map(item =>(
-                            <CartList item={item} key={item.id} />
-                    ))}
-                    </CartTable>
-
-                    <CartTable Total>
-                        <CartListTableName total>
-                            가격 : {total}
-                        </CartListTableName>
-                    </CartTable>
+                    : <> </>
+                    }
+                    {total > 0 ?
+                    <>
+                        <CartTable>
+                        
+                        {list.map(item =>(
+                                <CartList item={item} key={item.id} />
+                        ))}
+                        </CartTable>
+                        
+                        <CartTable Total>
+                            <CartListTableName total>
+                                가격 : {total}
+                            </CartListTableName>
+                        </CartTable>
+                    </>                    
+                    :
+                    <>
+                        <CartTable not>
+                            <NotFoundCart />
+                        </CartTable>
+                    </>
+                    }
 
 
                 </CartWrapper>

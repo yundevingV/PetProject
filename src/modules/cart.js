@@ -50,7 +50,6 @@ export default function counter(state = initialState, action) {
 
             const cartItem = state.list.find((item) => item.name === action.name)
             
-            
             if(cartItem){
                 return {
                     list : [...state.list],
