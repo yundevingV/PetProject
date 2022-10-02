@@ -1,4 +1,4 @@
-import React , {useEffect, useState} from "react";
+import React from "react";
 import styled ,{css } from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -195,8 +195,6 @@ function Home(){
     const category = useSelector((state) => state.category.categoryState)
     const dispatch = useDispatch()
     
-    console.log(animal)
-    console.log(category)
 
     return(
         <>

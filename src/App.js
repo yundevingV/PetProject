@@ -10,6 +10,7 @@ import Cart from './pages/Cart';
 
 import DogData from './json/Dog.json'
 import CatData from './json/Cat.json'
+import Pay from './pages/Pay';
 
 import GlobalStyle from './fonts/GlobalStyle'
 
@@ -27,6 +28,8 @@ function App() {
       <Route path='/Test' element={<Test />} />
       <Route path='/SignUp' element={<SignUp />} />
       <Route path='/Cart' element={<Cart  />} />
+      <Route path='/Pay' element={<Pay  />} />
+
       <Route path='/OrderPage/:animal/:id' element={<OrderPage data={Data} />} />
 
     </Routes>

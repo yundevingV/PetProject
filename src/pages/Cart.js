@@ -1,6 +1,7 @@
 import React from "react";
 import Nav from "./Nav";
 import styled ,{css} from "styled-components";
+import { Link } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { decrement, deletion, increment } from "../modules/cart";
@@ -138,8 +139,13 @@ ${(props) =>
     `} 
 
 `
+const StyledLink = styled(Link)`
+text-decoration :none;
+`
 
-
+export const P = styled.p`
+color : #FFFFFF;
+`
 
 function CartList({item}){
     const dispatch = useDispatch()
@@ -206,7 +212,9 @@ function Cart(){
                             </CartListTableName>
                             <CartListTableName pay>
                                 <Button pay>
-                                    결제하기
+                                    <StyledLink to='/Pay'>
+                                        <P>결제하기</P>
+                                    </StyledLink>
                                 </Button>
                             </CartListTableName>
                             
