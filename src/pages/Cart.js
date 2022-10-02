@@ -88,9 +88,16 @@ ${(props) =>
 ${(props) =>
     props.total &&
     css`
-        float : right;
-        
+        width: 100%;
+        text-align : center;
     `}  
+
+${(props) =>
+    props.pay &&
+    css`
+        width: 100%;
+        text-align : center;
+    `}
 `
 
 const Img = styled.img`
@@ -119,7 +126,16 @@ ${(props) =>
         border-radius: 5px;
         color : black;
     `} 
-
+${(props) =>
+    props.pay &&
+    css`
+        display: inline-block;
+        background-color: #00CCFF;
+        border: 2px solid white;
+        color : white;
+        width: 10rem;
+        height: 3rem;
+    `} 
 
 `
 
@@ -156,6 +172,7 @@ function Cart(){
     const total = useSelector((state) => state.cart.total)
 
     return(
+
         <CartContainer>
             <Nav />
                 <CartWrapper>
@@ -187,7 +204,15 @@ function Cart(){
                             <CartListTableName total>
                                 가격 : {total}
                             </CartListTableName>
+                            <CartListTableName pay>
+                                <Button pay>
+                                    결제하기
+                                </Button>
+                            </CartListTableName>
+                            
                         </CartTable>
+
+                    
                     </>                    
                     :
                     <>
