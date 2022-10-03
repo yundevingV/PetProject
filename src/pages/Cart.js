@@ -149,7 +149,7 @@ color : #FFFFFF;
 
 function CartList({item}){
     const dispatch = useDispatch()
-
+    // amount -> number
     return (
         <>
             <CartListTableName Img>
@@ -209,7 +209,7 @@ function Cart(){
                         <CartTable Total>
                             <CartListTableName total>
                                 가격 : {total.toLocaleString('ko-KR')}
-                            </CartListTableName>
+                            </CartListTableName>  
                             <CartListTableName pay>
                                 <Button pay>
                                     <StyledLink to='/Pay'>
