@@ -159,7 +159,7 @@ function CartList({item}){
                 <Name>{item.name}</Name>
             </CartListTableName>
             <CartListTableName Price>
-                <Name Price>{item.price * item.amount} 원 </Name>
+                <Name Price>{(item.price * item.amount).toLocaleString('ko-KR')} 원 </Name>
                 <Button 플러스 onClick={()=>{dispatch(increment(item))}}> + </Button>
                 <Name>{item.amount}개 </Name>
                 <Button onClick={()=>{dispatch(decrement(item))}}> - </Button>
@@ -208,7 +208,7 @@ function Cart(){
                         
                         <CartTable Total>
                             <CartListTableName total>
-                                가격 : {total}
+                                가격 : {total.toLocaleString('ko-KR')}
                             </CartListTableName>
                             <CartListTableName pay>
                                 <Button pay>
