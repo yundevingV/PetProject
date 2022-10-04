@@ -11,7 +11,21 @@ import CatFoot from '../img/cat-solid.svg'
 
 /*메뉴*/
 import { useDispatch, useSelector } from "react-redux";
-import { cat, dogCategory, catCategory, dog} from '../modules/category'
+import { cat, dogCategory, catCategory, dog, best} from '../modules/category'
+
+const StyledLinkWrapper = styled.div`
+display: inline-block;
+width: 10rem;
+/*max-width 아래면 밑에 css 적용*/
+@media (min-width : 1000px) {
+    width: 15rem;
+}
+@media (min-width : 1500px) {
+    width: 20rem;
+}
+height: 3rem;
+text-align: center;
+`
 
 const StyledLink = styled(Link)`
 text-decoration : none;
@@ -33,14 +47,13 @@ ${(props) =>
       width: 15%;
       color: #000000;
       font-weight : bold;
-      border: 1px solid #FFFFFF;
+      padding: 1rem;
       font-size : 1.5rem;
       margin-left : 10%;
       &:hover{
         color: #000000;
         background-image: url(${Crown});
         background-repeat : no-repeat ;
-        border-bottom: 0.1px solid #FFCC66;
         transition: 0.3s;
     }
     
@@ -57,10 +70,8 @@ ${(props) =>
         margin-left : 10%;
     &:hover{
         color: #000000;
-        
         background-image : url(${DogFoot});
         background-repeat: no-repeat;
-        border-bottom: 0.1px solid #FF6600;
         background-position: top right;
         transition: 1s;
     }
@@ -82,7 +93,6 @@ ${(props) =>
         color: #000000;
         background-image : url(${CatFoot});
         background-repeat: no-repeat;
-        border-bottom: 0.1px solid #FF6600;
         background-position: top right;
         transition: 1s;
     }
@@ -93,7 +103,7 @@ ${(props) =>
 
 
 `
-const NavContainer = styled.div`
+const HomeContainer = styled.div`
 
 margin: 0 auto;
 
@@ -111,7 +121,8 @@ margin : 0 auto;
 background: #FFFFFF;
 position: absolute;
 top : 7%;
-background: #FFFFaa;
+border-bottom: 1px solid black;
+
 `
 
 const NavBottomContainer = styled.div`
@@ -199,28 +210,33 @@ function Home(){
     return(
         <>
         
-        <NavContainer>
+        <HomeContainer>
             <NavTopContainerWrapper>
 
                 <Nav />
 
             </NavTopContainerWrapper>
             <NavMiddleContainer>
-                <StyledLink to='/' Best>
-                    Best
-                </StyledLink>
-                <StyledLink to='/' Dog
-                    onClick={()=>{dispatch(dog())}}>
-                    강아지
-                    
-                </StyledLink>   
+                <StyledLinkWrapper>
+                    <StyledLink to='/' Best
+                        onClick={()=>{dispatch(best())}}>
+                        인기메뉴
+                    </StyledLink>
+                </StyledLinkWrapper>
 
+                <StyledLinkWrapper>
+                    <StyledLink to='/' Dog
+                        onClick={()=>{dispatch(dog())}}>
+                        강아지
+                    </StyledLink>   
+                </StyledLinkWrapper>
 
-                <StyledLink to='/' Cat
-                    onClick={()=>dispatch(cat())}>
-
-                    고양이
-                </StyledLink>
+                <StyledLinkWrapper>
+                    <StyledLink to='/' Cat
+                        onClick={()=>dispatch(cat())}>
+                        고양이
+                    </StyledLink>
+                </StyledLinkWrapper>
 
             </NavMiddleContainer>
             {animal === 'dog' ?
@@ -360,7 +376,7 @@ function Home(){
             <></>
             }
 
-        </NavContainer>
+        </HomeContainer>
         </>
     )
 

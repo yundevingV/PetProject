@@ -10,11 +10,12 @@ import NotFoundCart from "./NotFountCart";
 
 const CartContainer = styled.div`
 position: relative;
+top:2rem;
+height: 40rem;
 `
 
 const CartWrapper = styled.div`
 position: relative;
-
 
 `
 
@@ -178,9 +179,10 @@ function Cart(){
     const total = useSelector((state) => state.cart.total)
 
     return(
-
+        <>
+        <Nav />
+        
         <CartContainer>
-            <Nav />
                 <CartWrapper>
                     {total > 0 ?
                     <CartTable>
@@ -233,6 +235,7 @@ function Cart(){
 
                 </CartWrapper>
         </CartContainer>
+        </>
     )
 }
 

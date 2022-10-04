@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { cat, dogCategory, catCategory, dog} from '../modules/category'
+import Footer from "./Footer";
 
 function Test(){
     
@@ -10,21 +11,7 @@ function Test(){
     
     return(
     <div>
-    <button
-        onClick={()=>{dispatch(dog('food'))}}>
-    </button>
-    <button
-        onClick={()=>{dispatch(dogCategory('food'))}}>
-    </button>
-    <button
-        onClick={()=>{dispatch(cat('food'))}}>
-    </button>
-    <button
-        onClick={()=>{dispatch(catCategory('food'))}}>
-    </button>
-
-        <p>{category}</p>
-        <p>{animal}</p>
+        <Footer />
 
     </div>
     )
