@@ -7,11 +7,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { decrement, deletion, increment } from "../modules/cart";
 import NotFoundCart from "./NotFountCart";
 
+import Footer from './Footer'
+import { FooterWrapper } from "../styles/FooterStyles";
 
 const CartContainer = styled.div`
 position: relative;
 top:2rem;
-height: 40rem;
+height: 100vh;
+
 `
 
 const CartWrapper = styled.div`
@@ -235,6 +238,11 @@ function Cart(){
 
                 </CartWrapper>
         </CartContainer>
+        <FooterWrapper>
+            <Footer />
+        </FooterWrapper>
+        
+
         </>
     )
 }

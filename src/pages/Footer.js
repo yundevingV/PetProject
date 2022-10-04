@@ -3,33 +3,13 @@ import styled from "styled-components";
 
 import git from '../img/github.svg'
 import google from '../img/google.svg'
-export const FooterWrapper = styled.div`
-background-color: #1D1E29;
-color : #FFFFFF;
-font-size: 0.75rem;
-height: 7rem;
 
-position: relative;
-`
-export const Li = styled.li`
-padding : 1rem;
-list-style: none;
-display: inline-block;
-`
-export const Ul = styled.ul`
-
-`
-export const Img = styled.img`
-height: 1rem;
-width: 1rem;
-position: relative;
-margin-right: 0.5rem;
-`
+import {FooterContainer, Li, Ul, Img} from '../styles/FooterStyles'
 
 
 function Footer(){
     return(
-        <FooterWrapper>
+        <FooterContainer>
             <Li>
                 BackEnd
                 <Ul>
@@ -55,7 +35,7 @@ function Footer(){
                     <Img src={google} alt='x' />
                 </Ul>
             </Li>
-        </FooterWrapper>
+        </FooterContainer>
     )
 }
 

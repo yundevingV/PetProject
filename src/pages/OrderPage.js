@@ -9,10 +9,12 @@ import DogData from '../json/Dog.json'
 import CatData from '../json/Cat.json'
 
 import {add} from "../modules/cart"
+import Footer from './Footer'
+import { FooterWrapper } from "../styles/FooterStyles";
 
 const Container = styled.div`
 width: 60%;
-height: 100%;
+height: 100vh;
 margin: 0 auto;
 
 /*1000이상일경우*/
@@ -244,6 +246,9 @@ function OrderPage(props){
             </Wrapper>
         </Container>
 
+        <FooterWrapper>
+            <Footer />
+        </FooterWrapper>
         </>
     )
 }

@@ -1,7 +1,10 @@
 import React , {useState , useCallback} from "react";
 import styled , {css} from "styled-components";
+import Footer from './Footer'
+import { FooterWrapper } from "../styles/FooterStyles";
 
 const ContainerWrapper = styled.div`
+height: 100vh;
 `
 const Container = styled.div`
 width : 40%;
@@ -173,7 +176,7 @@ function SignUp(){
 
 
     return(
-
+    <>
     <ContainerWrapper>
         <Container>
             <Title>
@@ -233,6 +236,11 @@ function SignUp(){
 
         </Container>
     </ContainerWrapper>    
+
+    <FooterWrapper>
+        <Footer />
+    </FooterWrapper>
+    </>
     )
 }
 

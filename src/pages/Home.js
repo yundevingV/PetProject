@@ -13,6 +13,9 @@ import CatFoot from '../img/cat-solid.svg'
 import { useDispatch, useSelector } from "react-redux";
 import { cat, dogCategory, catCategory, dog, best} from '../modules/category'
 
+import Footer from './Footer'
+import { FooterWrapper } from "../styles/FooterStyles";
+
 const StyledLinkWrapper = styled.div`
 display: inline-block;
 width: 10rem;
@@ -100,14 +103,14 @@ ${(props) =>
         border-bottom: 1px solid red;
     }
     `}
-
-
 `
+
 const HomeContainer = styled.div`
 
 margin: 0 auto;
 
-/*max-width 아래면 밑에 css 적용*/
+height: 100vh;
+
 @media (max-width : 600px) {
     display: none;
 }
@@ -375,8 +378,15 @@ function Home(){
             :
             <></>
             }
+        
+
 
         </HomeContainer>
+                {/* footer */}
+        
+        <FooterWrapper>
+            <Footer />
+        </FooterWrapper>
         </>
     )
 

@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 
 import KakaoLogin from '../img/KakaoLoginImg.png'
 
+import { FooterWrapper } from "../styles/FooterStyles";
+import Footer from "./Footer";
+
 const ContainerWrapper = styled.div`
+height: 100vh;
 `
 const Container = styled.div`
 width : 50%;
@@ -72,7 +76,7 @@ margin-bottom : ${(props) => props.marginBottom};
 `
 function Login(){
     return(
-        
+    <>
     <ContainerWrapper>
         <Container>
             <Title>
@@ -115,6 +119,11 @@ function Login(){
             </Wrapper>
         </Container>
     </ContainerWrapper>    
+
+    <FooterWrapper>
+        <Footer />
+    </FooterWrapper>
+    </>
     )
 }
 
