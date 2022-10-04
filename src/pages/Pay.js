@@ -5,27 +5,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { PayWrapper } from "../styles/PayStyles";
 import styled ,{css}from "styled-components";
 
-const PayTopWrapper = styled.div`
-margin: 0 auto;
-position: relative;
-top : 5rem;
-text-align : center;
-font-size : 1.5rem;
-width: 70%;
-height: 3rem;
-background: #FFFFFF;
-border: 1px solid #00CCFF;
-`
+// const PayTopWrapper = styled.div`
+// margin: 0 auto;
+// position: relative;
+// top : 5rem;
+// text-align : center;
+// font-size : 1.5rem;
+// width: 70%;
+// height: 3rem;
+// background: #FFFFFF;
+// `
+
 export const PayMainWrapper = styled.div`
 margin: 0 auto;
 position: relative;
 top : 5rem;
-text-align : center;
-font-size : 1.5rem;
+text-align : left;
+font-size : 1rem;
 width: 70%;
 height: 3rem;
 background: #FFFFFF;
-border: 1px solid #00CCFF;
 border-top : 0px;
 `
 
@@ -34,27 +33,53 @@ margin: 0 auto;
 position: relative;
 top : 5rem;
 text-align : center;
-font-size : 2rem;
 width: 70%;
-background: #FFFFFF;
-border: 1px solid #00CCFF;
-border-top : 0px;
+background: #ddd;
+height: auto;
+
 `
 export const DivTest = styled.div`
 ${(props) =>
-    props.Price &&
+    props.Name &&
     css`
-        border-bottom: 0.5px dotted #00CCFF ;
+        display: block;
+        text-align:left;
+    `}
 
+${(props) =>
+    props.Img &&
+    css`
+        display: inline-block;
+        float: left;
+    `}
+
+${(props) =>
+    props.Info &&
+    css`
+        display: inline-block;
+        height: 5rem;
     `}
 `
 export const Name = styled.span`
-font-size : 1rem;
-
+${(props) =>
+    props.Name &&
+    css`
+        font-size:1rem;
+    `}
+${(props) =>
+    props.Price &&
+    css`
+        font-size:1.4rem;
+    `}
+${(props) =>
+    props.Amount &&
+    css`
+        font-size:1.4rem;
+    `}
 `
 
 export const Img = styled.img`
-height: 4.5rem;
+height: 5rem;
 float : left;
 `
 export const PayResultWrapper = styled.div`
@@ -84,15 +109,18 @@ function CartList({item}){
     
     return(
     <>
+        <DivTest Name>
+            <Name name>{item.name}</Name>
+        </DivTest>
+        <hr />
+
         <DivTest Img>
             <Img src={item.src} alt="X" />
         </DivTest>
-        <DivTest Name>
-            <Name>{item.name}</Name>
-        </DivTest>
-        <DivTest Price>
-            <Name Price>{(item.price * item.amount).toLocaleString('ko-KR')} 원 </Name>
-            <Name>{item.amount}개 </Name>
+        
+        <DivTest Info>
+            <Name Price>{(item.price * item.amount).toLocaleString('ko-KR')}</Name>원
+            <Name Amount>{item.amount}</Name>개 
         </DivTest>
         
     </>
@@ -107,9 +135,6 @@ function Pay() {
     return(
         <PayWrapper>
             <Nav />
-            <PayTopWrapper>
-                결제 내역
-            </PayTopWrapper>
 
             <PayMainWrapper>
                 상품 정보
