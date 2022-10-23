@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { cat, dogCategory, catCategory, dog} from '../modules/category'
-import Footer from "./Footer";
+import { handle } from "../modules/handle";
 
 function Test(){
-    
-    const animal = useSelector((state) => state.category.animalState)
-    const category = useSelector((state) => state.category.categoryState)
+    const word = useSelector((state) => state.handle.word)
+
     const dispatch = useDispatch()
-    
     return(
     <div>
-        <Footer />
+    
+    <input 
+        type='text' 
+        placeholder='검색어를 입력하세요 ...'
+        onChange={(event)=> dispatch(handle(event.target.value))}
+        value ={word}
+        >
+    </input>
+    
+    <button >
+        검색하기
+    </button>
+
+
+    {word}
 
     </div>
     )

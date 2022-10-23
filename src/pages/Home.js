@@ -1,6 +1,7 @@
 import React from "react";
 import styled ,{css } from "styled-components";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 import DogMenuMain from "./DogMenuMain";
 import CatMenuMain from "./CatMenuMain";
@@ -12,6 +13,7 @@ import CatFoot from '../img/cat-solid.svg'
 /*메뉴*/
 import { useDispatch, useSelector } from "react-redux";
 import { cat, dogCategory, catCategory, dog, best} from '../modules/category'
+import { handle } from "../modules/handle";
 
 import Footer from './Footer'
 import { FooterWrapper } from "../styles/FooterStyles";
@@ -207,9 +209,14 @@ function Home(){
 
     const animal = useSelector((state) => state.category.animalState)
     const category = useSelector((state) => state.category.categoryState)
+    const word = useSelector((state) => state.handle.word)
+
+
+
     const dispatch = useDispatch()
     
 
+    
     return(
         <>
         
@@ -358,7 +365,12 @@ function Home(){
             <></>
             }
             <NavBottomContainer>
-                <SearchInput placeholder='검색어를 입력하세요 ...'>
+                <SearchInput 
+                    type='text' 
+                    placeholder='검색어를 입력하세요 ...'
+                    onChange={(event)=> dispatch(handle(event.target.value))}
+                    value ={word}
+                    >
 
                 </SearchInput>
             </NavBottomContainer>
