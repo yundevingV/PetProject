@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { handle } from "../modules/handle";
+import DogMenuMain from "./DogMenuMain";
 
 function Test(){
     const word = useSelector((state) => state.handle.word)
@@ -20,6 +21,11 @@ function Test(){
     <button >
         검색하기
     </button>
+
+    <div>
+        {word }
+        <DogMenuMain category='dog' animal='dog'/>
+    </div>
 
 
     {word}

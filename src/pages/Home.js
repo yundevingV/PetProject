@@ -1,7 +1,6 @@
 import React from "react";
 import styled ,{css } from "styled-components";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 import DogMenuMain from "./DogMenuMain";
 import CatMenuMain from "./CatMenuMain";
@@ -371,7 +370,6 @@ function Home(){
                     onChange={(event)=> dispatch(handle(event.target.value))}
                     value ={word}
                     >
-
                 </SearchInput>
             </NavBottomContainer>
 
