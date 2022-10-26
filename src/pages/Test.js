@@ -42,7 +42,7 @@ function Test(){
 
     <div>
     <p> result : </p>
-    {word === '' ? <p>x</p> 
+    {word === '' ? <p>X</p> 
         :
         Data.dog
             .filter(item => {

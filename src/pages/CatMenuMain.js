@@ -3,6 +3,8 @@ import Data from '../json/Cat.json'
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
+import { useSelector } from 'react-redux';
+
 const Frame = styled.div`
 width : 10rem;
 height : 15rem;
@@ -64,19 +66,21 @@ function Menu({item}){
     )
 }
 
-function CatMenuMain({category,animal}) {
+function CatMenuMain({category,animal,word}) {
 
     return(
         <div>
             {category === 'cat' && animal === 'cat' ?
             Data.cat
             .filter((item) => item.animal === `${animal}`)
+            .filter((item) => item.name.toLowerCase().includes(word) || word === undefined)
             .map(item =>(
                 <Menu item={item} key={item.id} />
         )) :
             Data.cat
             .filter((item) => item.category === `${category}`
             && item.animal ===`${animal}`)
+            .filter((item) => item.name.toLowerCase().includes(word) || word === undefined)
             .map(item =>(
                 <Menu item={item} key={item.id} />
         ))}

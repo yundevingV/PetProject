@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled ,{css } from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -212,10 +212,11 @@ function Home(){
 
 
 
+
+
     const dispatch = useDispatch()
     
-
-    
+    console.log(word)
     return(
         <>
         
@@ -363,6 +364,7 @@ function Home(){
             :
             <></>
             }
+
             <NavBottomContainer>
                 <SearchInput 
                     type='text' 
@@ -375,7 +377,7 @@ function Home(){
 
             {animal === 'dog' ?
             <MenuMainWrapper>
-            <DogMenuMain category={category} animal={animal} />
+            <DogMenuMain category={category} animal={animal} word={word} />
             </MenuMainWrapper>
             :
             <></>
@@ -383,7 +385,7 @@ function Home(){
 
             {animal === 'cat' ?
             <MenuMainWrapper >
-            <CatMenuMain category={category} animal={animal} />
+            <CatMenuMain category={category} animal={animal} word={word} />
             </MenuMainWrapper>
             :
             <></>
@@ -393,7 +395,7 @@ function Home(){
 
         </HomeContainer>
                 {/* footer */}
-        
+
         <FooterWrapper>
             <Footer />
         </FooterWrapper>

@@ -3,6 +3,8 @@ import Data from '../json/Dog.json'
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
+import { useSelector } from 'react-redux';
+
 const Frame = styled.div`
 width : 10rem;
 height : 15rem;
@@ -63,19 +65,21 @@ function Menu({item}){
     )
 }
 
-function DogMenuMain({category,animal}) {
+function DogMenuMain({category,animal,word}) {
 
     return(
         <div>
             {category === 'dog' && animal === 'dog' ?
             Data.dog
             .filter((item) => item.animal === `${animal}`)
+            .filter((item) => item.name.toLowerCase().includes(word) || word === undefined)
             .map(item =>(
                 <Menu item={item} key={item.id} />
         )) :
             Data.dog
             .filter((item) => item.category === `${category}`
             && item.animal ===`${animal}`)
+            .filter((item) => item.name.toLowerCase().includes(word) || word === undefined)
             .map(item =>(
                 <Menu item={item} key={item.id} />
         ))}

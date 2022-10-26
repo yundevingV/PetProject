@@ -66,6 +66,7 @@ export default function counter(state = initialState, action) {
                             src : action.src,
                             amount : action.amount,
                             category : action.category,
+                        
                         }
                     ],
                     total : state.total + (action.price * action.amount)
