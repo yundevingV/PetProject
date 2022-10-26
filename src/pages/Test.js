@@ -2,11 +2,22 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { handle } from "../modules/handle";
 import DogMenuMain from "./DogMenuMain";
+import Data from '../json/Dog.json'
 
+function SearchBox({item}){
+    return(
+        <div>
+            <p>
+                {item.name}
+            </p>
+        </div>
+    )
+}
 function Test(){
     const word = useSelector((state) => state.handle.word)
 
     const dispatch = useDispatch()
+
     return(
     <div>
     
@@ -23,12 +34,26 @@ function Test(){
     </button>
 
     <div>
-        {word }
         <DogMenuMain category='dog' animal='dog'/>
     </div>
+    <div>
+        {word}
+    </div>
 
-
-    {word}
+    <div>
+    <p> result : </p>
+    {word === '' ? <p>x</p> 
+        :
+        Data.dog
+            .filter(item => {
+                return item.name.toLowerCase().includes(word)
+            })
+            .map(item => (
+                <SearchBox item={item} key={item.id} /> 
+            ))
+        }
+    </div>
+    
 
     </div>
     )

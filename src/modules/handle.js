@@ -10,7 +10,7 @@ export const handle = (change) => {
 
 
 const initialState = {
-    word : '',
+    word : '@',
 }
 
 export default function counter(state = initialState, action) {
