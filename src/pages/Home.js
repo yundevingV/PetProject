@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import styled ,{css } from "styled-components";
+import React from "react";
+import styled ,{css , keyframes} from "styled-components";
 import { Link } from "react-router-dom";
 
 import DogMenuMain from "./DogMenuMain";
@@ -210,14 +210,8 @@ function Home(){
     const category = useSelector((state) => state.category.categoryState)
     const word = useSelector((state) => state.handle.word)
 
-
-
-
-
     const dispatch = useDispatch()
-    
-    console.log(word)
-    return(
+        return(
         <>
         
         <HomeContainer>

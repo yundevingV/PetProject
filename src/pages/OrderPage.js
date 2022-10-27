@@ -12,6 +12,8 @@ import {add} from "../modules/cart"
 import Footer from './Footer'
 import { FooterWrapper } from "../styles/FooterStyles";
 
+import Comment from "./Comment"
+
 const Container = styled.div`
 width: 60%;
 height: 100vh;
@@ -160,6 +162,13 @@ ${(props) =>
     `}
 `
 
+const CommentWrapper = styled.div`
+background: #E2E2E2;
+height : auto;
+
+`
+
+
 function OrderPage(props){
 
     /* json 합치기 */
@@ -243,8 +252,15 @@ function OrderPage(props){
                 <InfoWrapper>
                     <Font Name>{Data[animal][id].info}</Font>
                 </InfoWrapper>
+
+                <CommentWrapper>
+                    <Comment />
+                </CommentWrapper>
             </Wrapper>
+            
         </Container>
+
+
 
         <FooterWrapper>
             <Footer />
