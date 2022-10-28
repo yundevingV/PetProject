@@ -18,7 +18,7 @@ export const Li = styled.li`
 padding : 1rem;
 list-style: none;
 display: inline-block;
-margin-left: 2rem ;
+padding-left: 2rem ;
 `
 export const Ul = styled.ul`
 

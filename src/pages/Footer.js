@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 
 import git from '../img/github.svg'
 import google from '../img/google.svg'

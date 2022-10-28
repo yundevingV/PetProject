@@ -1,6 +1,7 @@
 import React ,{useState} from "react";
 import styled,{css} from "styled-components";
 import Shopping from '../img/cart-shopping-solid.svg'
+import User from '../img/user-solid.svg'
 import {Link} from 'react-router-dom'
 
 const NavTopContainer = styled.div`
@@ -94,7 +95,6 @@ ${(props) =>
     background: #9ED6C0;
     border: 1px solid #FFFFFF;
     margin-top: 0.2rem;
-    margin-right : 1rem;
 
     &:hover{
         color: #9ED6C0;
@@ -108,12 +108,18 @@ ${(props) =>
     props.Shopping &&
     css`
     margin-top: 0.2rem;
-    margin-right : 1rem;
     background: #FFFFFF;
     border : 0px;   
     
     `}
-
+${(props) =>
+    props.User &&
+    css`
+    margin-top: 0.2rem;
+    background: #FFFFFF;
+    border : 0px;   
+    
+    `}
 `
 
 function Nav(){
@@ -142,6 +148,11 @@ function Nav(){
             :
             /*로그인 하기전*/
             <ButtonGroup>
+                <StyledLink to='/User'>
+                    <Button User>
+                        <img src={User} alt='X' />
+                    </Button>
+                </StyledLink>
                 <StyledLink to='/Cart'>
                     <Button Shopping>
                         <img src={Shopping} alt='X' />

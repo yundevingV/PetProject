@@ -12,8 +12,6 @@ import {add} from "../modules/cart"
 import Footer from './Footer'
 import { FooterWrapper } from "../styles/FooterStyles";
 
-import Comment from "./Comment"
-
 const Container = styled.div`
 width: 60%;
 height: 100vh;
@@ -253,14 +251,9 @@ function OrderPage(props){
                     <Font Name>{Data[animal][id].info}</Font>
                 </InfoWrapper>
 
-                <CommentWrapper>
-                    <Comment />
-                </CommentWrapper>
             </Wrapper>
             
         </Container>
-
-
 
         <FooterWrapper>
             <Footer />

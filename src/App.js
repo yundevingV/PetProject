@@ -7,10 +7,11 @@ import Test from './pages/Test';
 import SignUp from './pages/SignUp';
 import OrderPage from './pages/OrderPage';
 import Cart from './pages/Cart';
+import Pay from './pages/Pay';
+import User from './pages/User'
 
 import DogData from './json/Dog.json'
 import CatData from './json/Cat.json'
-import Pay from './pages/Pay';
 
 import GlobalStyle from './fonts/GlobalStyle'
 
@@ -28,6 +29,8 @@ function App() {
       <Route path='/Test' element={<Test />} />
       <Route path='/SignUp' element={<SignUp />} />
       <Route path='/Cart' element={<Cart  />} />
+      <Route path='/User' element={<User  />} />
+
       <Route path='/Pay' element={<Pay  />} />
 
       <Route path='/OrderPage/:animal/:id' element={<OrderPage data={Data} />} />
