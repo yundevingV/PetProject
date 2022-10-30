@@ -9,6 +9,7 @@ import OrderPage from './pages/OrderPage';
 import Cart from './pages/Cart';
 import Pay from './pages/Pay';
 import User from './pages/User'
+import Comment from './pages/Comment'
 
 import DogData from './json/Dog.json'
 import CatData from './json/Cat.json'
@@ -30,6 +31,7 @@ function App() {
       <Route path='/SignUp' element={<SignUp />} />
       <Route path='/Cart' element={<Cart  />} />
       <Route path='/User' element={<User  />} />
+      <Route path='/Comment' element={<Comment  />} />
 
       <Route path='/Pay' element={<Pay  />} />
 

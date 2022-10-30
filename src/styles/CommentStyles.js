@@ -36,7 +36,7 @@ position: relative;
 export const ImgWrapper = styled.div`
 
 `
-export const ImgButton = styled.input`
+export const ImgInput = styled.input`
 width: 7rem;
 height: 2rem;
 border-radius : 0.2rem;
