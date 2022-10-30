@@ -34,7 +34,7 @@ position: relative;
 `
 
 export const ImgWrapper = styled.div`
-alignItems: "center";
+
 `
 export const ImgButton = styled.input`
 width: 7rem;

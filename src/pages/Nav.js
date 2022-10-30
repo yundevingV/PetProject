@@ -4,13 +4,14 @@ import Shopping from '../img/cart-shopping-solid.svg'
 import User from '../img/user-solid.svg'
 import {Link} from 'react-router-dom'
 
-const NavTopContainer = styled.div`
+const NavWrapper = styled.div`
 width : 100%;
-height : 5%;
+height : 6vh;
 margin : 0 auto;
 background: #FFFFFF;
 
 position: relative;
+border-bottom: 1px solid #847770;
 `
 
 const StyledLink = styled(Link)`
@@ -127,7 +128,7 @@ function Nav(){
     
     return(
 
-        <NavTopContainer>
+        <NavWrapper>
         <StyledLink to='/Test' PetProject>
             PetProject
         </StyledLink>
@@ -166,7 +167,7 @@ function Nav(){
             </ButtonGroup>
         }
 
-    </NavTopContainer>
+    </NavWrapper>
     )
 }
 
