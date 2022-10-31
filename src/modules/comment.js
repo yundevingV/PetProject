@@ -12,17 +12,17 @@ export const addComment = (content,img,proId,userId) => {
     }
 }
 
-export const content = (contentInput) => {
+export const content = (change) => {
     return {
         type : CONTENT,
-        contentInput
+        change
     }
 }
 
 
 const initialState = {
     commentList : [],
-    contentInput : '',
+    commentInput : '',
 }
 
 export default function counter(state = initialState, action) {
@@ -38,13 +38,17 @@ export default function counter(state = initialState, action) {
                         userId : action.userId
                     }
                 ],
-                contentInput : ''
+                commentInput : ''
             }
         case CONTENT :
             return {
-                contentInput : action.contentInput
+                commentList : [...state.commentList],
+                commentInput : action.change,
             }
         default :
-            return state
+            return {
+                commentList : state.commentList,
+                commentInput: state.commentInput
+            }
     }
 }

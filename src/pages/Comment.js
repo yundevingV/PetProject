@@ -81,20 +81,24 @@ function Comment(){
     const {id , animal} = useParams()
 
     const proId = animal.concat(id)
-    console.log(proId)
+    console.log(proId,comment)
+    console.log(commentList)
+    
     return(
         <>
             <CommentContainer>
                 <TopContainer>
-                    <P> 0개 의 후기 </P>
+                    <P> {commentList.length} 개 의 후기 </P>
                 </TopContainer>
                 
                 <ContentContainer>
                     <CommentInputWrapper> 
                         <CommentInput 
+                            type='text'
                             placeholder="댓글을 입력해주세요"
                             onChange={(event)=> dispatch(content(event.target.value))}
-                        />
+                            value={comment}
+                        /> 
                     </CommentInputWrapper>
                 </ContentContainer>
 
