@@ -2,9 +2,9 @@ import React, {useState} from "react"
 import { useParams } from "react-router";
 import { addComment, content } from "../modules/comment"
 import {CommentContainer , TopContainer , P
-,ContentContainer, CommentInputWrapper, CommentInput, ImgWrapper, ImgButton, ImgInput
+,ContentContainer, CommentInputWrapper, CommentInput, ImgWrapper, ImgButton, ImgDeleteButton, ImgInput
 ,BottomContainer, AddButton
-
+,PreviewWrapper, PreviewContainer,Img
 } from '../styles/CommentStyles'
 
 import { useDispatch, useSelector } from "react-redux";
@@ -52,17 +52,14 @@ function Comment(){
         }
         else {
             return img.map((el, index) => {
-                const {name} = el
                 return (
-                    <div key={index}>
-                    <div>
-                        <img src={previewImg[index]} alt='x' />
-                    </div>
-                    <p>{name}</p>
-                    <button onClick={()=>deleteImg(index)}>
+                    <>
+                    <Img src={previewImg[index]} alt='x' />
+                    
+                    <ImgDeleteButton onClick={()=>deleteImg(index)}>
                     x
-                    </button>
-                    </div>
+                    </ImgDeleteButton>
+                    </>
                 )
             })
         }
@@ -124,6 +121,12 @@ function Comment(){
                     </AddButton>      
                     
                     </ImgWrapper>
+
+                    <PreviewWrapper>
+                        <PreviewContainer>
+                            {getPreviewImg()}
+                        </PreviewContainer>
+                    </PreviewWrapper>
 
 
 

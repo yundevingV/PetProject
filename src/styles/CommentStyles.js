@@ -48,6 +48,10 @@ background: #20dba1;
 border : 0px solid #ffffff;
 `
 
+export const ImgDeleteButton = styled.button`
+
+`
+
 export const AddButton = styled.button`
 position: absolute;
 right : 0%;
@@ -60,3 +64,18 @@ border : 0px solid #ffffff;
 
 `
 
+export const PreviewWrapper = styled.div`
+
+`
+
+export const PreviewContainer = styled.div`
+height: 10vh;
+width: 100vh;
+display: inline-block;
+`
+export const Img = styled.img`
+width: 10rem;
+height: 10rem;
+display: inline-block;
+
+`
