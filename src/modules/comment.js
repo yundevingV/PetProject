@@ -1,11 +1,10 @@
 export const ADD = "ADD"
-
+export const CONTENT = "CONTENT"
 // 4. comment- commentid(pk), content, img, pro_id(fk), user_id(fk)
 
-export const addComment = (commentId,content,img,proId,userId) => {
+export const addComment = (content,img,proId,userId) => {
     return {
         type: ADD,
-        commentId,
         content,
         img,
         proId,
@@ -13,9 +12,17 @@ export const addComment = (commentId,content,img,proId,userId) => {
     }
 }
 
+export const content = (contentInput) => {
+    return {
+        type : CONTENT,
+        contentInput
+    }
+}
+
 
 const initialState = {
     commentList : [],
+    contentInput : '',
 }
 
 export default function counter(state = initialState, action) {
@@ -25,15 +32,19 @@ export default function counter(state = initialState, action) {
             return {
                 commentList : [...state.commentList ,
                     {
-                        commentId : action.commentId,
                         content : action.content,
                         img : action.img,
                         proId : action.proId,
-                        userId : action.userId                    
+                        userId : action.userId
                     }
                 ],
+                contentInput : ''
             }
-    default :
-        return state
+        case CONTENT :
+            return {
+                contentInput : action.contentInput
+            }
+        default :
+            return state
     }
 }

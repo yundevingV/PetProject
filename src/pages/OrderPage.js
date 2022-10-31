@@ -8,39 +8,42 @@ import Nav from "./Nav";
 import DogData from '../json/Dog.json'
 import CatData from '../json/Cat.json'
 
+import Comment from "./Comment"
+
 import {add} from "../modules/cart"
 import Footer from './Footer'
 import { FooterWrapper } from "../styles/FooterStyles";
 
 const Container = styled.div`
-width: 60%;
-height: 100vh;
+width: 60vh;
+height: 75vh;
 margin: 0 auto;
 
 /*1000이상일경우*/
-@media (min-width : 1000px){
-    width: 50%;
+/* @media (min-width : 1000px){
+    width: 50vh;
 }
 @media (min-width : 1400px){
-    width: 40%;
+    width: 40vh;
 }
 @media (min-width : 1600px){
-    width: 30%;
+    width: 90vh;
+
 }
 
 @media (max-width : 700px){
-        width: 80%;
+        width: 80vh;
 }
 @media (max-width : 600px){
-        width: 90%;
-}
+    width: 30vh;
+} */
 `
+
 const NavTopContainerWrapper = styled.div`
 position: relative;
 display: block;
-
-
 `
+
 const Wrapper = styled.div`
 position: relative;
 top:5rem;
@@ -48,7 +51,7 @@ top:5rem;
 
 const Img = styled.img`
 width: 100%;
-height : 20rem;
+height : 35vh;
 
 `
 const ImgWrapper = styled.div`
@@ -160,12 +163,6 @@ ${(props) =>
     `}
 `
 
-const CommentWrapper = styled.div`
-background: #E2E2E2;
-height : auto;
-
-`
-
 
 function OrderPage(props){
 
@@ -254,7 +251,10 @@ function OrderPage(props){
             </Wrapper>
             
         </Container>
+        <Comment />
 
+
+        
         <FooterWrapper>
             <Footer />
         </FooterWrapper>

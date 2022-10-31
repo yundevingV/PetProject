@@ -1,10 +1,17 @@
 import React, {useState} from "react"
+import { useParams } from "react-router";
+import { addComment, content } from "../modules/comment"
 import {CommentContainer , TopContainer , P
-,ContentContainer, CommentInputWrapper, CommentInput, ImgWrapper, ImgInput
+,ContentContainer, CommentInputWrapper, CommentInput, ImgWrapper, ImgButton, ImgInput
 ,BottomContainer, AddButton
+
 } from '../styles/CommentStyles'
 
+import { useDispatch, useSelector } from "react-redux";
+
 function Comment(){
+    
+    const dispatch = useDispatch()
 
     const [ img, setImg ] = useState([])
     const [previewImg,setPreviewImg] = useState([])
@@ -61,24 +68,22 @@ function Comment(){
         }
     }
 
+    const fileInput = React.createRef(null)
 
+    const handleButtonClick =(e)=> {
+        fileInput.current.click()
+    }
 
+    /*redux 값 */
+    const commentList = useSelector((state) => state.comment.commentList)
+    const comment = useSelector((state) => state.comment.commentInput)
+
+    const {id , animal} = useParams()
+
+    const proId = animal.concat(id)
+    console.log(proId)
     return(
         <>
-        <form encType='multipart/form-data'>
-        
-        <input 
-            type="file"
-            id='file'
-            accept='image/jpg' 
-            onChange={(e)=>insertImg(e)} />
-        </form>
-        
-        <div>
-            {getPreviewImg()}
-        </div>
-
-
             <CommentContainer>
                 <TopContainer>
                     <P> 0개 의 후기 </P>
@@ -88,26 +93,35 @@ function Comment(){
                     <CommentInputWrapper> 
                         <CommentInput 
                             placeholder="댓글을 입력해주세요"
-                            onChange=""
+                            onChange={(event)=> dispatch(content(event.target.value))}
                         />
                     </CommentInputWrapper>
                 </ContentContainer>
 
                 <BottomContainer>
                     <ImgWrapper>
+                    <ImgButton onClick={handleButtonClick}> 사진 추가 </ImgButton>        
 
                         <ImgInput
-                            name="imageUpload"
                             type="file"
-                            accept="image/*"
+                            id='file'
+                            accept='image/*' 
+                            ref={fileInput}
+                            onChange={(e)=>insertImg(e)}
                         />
-                                
-                    </ImgWrapper>
-                    <div>
-                    </div>
-                    <AddButton>
+
+                    <AddButton onClick={()=>dispatch(addComment(
+                        comment,
+                        'img',
+                        proId,
+                        'userId',
+                        ))}>
                         댓글작성 
-                    </AddButton>
+                    </AddButton>      
+                    
+                    </ImgWrapper>
+
+
 
 
                 </BottomContainer>

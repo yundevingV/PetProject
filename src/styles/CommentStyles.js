@@ -37,6 +37,10 @@ export const ImgWrapper = styled.div`
 
 `
 export const ImgInput = styled.input`
+display : none;
+`
+
+export const ImgButton = styled.button`
 width: 7rem;
 height: 2rem;
 border-radius : 0.2rem;
