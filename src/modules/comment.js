@@ -40,7 +40,7 @@ export default function counter(state = initialState, action) {
                     }
                 ],
                 commentInput : '',
-                imgList : [],
+                
             }
         case CONTENT :
             return {

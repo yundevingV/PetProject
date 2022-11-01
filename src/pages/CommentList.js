@@ -11,7 +11,8 @@ function CommentList({item,index}){
             <p>{item.userId}</p>
             
             <p>{item.content}</p>
-            <p><Img src={item.img[index]} /></p>
+            {item.img.map(index => <Img src={index} /> ) }
+            
         </> 
     )
 }
