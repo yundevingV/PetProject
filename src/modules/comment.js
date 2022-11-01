@@ -23,6 +23,7 @@ export const content = (change) => {
 const initialState = {
     commentList : [],
     commentInput : '',
+    imgList : []
 }
 
 export default function counter(state = initialState, action) {
@@ -38,17 +39,20 @@ export default function counter(state = initialState, action) {
                         userId : action.userId
                     }
                 ],
-                commentInput : ''
+                commentInput : '',
+                imgList : [],
             }
         case CONTENT :
             return {
                 commentList : [...state.commentList],
                 commentInput : action.change,
+                imgList : [...state.imgList],
             }
         default :
             return {
                 commentList : state.commentList,
-                commentInput: state.commentInput
+                commentInput: state.commentInput,
+                imgList : state.imgList
             }
     }
 }

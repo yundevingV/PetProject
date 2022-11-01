@@ -9,6 +9,8 @@ import {CommentContainer , TopContainer , P
 
 import { useDispatch, useSelector } from "react-redux";
 
+import CommentList from "./CommentList";
+
 function Comment(){
     
     const dispatch = useDispatch()
@@ -33,6 +35,7 @@ function Comment(){
             }
         }
         console.log(e.target.files[0])
+
     }
 
     const deleteImg = (index) => {
@@ -55,7 +58,7 @@ function Comment(){
                 return (
                     <>
                     <Img src={previewImg[index]} alt='x' />
-                    
+                    {index}
                     <ImgDeleteButton onClick={()=>deleteImg(index)}>
                     x
                     </ImgDeleteButton>
@@ -78,12 +81,22 @@ function Comment(){
     const {id , animal} = useParams()
 
     const proId = animal.concat(id)
-    console.log(proId,comment)
+
     console.log(commentList)
-    
+
     return(
         <>
             <CommentContainer>
+
+                {commentList.length >= 1 ?
+                commentList
+                    .filter((item) => item.proId === proId)
+                    .map((item,index)=> (<CommentList item={item} key={item.index} index={index}/> ))
+                :
+                    <p>댓글 없음</p>
+        
+                }
+
                 <TopContainer>
                     <P> {commentList.length} 개 의 후기 </P>
                 </TopContainer>
@@ -113,7 +126,7 @@ function Comment(){
 
                     <AddButton onClick={()=>dispatch(addComment(
                         comment,
-                        'img',
+                        previewImg,
                         proId,
                         'userId',
                         ))}>
