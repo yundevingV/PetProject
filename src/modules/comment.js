@@ -23,7 +23,6 @@ export const content = (change) => {
 const initialState = {
     commentList : [],
     commentInput : '',
-    imgList : []
 }
 
 export default function counter(state = initialState, action) {
@@ -33,7 +32,7 @@ export default function counter(state = initialState, action) {
             return {
                 commentList : [...state.commentList ,
                     {
-                        content : action.content,
+                        content : state.commentInput,
                         img : action.img,
                         proId : action.proId,
                         userId : action.userId
@@ -46,13 +45,11 @@ export default function counter(state = initialState, action) {
             return {
                 commentList : [...state.commentList],
                 commentInput : action.change,
-                imgList : [...state.imgList],
             }
         default :
             return {
                 commentList : state.commentList,
                 commentInput: state.commentInput,
-                imgList : state.imgList
             }
     }
 }

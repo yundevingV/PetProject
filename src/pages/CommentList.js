@@ -2,7 +2,7 @@ import React from "react";
 
 import {Img} from '../styles/CommentStyles'
 
-function CommentList({item,index}){
+function CommentList({item}){
 
     return(
 

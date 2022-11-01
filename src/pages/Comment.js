@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
 import { useParams } from "react-router";
 import { addComment, content } from "../modules/comment"
 import {CommentContainer , TopContainer , P
@@ -83,6 +83,7 @@ function Comment(){
     const proId = animal.concat(id)
 
     console.log(commentList)
+
 
     return(
         <>
