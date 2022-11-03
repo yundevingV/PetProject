@@ -38,7 +38,15 @@ export default function counter(state = initialState, action) {
                         userId : action.userId
                     }
                 ],
-                commentInput : '',
+                commentInput : '',  
+                commentList : [...state.commentList ,
+                    {
+                        content : '',
+                        img : '',
+                        proId : '',
+                        userId : ''
+                    }
+                ],
                 
             }
         case CONTENT :
