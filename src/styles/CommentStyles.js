@@ -1,5 +1,7 @@
 import styled ,{css} from "styled-components";
 
+
+
 export const CommentContainer = styled.div`
 padding: 1rem;
 `
@@ -62,6 +64,14 @@ border-radius : 0.2rem;
 background: #20dba1;
 border : 0px solid #ffffff;
 
+`
+
+export const DeleteButton = styled.button`
+
+
+color: #ff404f;
+background: #ffffff;
+border : 0px solid #ffffff;
 `
 
 export const PreviewWrapper = styled.div`

@@ -15,7 +15,7 @@ export const addComment = (content,img,proId,userId) => {
 
 export const deleteComment = () => {
     return {
-        type : DELETE
+        type : DELETE,
     }
 }
 
@@ -30,7 +30,7 @@ export const content = (change) => {
 const initialState = {
     commentList : [],
     commentInput : '',
-    imgInput : []
+    
 }
 
 export default function counter(state = initialState, action) {
@@ -49,10 +49,10 @@ export default function counter(state = initialState, action) {
                 ],
                 commentInput : '',  
             }
-        case deleteComment :
+        case DELETE :
             return {
-                
-                commentInput : [...state.commentInput]
+                commentList : [...state.commentList],
+                commentInput : ''
             }
 
         case CONTENT :

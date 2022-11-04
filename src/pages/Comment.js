@@ -34,7 +34,6 @@ function Comment(){
             setPreviewImg([...previewImg, previewImgUrl])
             }
         }
-        console.log(e.target.files[0])
 
     }
 
@@ -84,11 +83,10 @@ function Comment(){
 
     const [num,setNum] = useState(0)
     
+    const commentNumbers = commentList.filter(item => item.proId === proId).length
+    console.log(commentList.filter(item => item.proId === proId).length)
+
     console.log(commentList)
-
-
-    // commentList.filter((item)=>item.proId === proId)
-    // .map(()=> (setNum(num+1)))
 
     return(
         <>
@@ -105,7 +103,7 @@ function Comment(){
 
                 <TopContainer>
                     <P>
-                        {CommentList.index}개
+                        {commentNumbers} 개
                     </P>
                 </TopContainer>
                 
