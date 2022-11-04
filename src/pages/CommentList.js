@@ -2,18 +2,21 @@ import React ,{useState , useEffect} from "react";
 
 import {Img} from '../styles/CommentStyles'
 
-function CommentList({item}){
-
+function CommentList({item,index}){
+    const [num,setNum] = useState(index)
 
     return(
 
         <>
             <hr />
-            <p>{item.userId}</p>
+            <p>{item.userId} <button onClick={()=>{disaptch(deleteComment())}}>삭제</button></p>
 
             {item.img.map(index => <Img src={index} /> ) }
 
-            <p>{item.content}</p>
+            <span>{item.content}</span>
+
+
+            
         </> 
     )
 }

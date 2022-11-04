@@ -79,6 +79,7 @@ function Comment(){
 
     const {id , animal} = useParams()
 
+    //물품 고유번호
     const proId = animal.concat(id)
 
     const [num,setNum] = useState(0)
@@ -97,7 +98,6 @@ function Comment(){
                 commentList
                     .filter((item) => item.proId === proId)
                     .map((item,index)=> (<CommentList item={item} key={item.index} index={index}/> ))
-                    .map(()=>setNum(num+1))
                 :
                     <p>댓글 없음</p>
         
@@ -105,7 +105,7 @@ function Comment(){
 
                 <TopContainer>
                     <P>
-                        {num}
+                        {CommentList.index}개
                     </P>
                 </TopContainer>
                 

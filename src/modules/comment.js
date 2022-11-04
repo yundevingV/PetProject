@@ -18,6 +18,7 @@ export const deleteComment = () => {
         type : DELETE
     }
 }
+
 export const content = (change) => {
     return {
         type : CONTENT,
@@ -47,9 +48,13 @@ export default function counter(state = initialState, action) {
                     }
                 ],
                 commentInput : '',  
-               
-                
             }
+        case deleteComment :
+            return {
+                
+                commentInput : [...state.commentInput]
+            }
+
         case CONTENT :
             return {
                 commentList : [...state.commentList],

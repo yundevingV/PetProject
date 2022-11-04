@@ -16,7 +16,7 @@ import { FooterWrapper } from "../styles/FooterStyles";
 
 const Container = styled.div`
 width: 60vh;
-height: 75vh;
+height: 90vh;
 margin: 0 auto;
 
 /*1000이상일경우*/
