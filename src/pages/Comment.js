@@ -58,7 +58,6 @@ function Comment(){
                 return (
                     <>
                     <Img src={previewImg[index]} alt='x' />
-                    {index}
                     <ImgDeleteButton onClick={()=>deleteImg(index)}>
                     x
                     </ImgDeleteButton>
@@ -80,10 +79,11 @@ function Comment(){
 
     const {id , animal} = useParams()
 
-    const proId = animal.concat(id)
+   const proId = animal.concat(id)
 
+    
     console.log(commentList)
-
+             
 
     return(
         <>
@@ -99,7 +99,10 @@ function Comment(){
                 }
 
                 <TopContainer>
-                    <P> {commentList.length} 개 의 후기 </P>
+                    <P>
+                        {commentList.filter((item)=>item.proId === proId)
+                        .map((index)=> (index+=1))}
+                    </P>
                 </TopContainer>
                 
                 <ContentContainer>
@@ -125,12 +128,16 @@ function Comment(){
                             onChange={(e)=>insertImg(e)}
                         />
 
-                    <AddButton onClick={()=>dispatch(addComment(
+                    <AddButton onClick={()=>{dispatch(addComment(
                         comment,
                         previewImg,
                         proId,
-                        'userId',
-                        ))}>
+                        'userId'
+                        
+                        ))
+                        setImg([])
+                        setPreviewImg([])
+                        }}>
                         댓글작성 
                     </AddButton>      
                     
