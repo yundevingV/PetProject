@@ -7,12 +7,33 @@ padding: 1rem;
 `
 
 export const TopContainer = styled.div`
-padding: 0.5rem;
-
+padding : 0.5rem;
+margin-left : 0rem;
+margin-bottom : 1.5rem;
 `
 
 export const P = styled.span`
+${(props) =>
+    props.UserId &&
+    css`
+        color : #887674;
+        
+    `}
 
+${(props) =>
+    props.Content &&
+    css`
+        padding: 1rem;
+        display: block;
+        font-size: 1rem;
+        
+    `}
+${(props) =>
+    props.ReviewCount &&
+    css`
+        
+        
+    `}
 `
 
 export const ContentContainer = styled.div`
@@ -86,6 +107,11 @@ display: inline-block;
 export const Img = styled.img`
 width: 10rem;
 height: 10rem;
-display: inline-block;
+display: block;
+padding: 1rem;
+
+`
+
+export const Hr = styled.hr`
 
 `

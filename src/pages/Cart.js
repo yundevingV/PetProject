@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { decrement, deletion, increment } from "../modules/cart";
-import NotFoundCart from "./NotFountCart";
+import NotFoundCart from "./NotFoundCart";
 
 import Footer from './Footer'
 import { FooterWrapper } from "../styles/FooterStyles";

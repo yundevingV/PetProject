@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from "react"
+import React, { useState} from "react"
 import { useParams } from "react-router";
 import { addComment, content } from "../modules/comment"
 import {CommentContainer , TopContainer , P
 ,ContentContainer, CommentInputWrapper, CommentInput, ImgWrapper, ImgButton, ImgDeleteButton, ImgInput
 ,BottomContainer, AddButton
-,PreviewWrapper, PreviewContainer,Img
+,PreviewWrapper, PreviewContainer,Img,
 } from '../styles/CommentStyles'
 
 import { useDispatch, useSelector } from "react-redux";
@@ -81,7 +81,6 @@ function Comment(){
     //물품 고유번호
     const proId = animal.concat(id)
 
-    const [num,setNum] = useState(0)
     
     const commentNumbers = commentList.filter(item => item.proId === proId).length
     console.log(commentList.filter(item => item.proId === proId).length)
@@ -91,21 +90,22 @@ function Comment(){
     return(
         <>
             <CommentContainer>
+                <TopContainer>
+                    <P ReviewCount> 
+                        {commentNumbers} 개의 후기
+                    </P>
+                </TopContainer>
+
 
                 {commentList.length >= 1 ?
                 commentList
                     .filter((item) => item.proId === proId)
                     .map((item,index)=> (<CommentList item={item} key={item.index} index={index}/> ))
                 :
-                    <p>댓글 없음</p>
+                    <p></p>
         
                 }
 
-                <TopContainer>
-                    <P>
-                        {commentNumbers} 개
-                    </P>
-                </TopContainer>
                 
                 <ContentContainer>
                     <CommentInputWrapper> 

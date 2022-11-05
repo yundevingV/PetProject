@@ -181,8 +181,6 @@ const Oi = styled.ol`
 display : inline-block;
 cursor : pointer;
 width : 5.5rem;
-
-
 `
 
 const OiButton = styled.button`

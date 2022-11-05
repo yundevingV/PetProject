@@ -129,7 +129,7 @@ function Nav(){
     return(
 
         <NavWrapper>
-        <StyledLink to='/Test' PetProject>
+        <StyledLink to='/' PetProject>
             PetProject
         </StyledLink>
         {login === false ?

@@ -1,30 +1,29 @@
-import React ,{useState , useEffect} from "react";
+import React  from "react";
 
 import {Img} from '../styles/CommentStyles'
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { deleteComment } from "../modules/comment";
 
-import {DeleteButton} from '../styles/CommentStyles'
+import {P,DeleteButton,Hr} from '../styles/CommentStyles'
 
-function CommentList({item,index}){
-    const [num,setNum] = useState(index)
+function CommentList({item}){
     const dispatch = useDispatch()
 
     return(
 
         <>
-            <hr />
-            <p>{item.userId}
+            
+            <P UserId>{item.userId}
                 <DeleteButton onClick={()=>dispatch(deleteComment())}>
                         X
                 </DeleteButton>
 
-            </p>
+            </P>
 
             {item.img.map(index => <Img src={index} /> ) }
 
-            <span>{item.content}</span>
-
+            <P Content>{item.content}</P>
+            <Hr />
 
             
         </> 
