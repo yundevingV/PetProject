@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
 import { useSelector } from 'react-redux';
+import NotFoundHome from './NotFoundHome';
 
 const Frame = styled.div`
 width : 10rem;
@@ -15,6 +16,8 @@ vertical-align: top;
 border-radius: 0.5rem;
 padding: 1rem;
 position : relative;
+
+
 
 &:focus, &:hover, &:visited, &:link, &:active {
         text-decoration: none;
@@ -52,7 +55,9 @@ color : #f12356;
 `
 
 function Menu({item}){
+
     return(
+
         <StyledLink to={`/OrderPage/${item.animal}/${item.id}`}>
             <Frame >
                 <Img src={item.src} alt='X' /> 
@@ -61,11 +66,13 @@ function Menu({item}){
                 <Span>({item.price})</Span>
             </Frame>
         </StyledLink>
-        
     )
 }
 
 function DogMenuMain({category,animal,word}) {
+    const num = Object.keys(Data.dog).length 
+
+    console.log(num)
 
     return(
         <div>
@@ -74,15 +81,13 @@ function DogMenuMain({category,animal,word}) {
             .filter((item) => item.animal === `${animal}`)
             .filter((item) => item.name.toLowerCase().includes(word) || word === undefined)
             .map(item =>(
-                <Menu item={item} key={item.id} />
-        )) :
+                <Menu item={item} key={item.id} />))
+            :
             Data.dog
             .filter((item) => item.category === `${category}`
             && item.animal ===`${animal}`)
             .filter((item) => item.name.toLowerCase().includes(word) || word === undefined)
-            .map(item =>(
-                <Menu item={item} key={item.id} />
-        ))}
+            .map(item =>( <Menu item={item} key={item.id}/>))}
 
         </div>
     )

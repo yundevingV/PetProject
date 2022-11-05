@@ -386,7 +386,8 @@ function Home(){
 
 
         </HomeContainer>
-                {/* footer */}
+
+        {/* footer */}
 
         <FooterWrapper>
             <Footer />

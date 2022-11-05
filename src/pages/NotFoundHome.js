@@ -6,6 +6,7 @@ const NotWrapper = styled.div`
 height: 10rem;
 padding: 5rem 0 5rem 0rem;
 text-align : center;
+background: #000000;
 `
 
 const Info = styled.div`
