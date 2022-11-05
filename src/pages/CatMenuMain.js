@@ -8,13 +8,16 @@ import { useSelector } from 'react-redux';
 const Frame = styled.div`
 width : 10rem;
 height : 15rem;
-background: #9ED6C0;
+background: #bcd67c;
 display: inline-block;
 margin-left: 2rem;
 vertical-align: top;
 border-radius: 0.5rem;
 padding: 1rem;
 position : relative;
+
+border: 1px solid black;
+box-shadow : 2px 3px 4px 0px black;
 
 &:focus, &:hover, &:visited, &:link, &:active {
         text-decoration: none;

@@ -19,7 +19,7 @@ text-decoration : none;
 ${(props) =>
     props.PetProject &&
     css`
-      width: 20%;
+      width: 20vh;
       color: #000000;
       font-weight : bold;
       border: 1px solid #FFFFFF;
@@ -34,13 +34,13 @@ const ButtonGroup = styled.div`
 position: absolute;
 
 @media (max-width : 1000px) {
-    right : 10%;
+    right : 10vh;
 }
 @media (min-width : 1000px) or (max-width : 1200px) {
-    right:9%;
+    right:9vh;
 }
 @media (min-width : 1500px) {
-    right:7%;
+    right:10vh;
 }
 `
 
@@ -50,22 +50,23 @@ width: 5rem;
 height: 2.5rem;
 border-radius : 0rem;
 padding : 0.2rem;
+margin-top: 0.2vh;
 
 outline : 0;
 
 ${(props) =>
     props.login &&
     css`
-    color: #9ED6C0;
+    color: #20dba1;
     background: #FFFFFF;
-    border: 1px solid #9ED6C0;
+    border: 1px solid #20dba1;
     margin-left: auto;
-    margin-top: 0.2rem;
     position: absolute;
+    border-radius : 0.2rem;
 
     &:hover{
         color: #FFFFFF;
-        background: #9ED6C0;
+        background: #20dba1;
         border: 1px solid #FFFFFF;
         transition: 0.3s;
     }
@@ -75,16 +76,15 @@ ${(props) =>
     props.logout &&
     css`
     color: #FFFFFF;
-    background: #9ED6C0;
+    background: #20dba1;
     border: 1px solid #FFFFFF;
-    margin-top: 0.2rem;
-    margin-right : 1.2rem;
     position: absolute;
+    border-radius : 0.2rem;
 
     &:hover{
-        color: #9ED6C0;
+        color: #20dba1;
         background: #FFFFFF;
-        border: 1px solid #9ED6C0;
+        border: 1px solid #20dba1;
         transition: 0.3s;
     }
     `}
@@ -93,14 +93,14 @@ ${(props) =>
     props.SignUp &&
     css`
     color: #FFFFFF;
-    background: #9ED6C0;
+    background: #20dba1;
     border: 1px solid #FFFFFF;
-    margin-top: 0.2rem;
+    border-radius : 0.2rem;
 
     &:hover{
-        color: #9ED6C0;
+        color: #20dba1;
         background: #FFFFFF;
-        border: 1px solid #9ED6C0;
+        border: 1px solid #20dba1;
         transition: 0.3s;
     }
     `}
@@ -108,7 +108,6 @@ ${(props) =>
 ${(props) =>
     props.Shopping &&
     css`
-    margin-top: 0.2rem;
     background: #FFFFFF;
     border : 0px;   
     
@@ -116,7 +115,6 @@ ${(props) =>
 ${(props) =>
     props.User &&
     css`
-    margin-top: 0.2rem;
     background: #FFFFFF;
     border : 0px;   
     

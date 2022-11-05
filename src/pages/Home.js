@@ -36,29 +36,28 @@ text-decoration : none;
 ${(props) =>
     props.PetProject &&
     css`
-      width: 20%;
-      color: #000000;
-      font-weight : bold;
-      border: 1px solid #FFFFFF;
-      font-size : 2rem;
-      position : absolute;
-      left : 45%;
+        width: 20vh;
+        color: #000000;
+        font-weight : bold;
+        font-size : 2rem;
+        position : absolute;
+        left : 45vh;
 
     `}
     ${(props) =>
     props.Best &&
     css`
-      width: 15%;
-      color: #000000;
-      font-weight : bold;
-      padding: 1rem;
-      font-size : 1.5rem;
-      margin-left : 10%;
-      &:hover{
+        width: 15vh;
         color: #000000;
-        background-image: url(${Crown});
-        background-repeat : no-repeat ;
-        transition: 0.3s;
+        font-weight : bold;
+        padding: 1rem;
+        font-size : 1.5rem;
+        margin-left : 10%;
+        &:hover{
+            color: #000000;
+            background-image: url(${Crown});
+            background-repeat : no-repeat ;
+            transition: 0.3s;
     }
     
     `}
@@ -66,12 +65,11 @@ ${(props) =>
     ${(props) =>
     props.Dog &&
     css`
-        width: 15%;
+        width: 15vh;
         color: #000000;
         font-weight : bold;
-        border: 1px solid #FFFFFF;
         font-size : 1.5rem;
-        margin-left : 10%;
+        margin-left : 5vh;
     &:hover{
         color: #000000;
         background-image : url(${DogFoot});
@@ -87,12 +85,11 @@ ${(props) =>
 ${(props) =>
     props.Cat &&
     css`
-        width: 15%;
+        width: 15vh;
         color: #000000;
         font-weight : bold;
-        border: 1px solid #FFFFFF;
         font-size : 1.5rem;
-        margin-left : 10%;
+        margin-left : 5vh;
     &:hover{
         color: #000000;
         background-image : url(${CatFoot});
@@ -116,16 +113,19 @@ height: 100vh;
     display: none;
 }
 
+
 `
 
 const NavMiddleContainer = styled.div`
 width : 100%;
-height : 5%;
+height : 5vh;
 margin : 0 auto;
-background: #FFFFFF;
 position: absolute;
-top : 7%;
+top : 7vh;
+
 border-bottom: 1px solid black;
+
+
 
 `
 
@@ -133,11 +133,10 @@ const NavBottomContainer = styled.div`
 width : 100%;
 height : 5%;
 margin : 0 auto;
-background: #FFFFFF;
 position: absolute;
-top : 20%;
+top : 20vh;
 @media (max-width : 1000px) {
-    top : 25%;
+    top : 25vh;
 }
 
 `
@@ -154,7 +153,6 @@ left : 35%;
 
 ::placeholder{
     font-weight : bold;
-
 }
 `
 
@@ -163,13 +161,13 @@ left : 35%;
 const DogMenu = styled.div`
 
 position: absolute;
-top:12%;
+top:12vh;
 
 `
 const CatMenu = styled.div`
 
 position: absolute;
-top:12%;
+top:12vh;
 
 `
 
@@ -184,10 +182,10 @@ width : 5.5rem;
 `
 
 const OiButton = styled.button`
-background: #FFFFFF;
 border : 0px;
 cursor : pointer;
-
+//버튼배경을 현재배경으로,,
+background-color:transparent;
 &:focus{
     border-bottom: 1px solid red;
 }
@@ -200,7 +198,8 @@ text-align: center;
 
 const MenuMainWrapper = styled.div`
 position: absolute;
-top:33%;
+top:33vh;
+
 `
 function Home(){
 

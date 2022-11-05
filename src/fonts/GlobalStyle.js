@@ -6,6 +6,8 @@ body {
     font-weight: 700;
     src : url('./fonts');
     
+
+
 }
 `
 
