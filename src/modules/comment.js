@@ -1,11 +1,11 @@
-export const ADD = "ADD"
+export const ADDCOMMENT = "ADDCOMMENT"
 export const DELETE = "DELETE"
 export const CONTENT = "CONTENT"
 // 4. comment- commentid(pk), content, img, pro_id(fk), user_id(fk)
 
 export const addComment = (content,img,proId,userId) => {
     return {
-        type: ADD,
+        type: ADDCOMMENT,
         content,
         img,
         proId,
@@ -36,7 +36,7 @@ const initialState = {
 export default function counter(state = initialState, action) {
     switch(action.type) {
         // 추가
-        case ADD :
+        case ADDCOMMENT :
             return {
                 commentList : [...state.commentList ,
                     {

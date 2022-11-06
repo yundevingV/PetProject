@@ -73,14 +73,14 @@ border-right : 1px solid black;
 
 const BottomWrapper = styled.div`
 overflow:auto;
-background: #FFFFaA;
+background: #e7ebd9;
 border: 1px solid black;
 
 `
 
 const InfoWrapper = styled.div`
 width: 100%;
-background : #FFFFaA;
+background : #e7ebd9;
 height: 100%;
 border: 1px solid black;
 `
@@ -149,6 +149,7 @@ ${(props) =>
     height: 2.5rem;
     border : 2px solid #00B5E3;
     background: #FFFFFF;
+    border-radius : 0.2rem;
     `}
 
 ${(props) =>
@@ -160,6 +161,7 @@ ${(props) =>
     height: 2.5rem;
     background: #00B5E3;
     border : 2px solid #E7E6D2;
+    border-radius : 0.2rem;
     `}
 `
 
