@@ -79,13 +79,11 @@ function Comment(){
     const {id , animal} = useParams()
 
     //물품 고유번호
+    
     const proId = animal.concat(id)
 
     
     const commentNumbers = commentList.filter(item => item.proId === proId).length
-    console.log(commentList.filter(item => item.proId === proId).length)
-
-    console.log(commentList)
 
     return(
         <>

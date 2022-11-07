@@ -122,7 +122,7 @@ ${(props) =>
 `
 
 function Nav(){
-    const [login , setLogin] = useState(true)
+    
     
     return(
 
@@ -130,8 +130,8 @@ function Nav(){
         <StyledLink to='/' PetProject>
             PetProject
         </StyledLink>
-        {login === false ?
-            /*로그인 성공하면*/
+        
+            {/* /*로그인 성공하면*/ }
             <ButtonGroup>
                 <StyledLink to='/SignUp'>
                     <Button SignUp>
@@ -144,8 +144,8 @@ function Nav(){
                     </Button>
                 </StyledLink>
             </ButtonGroup>
-            :
-            /*로그인 하기전*/
+            
+            {/* 로그인 하기전 */}
             <ButtonGroup>
                 <StyledLink to='/User'>
                     <Button User>
@@ -163,7 +163,7 @@ function Nav(){
                     </Button>
                 </StyledLink>
             </ButtonGroup>
-        }
+        
 
     </NavWrapper>
     )

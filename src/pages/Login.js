@@ -1,27 +1,30 @@
-import React from "react";
+import React,{useState} from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link , useNavigate } from "react-router-dom";
+
 
 import KakaoLogin from '../img/KakaoLoginImg.png'
 
 import { FooterWrapper } from "../styles/FooterStyles";
 import Footer from "./Footer";
+import Nav from "./Nav";
+
+import UserData from "../json/User.json"
+/*redux */
+import { useDispatch, useSelector } from "react-redux";
+import {loginn, handleChangeId, handleChangePassword, logout} from '../modules/login.js'
 
 const ContainerWrapper = styled.div`
+width: 100%;
 height: 100vh;
 `
 const Container = styled.div`
-width : 50%;
-height : 20%;
-margin : 0 auto;
-margin-top : 7rem ;
-`
 
-const Title = styled.div`
-font-weight : bold;
-text-align : center;
-font-size : 3rem;
-padding-bottom: 3rem;
+height : 50vh;
+margin : 0 auto;
+margin-top : 7rem;
+position: absolute;
+left: 35%;
 `
 
 const Input = styled.input`
@@ -69,32 +72,68 @@ margin-right : ${(props) => props.space};
 }
 `
 const Wrapper = styled.div`
-display: inline-block;
+display: block;
 text-align : ${(props) => props.textAlign};
 margin-bottom : ${(props) => props.marginBottom};
+text-align : center;
 
 `
 function Login(){
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const id = useSelector((state) => state.login.id)
+    const password = useSelector((state) => state.login.password)
+
+    console.log(UserData)
+    
+    let correctId = UserData.user.filter((item)=> item.userId === id )
+    let correctPassword = UserData.user.map((item)=> item.userPassword === password)
+    //filter 객체 반환 , map boolean 반환
+    
+    console.log(id,correctId)  
+    console.log(password,correctPassword)
+
+    const correct = () => {
+        if (correctId && correctPassword ) {
+            navigate("/")
+        }
+    }
+    
+
     return(
     <>
+    <Nav />
+
     <ContainerWrapper>
         <Container>
-            <Title>
-                Pet Project
-            </Title>
+
             <Wrapper marginBottom='1rem'>
-                <Input placeholder='아이디'> 
-                </Input>
+                <Input  
+                    placeholder='아이디'
+                    type='text'
+                    onChange={(event)=> dispatch(handleChangeId(event.target.value))}
+                    value={id} /> 
+               
             </Wrapper>
 
             <Wrapper marginBottom='1rem'>
-                <Input marginBottom='3rem' placeholder='비밀번호'>
-                </Input>
+                <Input 
+                    marginBottom='3rem' 
+                    placeholder='비밀번호' 
+                    type='text'
+                    onChange={(event)=> dispatch(handleChangePassword(event.target.value))}
+                    value={password} />
+               
             </Wrapper>
 
             <Wrapper marginBottom='0.3rem'>
-                <SubmitButton>
-                    <SubmitButtonFont>
+                <SubmitButton 
+                    onClick={()=>{dispatch(loginn(id,password))
+                    correct()
+                    
+                }}>
+                    <SubmitButtonFont >
                         로그인하기
                     </SubmitButtonFont>
                 </SubmitButton>
