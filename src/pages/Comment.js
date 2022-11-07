@@ -1,4 +1,4 @@
-import React, { useState} from "react"
+import React, { useMemo, useState,useRef} from "react"
 import { useParams } from "react-router";
 import { addComment, content } from "../modules/comment"
 import {CommentContainer , TopContainer , P
@@ -101,11 +101,11 @@ function Comment(){
                 commentList
                     .filter((item) => item.proId === proId)
                     .map((item,index)=> (<CommentList item={item} key={item.index} index={index}/> ))
+                    
                 :
                     <p></p>
         
                 }
-
                 
                 <ContentContainer>
                     <CommentInputWrapper> 
@@ -134,8 +134,8 @@ function Comment(){
                         comment,
                         previewImg,
                         proId,
-                        'userId'
-                        
+                        'userId',
+                        commentNumbers                        
                         ))
                         setImg([])
                         setPreviewImg([])

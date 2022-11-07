@@ -1,21 +1,23 @@
 export const ADDCOMMENT = "ADDCOMMENT"
-export const DELETE = "DELETE"
+export const DELETECOMMENT = "DELETECOMMENT"
 export const CONTENT = "CONTENT"
 // 4. comment- commentid(pk), content, img, pro_id(fk), user_id(fk)
 
-export const addComment = (content,img,proId,userId) => {
+export const addComment = (content,img,proId,userId,commentUniqueNumber) => {
     return {
         type: ADDCOMMENT,
         content,
         img,
         proId,
-        userId
+        userId,
+        commentUniqueNumber
     }
 }
 
-export const deleteComment = () => {
+export const deleteComment = (item) => {
     return {
-        type : DELETE,
+        type : DELETECOMMENT,
+        item
     }
 }
 
@@ -44,14 +46,15 @@ export default function counter(state = initialState, action) {
                         img : action.img,
                         proId : action.proId,
                         userId : action.userId,
-                        commentId : action.proId.concat(action.userId)
+                        commentId : action.proId.concat(action.userId).concat(action.commentUniqueNumber)
                     }
                 ],
                 commentInput : '',  
             }
-        case DELETE :
+        case DELETECOMMENT :
             return {
-                commentList : [...state.commentList],
+                ...state.commentList,
+                commentList : state.commentList.filter((item) => item.commentId !== action.item.commentId),
                 commentInput : ''
             }
 

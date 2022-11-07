@@ -6,7 +6,13 @@
             "name" : "윤성리",
             "phone" : "010-9523-2451",
             "email" : "dbstjd0222@naver.com"
-
+        },
+        {
+            "userId" : "owanys1",
+            "userPassword" : "qwer123456",
+            "name" : "윤성이",
+            "phone" : "010-1111-2222",
+            "email" : "dbstjd0222@daum.com"
         }
     ]
 }

@@ -14,7 +14,7 @@ function CommentList({item}){
         <>
             
             <P UserId>{item.userId}
-                <DeleteButton onClick={()=>dispatch(deleteComment())}>
+                <DeleteButton onClick={()=>dispatch(deleteComment(item))}>
                         X
                 </DeleteButton>
 
