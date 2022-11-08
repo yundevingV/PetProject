@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/PetProject-OnlyFront-/static/css/main.e6c13ad2.css",
+    "main.js": "/PetProject-OnlyFront-/static/js/main.6fe654b6.js",
+    "static/js/787.03a57e86.chunk.js": "/PetProject-OnlyFront-/static/js/787.03a57e86.chunk.js",
+    "static/media/crown30.png": "/PetProject-OnlyFront-/static/media/crown30.fd541a2b22b234c8c52b.png",
+    "static/media/github.svg": "/PetProject-OnlyFront-/static/media/github.ecb61d4ca900575299c63e2471c88214.svg",
+    "static/media/cat-solid.svg": "/PetProject-OnlyFront-/static/media/cat-solid.e89f8289cbe215b876899efd25b2fdaf.svg",
+    "static/media/dog-Solid.svg": "/PetProject-OnlyFront-/static/media/dog-Solid.76cb5239f1dd7cc6a04f3338f7a8e624.svg",
+    "index.html": "/PetProject-OnlyFront-/index.html",
+    "static/media/cart-shopping-solid.svg": "/PetProject-OnlyFront-/static/media/cart-shopping-solid.7ad9087f99a6b14b3539a87effb716a9.svg",
+    "static/media/google.svg": "/PetProject-OnlyFront-/static/media/google.0e03c41e9a17292d2996e977af998e30.svg",
+    "static/media/user-solid.svg": "/PetProject-OnlyFront-/static/media/user-solid.6e71d4adaa02cea8df9effd12e23e01f.svg",
+    "main.e6c13ad2.css.map": "/PetProject-OnlyFront-/static/css/main.e6c13ad2.css.map",
+    "main.6fe654b6.js.map": "/PetProject-OnlyFront-/static/js/main.6fe654b6.js.map",
+    "787.03a57e86.chunk.js.map": "/PetProject-OnlyFront-/static/js/787.03a57e86.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.6fe654b6.js"
+  ]
+}
