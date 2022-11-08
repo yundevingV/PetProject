@@ -138,7 +138,7 @@ function Nav(){
         
             {!loginStatus ?
             <ButtonGroup>
-                <StyledLink to='/SignUp'>
+                <StyledLink to='/'>
                     <Button SignUp>
                         Sign Up
                     </Button>
@@ -155,7 +155,7 @@ function Nav(){
                 <StyledLink to='/User'>
                     <Button User>
                         <img src={User} alt='X' />
-                    </Button>
+                    </Button>   
                 </StyledLink>
                 <StyledLink to='/Cart'>
                     <Button Shopping>
