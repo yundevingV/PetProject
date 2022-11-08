@@ -13,7 +13,7 @@ let store = createStore(rootReducer);
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Provider store={store}>
         <App />  
       </Provider>

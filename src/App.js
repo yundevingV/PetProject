@@ -24,7 +24,7 @@ function App() {
   return (
     <>
     <GlobalStyle />
-    <Routes>
+    <Routes >
       <Route path='/' element={<Home />} />
       <Route path='/Login' element={<Login />} />
       <Route path='/Test' element={<Test />} />
@@ -33,7 +33,7 @@ function App() {
       <Route path='/User' element={<User  />} />
       <Route path='/Comment' element={<Comment  />} />
 
-      <Route path='/Pay' element={<Pay  />} />
+      {/* <Route path='/Pay' element={<Pay  />} /> */}
 
       <Route path='/OrderPage/:animal/:id' element={<OrderPage data={Data} />} />
 
