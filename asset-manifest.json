@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/PetProjectFront/static/css/main.e6c13ad2.css",
-    "main.js": "/PetProjectFront/static/js/main.2db3ad5e.js",
+    "main.js": "/PetProjectFront/static/js/main.3c688928.js",
     "static/js/787.03a57e86.chunk.js": "/PetProjectFront/static/js/787.03a57e86.chunk.js",
     "static/media/crown30.png": "/PetProjectFront/static/media/crown30.fd541a2b22b234c8c52b.png",
     "static/media/github.svg": "/PetProjectFront/static/media/github.ecb61d4ca900575299c63e2471c88214.svg",
@@ -12,11 +12,11 @@
     "static/media/google.svg": "/PetProjectFront/static/media/google.0e03c41e9a17292d2996e977af998e30.svg",
     "static/media/user-solid.svg": "/PetProjectFront/static/media/user-solid.6e71d4adaa02cea8df9effd12e23e01f.svg",
     "main.e6c13ad2.css.map": "/PetProjectFront/static/css/main.e6c13ad2.css.map",
-    "main.2db3ad5e.js.map": "/PetProjectFront/static/js/main.2db3ad5e.js.map",
+    "main.3c688928.js.map": "/PetProjectFront/static/js/main.3c688928.js.map",
     "787.03a57e86.chunk.js.map": "/PetProjectFront/static/js/787.03a57e86.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.2db3ad5e.js"
+    "static/js/main.3c688928.js"
   ]
 }
