@@ -3,7 +3,9 @@ import styled,{css} from "styled-components";
 import Shopping from '../img/cart-shopping-solid.svg'
 import User from '../img/user-solid.svg'
 import {Link} from 'react-router-dom'
+import { useSelector, useDispatch } from "react-redux";
 
+import {logout} from "../modules/login"
 const NavWrapper = styled.div`
 width : 100%;
 height : 6vh;
@@ -122,7 +124,10 @@ ${(props) =>
 `
 
 function Nav(){
-    
+
+    const dispatch = useDispatch()
+
+    const loginStatus = useSelector((state) => state.login.loginStatus)
     
     return(
 
@@ -131,21 +136,21 @@ function Nav(){
             PetProject
         </StyledLink>
         
-            {/* /*로그인 성공하면*/ }
+            {!loginStatus ?
             <ButtonGroup>
                 <StyledLink to='/SignUp'>
                     <Button SignUp>
                         Sign Up
                     </Button>
                 </StyledLink>
-                <StyledLink to='/Test'>
+                <StyledLink to='/Login'>
                     <Button login>
                         Log in
                     </Button>
                 </StyledLink>
             </ButtonGroup>
             
-            {/* 로그인 하기전 */}
+            :
             <ButtonGroup>
                 <StyledLink to='/User'>
                     <Button User>
@@ -158,12 +163,15 @@ function Nav(){
                     </Button>
                 </StyledLink>
                 <StyledLink to='/'>
-                    <Button logout>
+                    <Button 
+                        logout
+                        onClick={()=>{dispatch(logout())}}
+                            >
                         Log Out
                     </Button>
                 </StyledLink>
             </ButtonGroup>
-        
+        }
 
     </NavWrapper>
     )

@@ -1,7 +1,9 @@
 import React from "react"
 import Nav from "./Nav"
 
-import userData from '../json/User.json'
+import UserData from '../json/User.json'
+
+import { useSelector } from "react-redux";
 
 import {Wrapper, 
         NavContainer,
@@ -30,12 +32,8 @@ function UserList({item}) {
 }
 
 function User(){
-    console.log(userData)
-    // "userId" : "owanys",
-    // "userPassword" : "qwer",
-    // "name" : "윤성리",
-    // "phone" : "010-9523-2451",
-    // "email" : "dbstjd0222@naver.com"
+    const id = useSelector((state) => state.login.id)
+    console.log(id)
     return(
         <Wrapper>
             <NavContainer> 
@@ -45,9 +43,8 @@ function User(){
             <UserWrapper>
                 <UserContainer>
                     <UserListWrapper> 
-                        {userData.user
-                            // 필터 코드는 접속중인 이아디와 자신의 아이디가 맞는지 체크
-                            // .filter((item)=> item.id === `${loginId}`)}
+                        {UserData.user
+                            .filter((item)=> item.userId === id)
                             .map((item)=> (
                                 <UserList item={item} key={item.id} />
                             ))}

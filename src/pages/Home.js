@@ -201,8 +201,10 @@ position: absolute;
 top:33vh;
 
 `
-function Home(){
-
+function Home(){    
+    const id = useSelector((state) => state.login.id)
+    const password = useSelector((state) => state.login.password)
+    console.log(id,password)
     const animal = useSelector((state) => state.category.animalState)
     const category = useSelector((state) => state.category.categoryState)
     const word = useSelector((state) => state.handle.word)

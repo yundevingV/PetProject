@@ -82,22 +82,22 @@ function Login(){
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    
     const id = useSelector((state) => state.login.id)
     const password = useSelector((state) => state.login.password)
 
     console.log(UserData)
     
-    let correctId = UserData.user.filter((item)=> item.userId === id )
-    let correctPassword = UserData.user.map((item)=> item.userPassword === password)
-    //filter 객체 반환 , map boolean 반환
+    const  correctIdFunc = (element) => {
+        console.log(element)
+        if (element.userId === id) return true
+    } 
     
-    console.log(id,correctId)  
-    console.log(password,correctPassword)
-
+    let correctIndex = UserData.user.findIndex(correctIdFunc)
+    
     const correct = () => {
-        if (correctId && correctPassword ) {
+        if(UserData.user[correctIndex].userPassword === password)
             navigate("/")
-        }
     }
     
 

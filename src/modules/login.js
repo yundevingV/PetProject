@@ -32,7 +32,8 @@ export const logout = () => {
 
 const initialState = {
     id : '',
-    password : ''
+    password : '',
+    loginStatus : false
 }
 
 export default function counter(state = initialState, action) {
@@ -40,27 +41,33 @@ export default function counter(state = initialState, action) {
         case LOGIN :
             return {
                 id : action.id,
-                password : action.password
+                password : action.password,
+                loginStatus : true
             }
         case HANDLECHANGEID : 
             return {
                 id : action.actionId,
-                password : state.password
+                password : state.password,
+                loginStatus : state.loginStatus
             }
         case HANDLECHANGEPASSWORD :
             return {
                 id : state.id,
-                password : action.actionPassword
+                password : action.actionPassword,
+                loginStatus : state.loginStatus
             }
         case LOGOUT :
             return {
                 id : '',
-                password : ''
+                password : '',
+                loginStatus : false
+
             }
         default :
             return {
                 id : state.id,
-                password : state.password
+                password : state.password,
+                loginStatus : state.loginStatus
             }
     }
 }
