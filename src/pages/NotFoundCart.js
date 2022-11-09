@@ -31,7 +31,7 @@ function NotFoundCart(){
     return(
         <NotWrapper>
             <Info>
-                장바구니의 상품을 담아주세요.
+                장바구니의 상품을 담아주세요 !
             </Info>
             <BuyButton>
                 <StyledLink to='/'>

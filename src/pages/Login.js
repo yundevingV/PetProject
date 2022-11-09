@@ -24,7 +24,8 @@ height : 50vh;
 margin : 0 auto;
 margin-top : 7rem;
 position: absolute;
-left: 35%;
+
+left: 30%;
 `
 
 const Input = styled.input`
@@ -45,7 +46,7 @@ height : 50px;
 
 background : #FFFFFF;
 &:hover {
-    background : blue;
+    background : #20a8d8;
     color : #FFFFFF;
     transition: 0.3s;
 }
@@ -75,6 +76,7 @@ const Wrapper = styled.div`
 display: block;
 text-align : ${(props) => props.textAlign};
 margin-bottom : ${(props) => props.marginBottom};
+margin-top : ${(props) => props.marginTop};
 text-align : center;
 
 `
@@ -114,7 +116,7 @@ function Login(){
                     type='text'
                     onChange={(event)=> dispatch(handleChangeId(event.target.value))}
                     value={id} /> 
-               
+            
             </Wrapper>
 
             <Wrapper marginBottom='1rem'>
@@ -124,7 +126,7 @@ function Login(){
                     type='text'
                     onChange={(event)=> dispatch(handleChangePassword(event.target.value))}
                     value={password} />
-               
+            
             </Wrapper>
 
             <Wrapper marginBottom='0.3rem'>
@@ -139,7 +141,7 @@ function Login(){
                 </SubmitButton>
             </Wrapper>
 
-            <Wrapper  textAlign='left' marginBottom='5rem'>
+            <Wrapper  textAlign='left' marginBottom='5rem' >
                 <ServiceMenu>
                     <StyledLink to='/join' space='1rem'>
                         회원 가입
@@ -151,11 +153,13 @@ function Login(){
                         비밀번호찾기
                     </StyledLink>
                 </ServiceMenu>
+
+                <Wrapper marginTop='2rem'> 
+                    <img src={KakaoLogin} alt='X' />
+                </Wrapper>
             </Wrapper>
 
-            <Wrapper>
-                <img src={KakaoLogin} alt='X' />
-            </Wrapper>
+
         </Container>
     </ContainerWrapper>    
 
