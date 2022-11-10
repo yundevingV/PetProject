@@ -19,13 +19,13 @@ width: 100%;
 height: 100vh;
 `
 const Container = styled.div`
-
+width: 100%;
 height : 50vh;
 margin : 0 auto;
 margin-top : 7rem;
 position: absolute;
 
-left: 30%;
+text-align: center;
 `
 
 const Input = styled.input`
@@ -80,6 +80,12 @@ margin-top : ${(props) => props.marginTop};
 text-align : center;
 
 `
+
+const TopContainer = styled.div`
+margin: 0 auto;
+display: inline-block;
+`
+
 function Login(){
 
     const dispatch = useDispatch()
@@ -109,37 +115,37 @@ function Login(){
 
     <ContainerWrapper>
         <Container>
+            <TopContainer>
+                <Wrapper marginBottom='1rem'>
+                    <Input  
+                        placeholder='아이디'
+                        type='text'
+                        onChange={(event)=> dispatch(handleChangeId(event.target.value))}
+                        value={id} /> 
+                
+                </Wrapper>
 
-            <Wrapper marginBottom='1rem'>
-                <Input  
-                    placeholder='아이디'
-                    type='text'
-                    onChange={(event)=> dispatch(handleChangeId(event.target.value))}
-                    value={id} /> 
-            
-            </Wrapper>
+                <Wrapper marginBottom='1rem'>
+                    <Input 
+                        marginBottom='3rem' 
+                        placeholder='비밀번호' 
+                        type='text'
+                        onChange={(event)=> dispatch(handleChangePassword(event.target.value))}
+                        value={password} />
+                
+                </Wrapper>
 
-            <Wrapper marginBottom='1rem'>
-                <Input 
-                    marginBottom='3rem' 
-                    placeholder='비밀번호' 
-                    type='text'
-                    onChange={(event)=> dispatch(handleChangePassword(event.target.value))}
-                    value={password} />
-            
-            </Wrapper>
-
-            <Wrapper marginBottom='0.3rem'>
-                <SubmitButton 
-                    onClick={()=>{dispatch(loginn(id,password))
-                    correct()
-                    
-                }}>
-                    <SubmitButtonFont >
-                        로그인하기
-                    </SubmitButtonFont>
-                </SubmitButton>
-            </Wrapper>
+                <Wrapper marginBottom='0.3rem'>
+                    <SubmitButton 
+                        onClick={()=>{dispatch(loginn(id,password))
+                        correct()
+                        
+                    }}>
+                        <SubmitButtonFont >
+                            로그인하기
+                        </SubmitButtonFont>
+                    </SubmitButton>
+                </Wrapper>
 
             <Wrapper  textAlign='left' marginBottom='5rem' >
                 <ServiceMenu>
@@ -153,11 +159,14 @@ function Login(){
                         비밀번호찾기
                     </StyledLink>
                 </ServiceMenu>
-
+                </Wrapper>
+                
                 <Wrapper marginTop='2rem'> 
                     <img src={KakaoLogin} alt='X' />
                 </Wrapper>
-            </Wrapper>
+            
+        </TopContainer>
+
 
 
         </Container>

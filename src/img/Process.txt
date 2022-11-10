@@ -176,3 +176,24 @@ Orderpage에a Comment 컴포넌트추가중
 1108
 로그인 기능 구현 완료
 로그아웃 구현안료
+
+1110
+*Git 관리방법*
+1. 로컬개발서버
+평소처럼 master branch에 add -> commit -> push 하면됨
+
+2. Git서버
+다 만들고 yarn build 하면 됨 package.json에 다 연결되어 있어서 (gh-pages)
+
+가운데정렬
+
+.outer {
+  text-align: center;
+}
+
+.inner {
+  display: inline-block;
+}
+
+react-toasstify 사용법 알기.
+yarn add react-toastify

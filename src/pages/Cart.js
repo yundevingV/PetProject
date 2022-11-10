@@ -190,7 +190,7 @@ function Cart(){
                     {total > 0 ?
                     <CartTable>
                         <CartTableName Img>
-                            상품사진
+                            상품 사진
                         </CartTableName>
                         <CartTableName Name>
                             상품 이름
