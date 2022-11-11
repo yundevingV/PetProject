@@ -14,6 +14,12 @@ import {add} from "../modules/cart"
 import Footer from './Footer'
 import { FooterWrapper } from "../styles/FooterStyles";
 
+/*toastify*/
+
+import { toast, ToastContainer } from "react-toastify";
+
+
+
 const Container = styled.div`
 width: 60vh;
 height: 90vh;
@@ -193,6 +199,10 @@ function OrderPage(props){
     /*redux */
     const dispatch = useDispatch()
 
+    /*toastify*/
+
+    const notify = (a) => toast('',a)
+
     return(
         
         <>
@@ -237,15 +247,17 @@ function OrderPage(props){
                                 num,
                                 Data[animal][id].src,
                                 Data[animal][id].category
-                                ))}}>
+                                ))
+                                notify(Data[animal][id].name) }}>
                             장바구니 추가
                         </Button>
-                        <Button Buy>
+                        <Button Buy onClick={()=>notify()}>
                             바로 구매하기
                         </Button>
                     </ButtonGroup>
                 </BottomWrapper>
-                
+                <ToastContainer 
+            position="top-center"/>
                 <InfoWrapper>
                     <Font Name>{Data[animal][id].info}</Font>
                 </InfoWrapper>
@@ -256,7 +268,7 @@ function OrderPage(props){
         <Comment />
 
 
-        
+
         <FooterWrapper>
             <Footer />
         </FooterWrapper>
