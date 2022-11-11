@@ -199,9 +199,9 @@ function OrderPage(props){
     /*redux */
     const dispatch = useDispatch()
 
-    /*toastify*/
+    /*toast-toastify*/
 
-    const notify = (a) => toast('',a)
+    const notify = (a) => toast('alert!')
 
     return(
         
