@@ -14,11 +14,12 @@ import {add} from "../modules/cart"
 import Footer from './Footer'
 import { FooterWrapper } from "../styles/FooterStyles";
 
+import { useSelector } from "react-redux";
+
 /*toastify*/
 
 import { toast, ToastContainer } from "react-toastify";
-
-
+import 'react-toastify/dist/ReactToastify.css';
 
 const Container = styled.div`
 width: 60vh;
@@ -200,8 +201,20 @@ function OrderPage(props){
     const dispatch = useDispatch()
 
     /*toast-toastify*/
-
-    const notify = (a) => toast('alert!')
+    const list = useSelector((state) => state.cart.list)
+    
+    const notifyCart = (itemName) => {
+        const checkList =()=>{
+            if (list.map((item)=>item.name !== itemName)) return true
+        }
+        //return true or false
+        console.log(checkList())
+        if (checkList() === true) {
+            toast(`이미 담겨져 있습니다.`)
+        } else {
+            toast(`${itemName}을 장바구니에 담았습니다.`)
+        }
+    }
 
     return(
         
@@ -248,16 +261,29 @@ function OrderPage(props){
                                 Data[animal][id].src,
                                 Data[animal][id].category
                                 ))
-                                notify(Data[animal][id].name) }}>
+                                notifyCart(Data[animal][id].name) }}>
                             장바구니 추가
                         </Button>
-                        <Button Buy onClick={()=>notify()}>
+                        <Button Buy >
                             바로 구매하기
                         </Button>
                     </ButtonGroup>
                 </BottomWrapper>
-                <ToastContainer 
-            position="top-center"/>
+                
+                <ToastContainer
+                    position="top-center"
+                    autoClose={500}
+                    hideProgressBar={true}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    limit
+                    theme="light"
+                />
+
                 <InfoWrapper>
                     <Font Name>{Data[animal][id].info}</Font>
                 </InfoWrapper>

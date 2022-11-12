@@ -1,3 +1,5 @@
+import UserData from "../json/User.json"
+
 export const LOGIN = "LOGIN"
 export const HANDLECHANGEID = 'HANDLECHANGEID'
 export const HANDLECHANGEPASSWORD = 'HANDLECHANGEPASSWORD'
@@ -36,14 +38,46 @@ const initialState = {
     loginStatus : false
 }
 
+
 export default function counter(state = initialState, action) {
+
     switch(action.type) {
         case LOGIN :
-            return {
-                id : action.id,
-                password : action.password,
-                loginStatus : true
+
+
+            const correctIdFunc = (id) => {
+                if (id.userId === action.id) return true
+            }    
+            const correctIndex = UserData.user.findIndex(correctIdFunc)
+
+            const correct = () => {
+                if(UserData.user[correctIndex].userPassword === action.password) return true
+                document.location.href = '/'
+            }  
+
+            if (correct() ) {
+                return {    
+                    id : action.id,
+                    password : action.password,
+                    loginStatus : true
+                } 
             }
+            else {
+                if (state.loginStatus === true) {
+                    return {
+                        id : action.id,
+                        password : action.password,
+                        loginStatus : state.loginStatus
+                    }
+                }
+                return {    
+                    id : action.id,
+                    password : action.password,
+                    loginStatus : false
+                } 
+            }
+
+
         case HANDLECHANGEID : 
             return {
                 id : action.actionId,
