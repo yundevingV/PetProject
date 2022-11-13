@@ -267,8 +267,6 @@ function OrderPage(props){
         </Container>
         <Comment />
 
-
-
         <FooterWrapper>
             <Footer />
         </FooterWrapper>
