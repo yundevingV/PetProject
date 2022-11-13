@@ -203,16 +203,15 @@ function OrderPage(props){
     /*toast-toastify*/
     const list = useSelector((state) => state.cart.list)
     
-    const notifyCart = (itemName) => {
-        const checkList =()=>{
-            if (list.map((item)=>item.name !== itemName)) return true
-        }
-        //return true or false
-        console.log(checkList())
-        if (checkList() === true) {
+    const notifyCart = () => {
+        const checkList = list.find((item) => item.name === Data[animal][id].name)
+    
+        console.log(checkList)
+
+        if (checkList) {
             toast(`이미 담겨져 있습니다.`)
         } else {
-            toast(`${itemName}을 장바구니에 담았습니다.`)
+            toast(`장바구니에 담았습니다.`)
         }
     }
 
@@ -261,7 +260,7 @@ function OrderPage(props){
                                 Data[animal][id].src,
                                 Data[animal][id].category
                                 ))
-                                notifyCart(Data[animal][id].name) }}>
+                                notifyCart() }}>
                             장바구니 추가
                         </Button>
                         <Button Buy >

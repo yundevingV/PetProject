@@ -197,3 +197,7 @@ Orderpage에a Comment 컴포넌트추가중
 
 react-toasstify 사용법 알기.
 yarn add react-toastify
+
+1114
+login redux 기능 추가
+cart toastify 기능 추가

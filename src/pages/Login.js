@@ -95,7 +95,20 @@ function Login(){
     const password = useSelector((state) => state.login.password)
     const loginStatus = useSelector((state) => state.login.loginStatus)
 
-    console.log(loginStatus)
+
+
+    const correctIdFunc = (correctId) => {
+        if (correctId.userId === id) return true
+    }    
+    const correctIndex = UserData.user.findIndex(correctIdFunc)
+
+    const correct = () => {
+        if(UserData.user[correctIndex].userPassword === password)
+            return true
+    }  
+
+    
+
     return(
     <>
     <Nav />
@@ -125,9 +138,9 @@ function Login(){
                 <Wrapper marginBottom='0.3rem'>
                     <SubmitButton 
                         onClick={()=>{dispatch(loginn(id,password))
-                        // if (loginStatus === true){
-                        //     navigate('/')
-                        // }
+                        if (correct()){
+                            navigate('/')
+                        }
                         
                         
                     }}>

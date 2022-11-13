@@ -44,15 +44,14 @@ export default function counter(state = initialState, action) {
     switch(action.type) {
         case LOGIN :
 
-
             const correctIdFunc = (id) => {
                 if (id.userId === action.id) return true
             }    
             const correctIndex = UserData.user.findIndex(correctIdFunc)
 
             const correct = () => {
-                if(UserData.user[correctIndex].userPassword === action.password) return true
-                document.location.href = '/'
+                if(UserData.user[correctIndex].userPassword === action.password)
+                    return true
             }  
 
             if (correct() ) {
@@ -69,12 +68,13 @@ export default function counter(state = initialState, action) {
                         password : action.password,
                         loginStatus : state.loginStatus
                     }
-                }
-                return {    
-                    id : action.id,
-                    password : action.password,
-                    loginStatus : false
-                } 
+                } else { 
+                    return {    
+                        id : action.id,
+                        password : action.password,
+                        loginStatus : false
+                        }
+                    } 
             }
 
 
