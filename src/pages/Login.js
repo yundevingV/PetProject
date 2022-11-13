@@ -115,7 +115,7 @@ function Login(){
                 <Wrapper marginBottom='1rem'>
                     <Input 
                         marginBottom='3rem' 
-                        placeholder='비밀번호' 
+                        placeholder=' 비밀번호' 
                         type='text'
                         onChange={(event)=> dispatch(handleChangePassword(event.target.value))}
                         value={password} />
