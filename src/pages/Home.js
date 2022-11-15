@@ -16,6 +16,7 @@ import { handle } from "../modules/handle";
 
 import Footer from './Footer'
 import { FooterWrapper } from "../styles/FooterStyles";
+import BestCarousel from "./BestCarousel";
 
 const StyledLinkWrapper = styled.div`
 display: inline-block;
@@ -366,11 +367,14 @@ function Home(){
                     value ={word}
                     >
                 </SearchInput>
+                
+                <BestCarousel />
+
             </NavBottomContainer>
 
             {animal === 'dog' ?
             <MenuMainWrapper>
-            <DogMenuMain category={category} animal={animal} word={word} />
+                <DogMenuMain category={category} animal={animal} word={word} />
             </MenuMainWrapper>
             :
             <></>
@@ -378,7 +382,7 @@ function Home(){
 
             {animal === 'cat' ?
             <MenuMainWrapper >
-            <CatMenuMain category={category} animal={animal} word={word} />
+                <CatMenuMain category={category} animal={animal} word={word} />
             </MenuMainWrapper>
             :
             <></>

@@ -7,8 +7,9 @@ import CatData from '../json/Cat.json'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-import { StyledSlider, Img, Div, Next, DivPre, Prev } from "../styles/BestCarousel";
-import DogMenuMain from "./DogMenuMain";
+import { StyledSlider, SliderContentWrapper, Img } from "../styles/BestCarousel";
+
+import Slider from "react-slick";
 
 export default function BestCarousel(){
     const settings = {
@@ -20,32 +21,19 @@ export default function BestCarousel(){
         autoplay : true,
         autoplaySpeed : 3000,
 
-        nextArrow: (
-            <Div>
-              <Next />
-            </Div>
-          ),
-          prevArrow: (
-            <DivPre>
-              <Prev />
-            </DivPre>
-          ),
     }
     const Data = {...DogData, ...CatData }
 
-    console.log(Data)
     return(
         <>
             <StyledSlider {...settings}>
-                <div>
+                <SliderContentWrapper>
                     <Img src={Data.dog[0].src} alt='x' />
-                </div>
-                <div>
-                    2
-                </div>
-                <div>
-                    3
-                </div>
+                </SliderContentWrapper>
+                <SliderContentWrapper>
+                    <Img src={Data.cat[1].src} alt='x' />
+                </SliderContentWrapper>
+
             </StyledSlider>
         </>
     )
