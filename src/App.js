@@ -7,6 +7,7 @@ import Test from './pages/Test';
 import SignUp from './pages/SignUp';
 import OrderPage from './pages/OrderPage';
 import Cart from './pages/Cart';
+import BestCarousel from './pages/BestCarousel';
 
 import User from './pages/User'
 import Comment from './pages/Comment'
@@ -32,6 +33,7 @@ function App() {
       <Route path='/Cart' element={<Cart  />} />
       <Route path='/User' element={<User  />} />
       <Route path='/Comment' element={<Comment  />} />
+      <Route path='/BestCarousel' element={<BestCarousel  />} />
 
       {/* <Route path='/Pay' element={<Pay  />} /> */}
 

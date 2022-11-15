@@ -202,19 +202,22 @@ function OrderPage(props){
 
     /*toast-toastify*/
     const list = useSelector((state) => state.cart.list)
-    
+    const loginStatus = useSelector((state) => state.login.loginStatus)
+
     const notifyCart = () => {
-        const checkList = list.find((item) => item.name === Data[animal][id].name)
-    
-        console.log(checkList)
+        if (loginStatus) {
+            const checkList = list.find((item) => item.name === Data[animal][id].name)
 
-        if (checkList) {
-            toast(`이미 담겨져 있습니다.`)
-        } else {
-            toast(`장바구니에 담았습니다.`)
-        }
+            if (checkList) {
+                toast(`이미 담겨져 있습니다.`)
+            } else {
+                toast(`장바구니에 담았습니다.`)
+            }
+    } else {
+        toast('로그인이 필요합니다.')
     }
-
+    }
+    
     return(
         
         <>
