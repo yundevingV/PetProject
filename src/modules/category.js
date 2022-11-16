@@ -38,6 +38,7 @@ export const best = () =>{
 const initialState = {
     animalState : '',
     categoryState : '',
+    showCategory : ''
 }
 
 export default function counter(state = initialState, action) {
@@ -48,6 +49,7 @@ export default function counter(state = initialState, action) {
                 categoryState : 'dog'
             }
         case DOGCATEGORY :
+            
             return {
                 animalState : 'dog',
                 categoryState : action.category

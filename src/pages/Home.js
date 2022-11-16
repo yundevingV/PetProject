@@ -45,7 +45,7 @@ ${(props) =>
         left : 45vh;
 
     `}
-    ${(props) =>
+${(props) =>
     props.Best &&
     css`
         width: 15vh;
@@ -63,7 +63,7 @@ ${(props) =>
     
     `}
 
-    ${(props) =>
+${(props) =>
     props.Dog &&
     css`
         width: 15vh;
@@ -139,8 +139,17 @@ top : 20vh;
 @media (max-width : 1000px) {
     top : 25vh;
 }
-
 `
+
+const BestCarouselContainer = styled.div`
+width : 100%;
+
+margin : 0 auto;
+
+position: absolute;
+top:10vh;
+`
+
 const NavTopContainerWrapper = styled.div`
 position: relative;
 `
@@ -199,16 +208,44 @@ text-align: center;
 
 const MenuMainWrapper = styled.div`
 position: absolute;
-top:33vh;
+top:65vh;
 
 `
+const Span = styled.span`
+padding: 1rem;
+display: block;
+`
+
+
+
 function Home(){    
-    const id = useSelector((state) => state.login.id)
-    const password = useSelector((state) => state.login.password)
-    console.log(id,password)
+
+
     const animal = useSelector((state) => state.category.animalState)
     const category = useSelector((state) => state.category.categoryState)
     const word = useSelector((state) => state.handle.word)
+
+    const showCategory = () => {
+        if (category === '') {return ''}
+        else if (category === 'dog') {return ''}
+        else if (category === 'dog_house') {return ' > 집'}
+        else if (category === 'dog_cover') {return ' > 옷'}
+        else if (category === 'dog_food') {return ' > 먹이'}
+        else if (category === 'dog_snack') {return ' > 간식'}
+        else if (category === 'dog_toy') {return ' > 장난감'}
+        else if (category === 'dog_pad') {return ' > 배변패드'}
+        else if (category === 'dog_dogTool') {return ' > 애견용품'}
+        else if (category === 'cat') {return ''}
+        else if (category === 'cat_house') {return ' > 집'}
+        else if (category === 'cat_cover') {return ' > 옷'}
+        else if (category === 'cat_food') {return ' > 먹이'}
+        else if (category === 'cat_snack') {return ' > 간식'}
+        else if (category === 'cat_toy') {return ' > 장난감'}
+        else if (category === 'cat_pad') {return ' > 배변패드'}
+        else if (category === 'cat_catTool') {return ' > 애견용품'}
+        
+
+    }
 
     const dispatch = useDispatch()
         return(
@@ -221,12 +258,6 @@ function Home(){
 
             </NavTopContainerWrapper>
             <NavMiddleContainer>
-                <StyledLinkWrapper>
-                    <StyledLink to='/' Best
-                        onClick={()=>{dispatch(best())}}>
-                        인기메뉴
-                    </StyledLink>
-                </StyledLinkWrapper>
 
                 <StyledLinkWrapper>
                     <StyledLink to='/' Dog
@@ -367,13 +398,18 @@ function Home(){
                     value ={word}
                     >
                 </SearchInput>
-                
+
+            <BestCarouselContainer>
                 <BestCarousel />
+            </BestCarouselContainer>
 
             </NavBottomContainer>
+            
+
 
             {animal === 'dog' ?
             <MenuMainWrapper>
+                <Span>강아지 {showCategory()}</Span>
                 <DogMenuMain category={category} animal={animal} word={word} />
             </MenuMainWrapper>
             :
@@ -382,6 +418,7 @@ function Home(){
 
             {animal === 'cat' ?
             <MenuMainWrapper >
+                <Span>고양이 {showCategory()}</Span>
                 <CatMenuMain category={category} animal={animal} word={word} />
             </MenuMainWrapper>
             :
@@ -393,10 +430,10 @@ function Home(){
         </HomeContainer>
 
         {/* footer */}
-
         <FooterWrapper>
             <Footer />
         </FooterWrapper>
+
         </>
     )
 

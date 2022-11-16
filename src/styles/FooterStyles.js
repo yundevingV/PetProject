@@ -1,11 +1,12 @@
-import styled ,{css} from "styled-components";
+import styled  from "styled-components";
 
 
 export const FooterWrapper = styled.div`
 flex: 1;
 width : 100%;
-
+margin-top: 3rem;
 `
+
 export const FooterContainer = styled.div`
 background-color: #1D1E29;
 color : #FFFFFF;
