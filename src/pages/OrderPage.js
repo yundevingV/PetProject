@@ -66,14 +66,14 @@ const ImgWrapper = styled.div`
 `
 const NameWrapper = styled.div`
 border: 1px solid black;
-background-color: azure;
+background-color: #87ff96;
 `
 const PriceWrapper = styled.div`
 border: 1px solid black;
 `
 
 const NumWrapper = styled.div`
-width:33%;
+width:25%;
 float : left;
 border-right : 1px solid black;
 `
@@ -127,34 +127,34 @@ margin-top: 0.5rem;
 ${(props) =>
     props.Plus &&
     css`
-    margin-left: 1rem;
+    margin-left: 1vh;
     padding: 0.5rem;
     width: 2rem;
     height : 2.5rem;
-    left : 0%;
+    
     background: #FFFFFF;
     `}
 
 ${(props) =>
     props.Minus &&
     css`
-    margin-left: 1rem;
+    margin-left: 6vh;
     padding: 0.5rem;
     width: 2rem;
     height : 2.5rem;
     top:50%;
-    left : 10%;
+    
     background: #FFFFFF;
     `}
 
 ${(props) =>
     props.Add &&
     css`
+    margin-left: 15vh;
     padding: 0.5rem;
-    left : 30%;
     width: 6.5rem;
     height: 2.5rem;
-    border : 2px solid #00B5E3;
+    border : 2px solid #20dba1;
     background: #FFFFFF;
     border-radius : 0.2rem;
     `}
@@ -162,12 +162,12 @@ ${(props) =>
 ${(props) =>
     props.Buy &&
     css`
+    margin-left: 30vh;
     padding: 0.5rem;
-    right : 0%;
     width: 6.5rem;
     height: 2.5rem;
-    background: #00B5E3;
-    border : 2px solid #E7E6D2;
+    background: #20dba1;
+    border : 2px solid #000000;
     border-radius : 0.2rem;
     `}
 `
@@ -203,6 +203,7 @@ function OrderPage(props){
     /*toast-toastify*/
     const list = useSelector((state) => state.cart.list)
     const loginStatus = useSelector((state) => state.login.loginStatus)
+
 
     const notifyCart = () => {
         if (loginStatus) {

@@ -108,7 +108,7 @@ const HomeContainer = styled.div`
 
 margin: 0 auto;
 
-height: 100vh;
+height: 120vh;
 
 @media (max-width : 600px) {
     display: none;
@@ -136,18 +136,17 @@ height : 5%;
 margin : 0 auto;
 position: absolute;
 top : 20vh;
-@media (max-width : 1000px) {
-    top : 25vh;
-}
+
 `
+
 
 const BestCarouselContainer = styled.div`
 width : 100%;
-
 margin : 0 auto;
 
 position: absolute;
-top:10vh;
+top:8vh;
+display: block;
 `
 
 const NavTopContainerWrapper = styled.div`
@@ -189,6 +188,7 @@ const Oi = styled.ol`
 display : inline-block;
 cursor : pointer;
 width : 5.5rem;
+
 `
 
 const OiButton = styled.button`
@@ -208,7 +208,7 @@ text-align: center;
 
 const MenuMainWrapper = styled.div`
 position: absolute;
-top:65vh;
+top:70vh;
 
 `
 const Span = styled.span`

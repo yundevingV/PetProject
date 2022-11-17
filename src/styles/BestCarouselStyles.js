@@ -7,12 +7,12 @@ export const StyledSlider = styled(Slider)`
     border-radius: 10px;
     
 
-}
+
 `
 
 export const Img = styled.img`
 
-width: 50%;
+width: 40%;
 height: 300px;
 margin: 0 auto;
 

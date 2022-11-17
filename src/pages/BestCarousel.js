@@ -7,7 +7,7 @@ import CatData from '../json/Cat.json'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-import { StyledSlider, SliderContentWrapper, Img } from "../styles/BestCarousel";
+import { StyledSlider, SliderContentWrapper, Img } from "../styles/BestCarouselStyles";
 
 import Slider from "react-slick";
 

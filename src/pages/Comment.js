@@ -11,6 +11,11 @@ import { useDispatch, useSelector } from "react-redux";
 
 import CommentList from "./CommentList";
 
+/*toastify*/
+
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 function Comment(){
     
     const dispatch = useDispatch()
@@ -85,6 +90,11 @@ function Comment(){
     
     const commentNumbers = commentList.filter(item => item.proId === proId).length
 
+    const userId = useSelector((state)=> state.login.id)
+
+    const notifyComment = () => {
+        toast(`로그인이 필요합니다.`)
+    }
     return(
         <>
             <CommentContainer>
@@ -128,16 +138,21 @@ function Comment(){
                             onChange={(e)=>insertImg(e)}
                         />
 
-                    <AddButton onClick={()=>{dispatch(addComment(
+                    <AddButton onClick={()=>{
+                        if (!userId){
+                            notifyComment()
+                        }
+                        else {
+                        dispatch(addComment(
                         comment,
                         previewImg,
                         proId,
-                        'userId',
+                        userId,
                         commentNumbers                        
                         ))
                         setImg([])
                         setPreviewImg([])
-                        }}>
+                        }}}>
                         댓글작성 
                     </AddButton>      
                     
