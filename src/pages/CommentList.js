@@ -1,21 +1,25 @@
 import React  from "react";
 
 import {Img} from '../styles/CommentStyles'
-import { useDispatch } from "react-redux";
-import { deleteComment } from "../modules/comment";
+import { useDispatch ,useSelector} from "react-redux";
+import { deleteComment, likeComment } from "../modules/comment";
 
 import {P,RecommendButton,DeleteButton,Hr} from '../styles/CommentStyles'
 
 function CommentList({item}){
     const dispatch = useDispatch()
+    
+    const commentId = useSelector((state) => state.comment.commentList.commentId)
 
+    console.log(item)
+    console.log(item.commentId)
     return(
 
         <>
             
             <P UserId>{item.name} ({item.userId})
-                <RecommendButton>
-
+                <RecommendButton onClick={()=>dispatch(likeComment(item.commentId))}>
+                    ❤ {item.like}
                 </RecommendButton>
                 <DeleteButton onClick={()=>dispatch(deleteComment(item))}>
                     X

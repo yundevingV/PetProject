@@ -20,6 +20,13 @@
             "name" : "신윤상",
             "phone" : "010-1231-2222",
             "email" : "micheal1225@naver.com"
+        },
+        {
+            "userId" : "a",
+            "userPassword" : "a",
+            "name" : "신윤상",
+            "phone" : "010-1231-2222",
+            "email" : "micheal1225@naver.com"
         }
     ]
 }
