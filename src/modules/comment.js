@@ -3,13 +3,14 @@ export const DELETECOMMENT = "DELETECOMMENT"
 export const CONTENT = "CONTENT"
 // 4. comment- commentid(pk), content, img, pro_id(fk), user_id(fk)
 
-export const addComment = (content,img,proId,userId,commentUniqueNumber) => {
+export const addComment = (content,img,proId,userId,name,commentUniqueNumber) => {
     return {
         type: ADDCOMMENT,
         content,
         img,
         proId,
         userId,
+        name,
         commentUniqueNumber
     }
 }
@@ -46,6 +47,7 @@ export default function counter(state = initialState, action) {
                         img : action.img,
                         proId : action.proId,
                         userId : action.userId,
+                        name : action.name,
                         commentId : action.proId.concat(action.userId).concat(action.commentUniqueNumber)
                     }
                 ],

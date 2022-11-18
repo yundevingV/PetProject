@@ -35,7 +35,8 @@ export const logout = () => {
 const initialState = {
     id : '',
     password : '',
-    loginStatus : false
+    loginStatus : false,
+    name : ''
 }
 
 
@@ -54,11 +55,14 @@ export default function counter(state = initialState, action) {
                     return true
             }  
 
+            const name = UserData.user[correctIndex].name
+
             if (correct() ) {
                 return {    
                     id : action.id,
                     password : action.password,
-                    loginStatus : true
+                    loginStatus : true,
+                    name : name
                 } 
             }
             else {
@@ -66,13 +70,15 @@ export default function counter(state = initialState, action) {
                     return {
                         id : action.id,
                         password : action.password,
-                        loginStatus : state.loginStatus
+                        loginStatus : state.loginStatus,
+                        name : state.name
                     }
                 } else { 
                     return {    
                         id : action.id,
                         password : action.password,
-                        loginStatus : false
+                        loginStatus : false,
+                        name : state.name
                         }
                     } 
             }
@@ -82,26 +88,30 @@ export default function counter(state = initialState, action) {
             return {
                 id : action.actionId,
                 password : state.password,
-                loginStatus : state.loginStatus
+                loginStatus : state.loginStatus,
+                name : state.name
             }
         case HANDLECHANGEPASSWORD :
             return {
                 id : state.id,
                 password : action.actionPassword,
-                loginStatus : state.loginStatus
+                loginStatus : state.loginStatus,
+                name : state.name
             }
         case LOGOUT :
             return {
                 id : '',
                 password : '',
-                loginStatus : false
+                loginStatus : false,
+                name : ''
 
             }
         default :
             return {
                 id : state.id,
                 password : state.password,
-                loginStatus : state.loginStatus
+                loginStatus : state.loginStatus,
+                name : state.name
             }
     }
 }

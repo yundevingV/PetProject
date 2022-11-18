@@ -86,6 +86,13 @@ background: #20dba1;
 border : 0px solid #ffffff;
 
 `
+export const RecommendButton = styled.button`
+
+
+color: #ff404f;
+background: #ffffff;
+border : 0px solid #ffffff;
+`
 
 export const DeleteButton = styled.button`
 

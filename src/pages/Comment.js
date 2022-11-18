@@ -11,6 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import CommentList from "./CommentList";
 
+import userData from '../json/User.json'
+
 /*toastify*/
 
 import { toast, ToastContainer } from "react-toastify";
@@ -91,6 +93,8 @@ function Comment(){
     const commentNumbers = commentList.filter(item => item.proId === proId).length
 
     const userId = useSelector((state)=> state.login.id)
+    
+    const name = useSelector((state)=> state.login.name)
 
     const notifyComment = () => {
         toast(`로그인이 필요합니다.`)
@@ -148,6 +152,7 @@ function Comment(){
                         previewImg,
                         proId,
                         userId,
+                        name,
                         commentNumbers                        
                         ))
                         setImg([])

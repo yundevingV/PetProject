@@ -4,7 +4,7 @@ import {Img} from '../styles/CommentStyles'
 import { useDispatch } from "react-redux";
 import { deleteComment } from "../modules/comment";
 
-import {P,DeleteButton,Hr} from '../styles/CommentStyles'
+import {P,RecommendButton,DeleteButton,Hr} from '../styles/CommentStyles'
 
 function CommentList({item}){
     const dispatch = useDispatch()
@@ -13,9 +13,12 @@ function CommentList({item}){
 
         <>
             
-            <P UserId>{item.userId}
+            <P UserId>{item.name} ({item.userId})
+                <RecommendButton>
+
+                </RecommendButton>
                 <DeleteButton onClick={()=>dispatch(deleteComment(item))}>
-                        X
+                    X
                 </DeleteButton>
 
             </P>
