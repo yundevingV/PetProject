@@ -1,7 +1,7 @@
 import React, { useMemo, useState,useRef} from "react"
 import { useParams } from "react-router";
 import { addComment, content } from "../modules/comment"
-import {CommentContainer , TopContainer , P
+import {CommentContainer , TopContainer , Span, ReviewCountButton, ReviewCountButtonWrapper
 ,ContentContainer, CommentInputWrapper, CommentInput, ImgWrapper, ImgButton, ImgDeleteButton, ImgInput
 ,BottomContainer, AddButton
 ,PreviewWrapper, PreviewContainer,Img,
@@ -15,7 +15,7 @@ import userData from '../json/User.json'
 
 /*toastify*/
 
-import { toast, ToastContainer } from "react-toastify";
+import { toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 function Comment(){
@@ -92,7 +92,6 @@ function Comment(){
     
     const commentNumbers = commentList.filter(item => item.proId === proId).length
 
-    console.log(commentNumbers)
     const userId = useSelector((state)=> state.login.id)
     
     const name = useSelector((state)=> state.login.name)
@@ -100,26 +99,67 @@ function Comment(){
     const notifyComment = () => {
         toast(`로그인이 필요합니다.`)
     }
+
+    const [color, setColor] = useState('#887674');
+
+    const [toggleStatus, setToggleStatus] = useState('off')
+
+    const toggleButtonColor = () => {
+        color === '#887674' ? setColor('#000000') : setColor('#887674');
+    };
+
+    const toggleButtonStatus = () => {
+        toggleStatus === 'off' ? setToggleStatus('on') : setToggleStatus('off');
+    };    
+
+    // const map = commentList.map((item) => item)
+    // console.log('map0= ',map)
+
+    // const f = commentList.filter((item) => item.likeStatus.length >= 1)
+    // console.log('filter= ',f)
+    
+    // const sortedItems = commentList.sort((a, b) => b.likeStatus.length - a.likeStatus.length)
+    // console.log('sortedItems= ',sortedItems)
+
+
+    const map = commentList.map((item) => item.likeStatus)
+    console.log('map0= ',map)
+
     return(
         <>
             <CommentContainer>
                 <TopContainer>
-                    <P ReviewCount> 
+                    <Span ReviewCount> 
                         {commentNumbers} 개의 후기
-                    </P>
+                        {commentList.length >= 1 ?
+                            <ReviewCountButton color={color} 
+                                onClick={()=>{
+                                    toggleButtonColor()
+                                    toggleButtonStatus()
+                                    
+                                    }}>
+                                    추천순
+                            </ReviewCountButton>
+                            :
+                            <></>
+                        }
+                    </Span>
                 </TopContainer>
 
 
-                {commentList.length >= 1 ?
+
+                {toggleStatus === 'off'  ?
                 commentList
                     .filter((item) => item.proId === proId)
                     .map((item,index)=> (<CommentList item={item} key={item.index} index={index}/> ))
-                    
+                
                 :
-                    <p></p>
+                commentList
+                    .filter((item) => item.proId === proId)
+                    .map((sortedItems,index)=> (<CommentList item={sortedItems} key={sortedItems.index} index={index}/> ))
         
                 }
-                
+
                 <ContentContainer>
                     <CommentInputWrapper> 
                         <CommentInput 

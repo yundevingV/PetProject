@@ -7,12 +7,12 @@ padding: 1rem;
 `
 
 export const TopContainer = styled.div`
-padding : 0.5rem;
+
 margin-left : 0rem;
-margin-bottom : 1.5rem;
+
 `
 
-export const P = styled.span`
+export const Span = styled.span`
 ${(props) =>
     props.UserId &&
     css`
@@ -28,11 +28,16 @@ ${(props) =>
         font-size: 1rem;
         
     `}
+
+`
+
+export const P = styled.p`
 ${(props) =>
     props.ReviewCount &&
     css`
-        
-        
+        color : #887674;
+        padding : 0.1rem;
+
     `}
 `
 
@@ -101,6 +106,14 @@ color: #ff404f;
 background: #ffffff;
 border : 0px solid #ffffff;
 `
+export const ReviewCountButton = styled.button`
+color: ${props => props.color};
+background: #ffffff;
+border : 0.1px solid #ffffff;
+padding: 1rem;
+
+`
+
 
 export const PreviewWrapper = styled.div`
 

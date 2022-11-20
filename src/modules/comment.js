@@ -71,7 +71,6 @@ export default function counter(state = initialState, action) {
         }
         case DELETECOMMENT :
             return {
-                commentList : [...state.commentList],
                 commentList : state.commentList.filter((item) => item.commentId !== action.item.commentId),
                 commentInput : ''
             }
@@ -82,6 +81,7 @@ export default function counter(state = initialState, action) {
                 commentList : [...state.commentList],                
                 commentInput : action.change,
             }
+
 
 
         case LIKECOMMENT :
@@ -97,13 +97,19 @@ export default function counter(state = initialState, action) {
                     state.commentList[findIndex].likeStatus = [...state.commentList[findIndex].likeStatus,action.userId,]
                 } else {
                     state.commentList[findIndex].like -=1
-                    state.commentList[findIndex].likeStatus = [...state.commentList,]
-                    state.commentList[findIndex].likeStatus = state.commentList[findIndex].likeStatus.filter((item)=>item.userId !== action.userId)
+                    state.commentList[findIndex].likeStatus = state.commentList[findIndex].likeStatus.filter((item)=>item.userId !== action.userId )
                 }
             }
 
             likeToggle()
             
+            console.log(state.commentList[findIndex].likeStatus.filter((item)=>item.userId !== action.userId))
+            
+            console.log(state.commentList[findIndex].likeStatus.map((item)=>item.userId))
+            // state.commentList[findIndex].likeStauts의 인덱스 접근을 해야함
+            if (state.commentList[findIndex].likeStatus){
+                console.log(state.commentList[findIndex].likeStatus[0])
+            }
             return {
                 
                 commentList : [...state.commentList],                
