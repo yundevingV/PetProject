@@ -26,9 +26,9 @@ const CartTable = styled.div`
 position: relative;
 top:5rem;
 background-color: #FFFFFF;
-width: 70%;
-box-shadow: 1px 1px 5px 5px #CCDDCC;
-border-radius: 1rem;
+width: 65%;
+box-shadow: 1px 1px 2px 2px #CCDDCC;
+border-radius: 0.5rem;
 margin: 0 auto;
 margin-bottom: 1rem;
 display: block;
@@ -37,7 +37,7 @@ ${(props) =>
     css`
         font-size : 1.5rem;
         box-shadow : 0 0 0 0;
-        width : 70%;
+        width : 65%;
     `}
 
 `
@@ -48,6 +48,7 @@ ${(props) =>
     css`
         display: inline-block;
         width : 20%;
+        
     `}
 ${(props) =>
     props.Name &&
@@ -67,17 +68,21 @@ ${(props) =>
 `
 
 const CartListTableName = styled.div`
+
 ${(props) =>
     props.Img &&
     css`
         display: inline-block;
         width : 20%;
+        height: 80px;
+
     `}
 ${(props) =>
     props.Name &&
     css`
         display: inline-block;
         width : 40%;
+        height: 80px;
         text-align : center;
         vertical-align : top;
     `}    
@@ -86,9 +91,9 @@ ${(props) =>
     css`
         display: inline-block;
         width : 40%;
+        height: 80px;
         text-align : center;
         vertical-align : top;
-
     `}    
 ${(props) =>
     props.total &&
@@ -106,7 +111,8 @@ ${(props) =>
 `
 
 const Img = styled.img`
-height: 70px;
+height: 80px;
+padding : 0.5rem;
 `
 const Name = styled.span`
 font-size: 0.85rem;
@@ -125,11 +131,14 @@ color : white;
 ${(props) =>
     props.딜리트 &&
     css`
+        
+        
         display: inline-block;
-        background-color: aliceblue;
-        border: 2px solid blue;
-        border-radius: 5px;
-        color : black;
+        text-align : center;
+        background-color: #c90234;
+        border: 2px solid #000000;
+        border-radius: 2px;
+        color : #FFFFFF;
     `} 
 ${(props) =>
     props.pay &&
@@ -143,34 +152,53 @@ ${(props) =>
     `} 
 
 `
+const ButtonWrapper = styled.div`
+padding : 0.5vh;
+text-align : center;
+`
 const StyledLink = styled(Link)`
 text-decoration :none;
+color : #000000;
 `
 
 export const P = styled.p`
 color : #FFFFFF;
 `
 
+
+
 function CartList({item}){
     const dispatch = useDispatch()
     // amount -> number
+    console.log(item)
     return (
         <>
+            
             <CartListTableName Img>
-                <Img src={item.src} alt="X" />
+                <StyledLink to={`/OrderPage/${item.animal}/${item.id}`}> 
+                    <Img src={item.src} alt="X" />
+                </StyledLink>
+
             </CartListTableName>
             <CartListTableName Name>
-                <Name>{item.name}</Name>
+                <StyledLink to={`/OrderPage/${item.animal}/${item.id}`}>
+                    <Name>{item.name}</Name>
+                </StyledLink>
             </CartListTableName>
             <CartListTableName Price>
                 <Name Price>{(item.price * item.amount).toLocaleString('ko-KR')} 원 </Name>
-                <Button 플러스 onClick={()=>{dispatch(increment(item))}}> + </Button>
-                <Name>{item.amount}개 </Name>
-                <Button onClick={()=>{dispatch(decrement(item))}}> - </Button>
+                
+                <ButtonWrapper>
+                    <Button onClick={()=>{dispatch(increment(item))}}> + </Button>
+                    <Name>{item.amount}개 </Name>
+                    <Button onClick={()=>{dispatch(decrement(item))}}> - </Button>
+                </ButtonWrapper>
 
-                <Button 딜리트 onClick={()=>{dispatch(deletion(item))}}> 삭제 </Button>
+                <ButtonWrapper>
+                    <Button 딜리트 onClick={()=>{dispatch(deletion(item))}}> 삭제 </Button>
+                </ButtonWrapper>
             </CartListTableName>
-            <hr />
+            
 
         </>
     )

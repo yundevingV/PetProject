@@ -9,8 +9,6 @@ import {P,RecommendButton,DeleteButton,Hr} from '../styles/CommentStyles'
 function CommentList({item}){
     const dispatch = useDispatch()
     
-    const commentId = useSelector((state) => state.comment.commentList.commentId)
-
     console.log(item)
     console.log(item.commentId)
     return(

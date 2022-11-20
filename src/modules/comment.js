@@ -42,13 +42,19 @@ export const likeComment = (commentId) => {
 const initialState = {
     commentList : [],
     commentInput : '',
+    likeList : []
+    
     
 }
+
+
 
 export default function counter(state = initialState, action) {
     switch(action.type) {
         // 추가
         case ADDCOMMENT :
+            console.log(state.commentInput.length)
+            if (state.commentInput.length >= 1){
             return {
                 commentList : [...state.commentList ,
                     {
@@ -58,11 +64,13 @@ export default function counter(state = initialState, action) {
                         userId : action.userId,
                         name : action.name,
                         commentId : action.proId.concat(action.userId).concat(action.commentUniqueNumber),
-                        like : 0
+                        like : 0,
+                        likeStatus : [],
                     }
                 ],
                 commentInput : '',  
             }
+        }
         case DELETECOMMENT :
             return {
                 commentList : [...state.commentList],
@@ -77,15 +85,25 @@ export default function counter(state = initialState, action) {
                 commentInput : action.change,
             }
         case LIKECOMMENT :
-
+            console.log(state.commentList)
             const findCommentIdFunc = (item) => {
 
                 if (item.commentId === action.commentId) return true
             }    
 
             const findIndex = state.commentList.findIndex(findCommentIdFunc)
-            
-            state.commentList[findIndex].like +=1
+
+            const likeFunc = () => {
+                if (state.commentList[findIndex].likeStatus.includes(state.commentList.commentId) === false) {
+                    state.commentList[findIndex].like +=1
+                    state.commentList[findIndex].likeStatus = [...state.commentList[findIndex].commentId]
+                } else {
+                    state.commentList[findIndex].like -=1
+
+                }
+            }
+
+            likeFunc()
 
             return {
                 

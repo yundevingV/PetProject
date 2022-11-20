@@ -21,13 +21,13 @@ text-decoration : none;
 ${(props) =>
     props.PetProject &&
     css`
-      width: 20vh;
-      color: #000000;
-      font-weight : bold;
-      border: 1px solid #FFFFFF;
-      font-size : 2rem;
-      position : absolute;
-      left : 45%;
+        width: 20vh;
+        color: #000000;
+        font-weight : bold;
+        border: 1px solid #FFFFFF;
+        font-size : 2rem;
+        position : absolute;
+        left : 45%;
 
     `}
 

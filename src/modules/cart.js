@@ -4,7 +4,7 @@ export const INCREMENT = "INCREMENT";
 export const DECREMENT = "DECREMENT";
 export const DELETE = "DELETE"
 
-export const add = (id,name,price,amount,src,category) => {
+export const add = (id,name,price,amount,src,category,animal) => {
     return {
         type: ADD,
         id,
@@ -12,7 +12,8 @@ export const add = (id,name,price,amount,src,category) => {
         price,
         amount,
         src,
-        category
+        category,
+        animal
     }
 }
 
@@ -66,6 +67,7 @@ export default function counter(state = initialState, action) {
                             src : action.src,
                             amount : action.amount,
                             category : action.category,
+                            animal : action.animal,
                         
                         }
                     ],

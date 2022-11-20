@@ -218,7 +218,7 @@ function OrderPage(props){
         toast('로그인이 필요합니다.')
     }
     }
-    
+    console.log(Data)
     return(
         
         <>
@@ -257,12 +257,15 @@ function OrderPage(props){
                             -
                         </Button>
                         <Button Add
-                            onClick={()=>{dispatch
-                                (add(id,Data[animal][id].name,
-                                (parseInt(Data[animal][id].price) *parseInt(num)) ,
+                            onClick={()=>
+                                {dispatch
+                                (add(
+                                id,Data[animal][id].name,
+                                (parseInt(Data[animal][id].price) *parseInt(num)),
                                 num,
                                 Data[animal][id].src,
-                                Data[animal][id].category
+                                Data[animal][id].category,
+                                Data[animal][id].animal
                                 ))
                                 notifyCart() }}>
                             장바구니 추가
