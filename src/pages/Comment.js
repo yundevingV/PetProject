@@ -92,6 +92,7 @@ function Comment(){
     
     const commentNumbers = commentList.filter(item => item.proId === proId).length
 
+    console.log(commentNumbers)
     const userId = useSelector((state)=> state.login.id)
     
     const name = useSelector((state)=> state.login.name)

@@ -31,9 +31,10 @@ export const content = (change) => {
     }
 }
 
-export const likeComment = (commentId) => {
+export const likeComment = (userId,commentId) => {
     return {
         type : LIKECOMMENT,
+        userId,
         commentId
     
     }
@@ -41,9 +42,7 @@ export const likeComment = (commentId) => {
 
 const initialState = {
     commentList : [],
-    commentInput : '',
-    likeList : []
-    
+    commentInput : '',    
     
 }
 
@@ -53,7 +52,6 @@ export default function counter(state = initialState, action) {
     switch(action.type) {
         // 추가
         case ADDCOMMENT :
-            console.log(state.commentInput.length)
             if (state.commentInput.length >= 1){
             return {
                 commentList : [...state.commentList ,
@@ -63,7 +61,7 @@ export default function counter(state = initialState, action) {
                         proId : action.proId,
                         userId : action.userId,
                         name : action.name,
-                        commentId : action.proId.concat(action.userId).concat(action.commentUniqueNumber),
+                        commentId : action.proId.concat(action.userId,action.commentUniqueNumber),
                         like : 0,
                         likeStatus : [],
                     }
@@ -84,27 +82,28 @@ export default function counter(state = initialState, action) {
                 commentList : [...state.commentList],                
                 commentInput : action.change,
             }
-        case LIKECOMMENT :
-            console.log(state.commentList)
-            const findCommentIdFunc = (item) => {
 
+
+        case LIKECOMMENT :
+            const findCommentIdFunc = (item) => {
                 if (item.commentId === action.commentId) return true
             }    
 
             const findIndex = state.commentList.findIndex(findCommentIdFunc)
 
-            const likeFunc = () => {
-                if (state.commentList[findIndex].likeStatus.includes(state.commentList.commentId) === false) {
+            const likeToggle = () => {
+                if (state.commentList[findIndex].likeStatus.includes(action.userId) === false) {
                     state.commentList[findIndex].like +=1
-                    state.commentList[findIndex].likeStatus = [...state.commentList[findIndex].commentId]
+                    state.commentList[findIndex].likeStatus = [...state.commentList[findIndex].likeStatus,action.userId,]
                 } else {
                     state.commentList[findIndex].like -=1
-
+                    state.commentList[findIndex].likeStatus = [...state.commentList,]
+                    state.commentList[findIndex].likeStatus = state.commentList[findIndex].likeStatus.filter((item)=>item.userId !== action.userId)
                 }
             }
 
-            likeFunc()
-
+            likeToggle()
+            
             return {
                 
                 commentList : [...state.commentList],                

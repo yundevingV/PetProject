@@ -8,7 +8,9 @@ import {P,RecommendButton,DeleteButton,Hr} from '../styles/CommentStyles'
 
 function CommentList({item}){
     const dispatch = useDispatch()
-    
+
+    const userId = useSelector((state) => state.login.id)
+
     console.log(item)
     console.log(item.commentId)
     return(
@@ -16,7 +18,7 @@ function CommentList({item}){
         <>
             
             <P UserId>{item.name} ({item.userId})
-                <RecommendButton onClick={()=>dispatch(likeComment(item.commentId))}>
+                <RecommendButton onClick={()=>dispatch(likeComment(userId,item.commentId))}>
                     ❤ {item.like}
                 </RecommendButton>
                 <DeleteButton onClick={()=>dispatch(deleteComment(item))}>

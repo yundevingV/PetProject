@@ -65,7 +65,7 @@ export default function counter(state = initialState, action) {
                             name : action.name,
                             price : action.price,
                             src : action.src,
-                            amount : action.amount,
+                            amount : action.amount ,
                             category : action.category,
                             animal : action.animal,
                         
@@ -119,8 +119,9 @@ export default function counter(state = initialState, action) {
 
             /*장바구니 페이지에서 삭제하는 로직*/
             case DELETE : {
+                console.log(state.list)
                 return {
-                    ...state.list,
+                    list : [...state.list,],
                     list : state.list.filter((item) => item.id !== action.item.id),
                     total : state.total - (action.item.price * action.item.amount)
                 }

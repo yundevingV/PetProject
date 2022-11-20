@@ -218,7 +218,7 @@ function OrderPage(props){
         toast('로그인이 필요합니다.')
     }
     }
-    console.log(Data)
+    console.log(Data[animal][id])
     return(
         
         <>
@@ -261,7 +261,7 @@ function OrderPage(props){
                                 {dispatch
                                 (add(
                                 id,Data[animal][id].name,
-                                (parseInt(Data[animal][id].price) *parseInt(num)),
+                                parseInt(Data[animal][id].price),
                                 num,
                                 Data[animal][id].src,
                                 Data[animal][id].category,
