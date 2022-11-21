@@ -1,4 +1,4 @@
-import React, { useMemo, useState,useRef} from "react"
+import React, { useMemo, useState,useRef, useEffect} from "react"
 import { useParams } from "react-router";
 import { addComment, content } from "../modules/comment"
 import {CommentContainer , TopContainer , Span, ReviewCountButton, ReviewCountButtonWrapper
@@ -82,7 +82,10 @@ function Comment(){
     /*redux 값 */
     const commentList = useSelector((state) => state.comment.commentList)
     const comment = useSelector((state) => state.comment.commentInput)
-
+    useEffect(()=>{
+        commentList.sort((a, b) => a.key-b.key).reverse()
+    },[])
+    
     const {id , animal} = useParams()
 
     //물품 고유번호
@@ -110,21 +113,12 @@ function Comment(){
 
     const toggleButtonStatus = () => {
         toggleStatus === 'off' ? setToggleStatus('on') : setToggleStatus('off');
+        toggleStatus === 'off' ? commentList.sort((a, b) => b.likeStatus.length - a.likeStatus.length) : commentList.sort((a, b) => a.key-b.key).reverse();
     };    
 
-    // const map = commentList.map((item) => item)
-    // console.log('map0= ',map)
+    const key = useSelector((state)=> state.comment.commentKey)
 
-    // const f = commentList.filter((item) => item.likeStatus.length >= 1)
-    // console.log('filter= ',f)
-    
-    // const sortedItems = commentList.sort((a, b) => b.likeStatus.length - a.likeStatus.length)
-    // console.log('sortedItems= ',sortedItems)
-
-
-    const map = commentList.map((item) => item.likeStatus)
-    console.log('map0= ',map)
-
+    console.log(key)
     return(
         <>
             <CommentContainer>
@@ -138,7 +132,7 @@ function Comment(){
                                     toggleButtonStatus()
                                     
                                     }}>
-                                    추천순
+                                    {toggleStatus ==='off' ? <Span>추천순</Span> : <Span>✔추천순</Span>}
                             </ReviewCountButton>
                             :
                             <></>
@@ -151,12 +145,12 @@ function Comment(){
                 {toggleStatus === 'off'  ?
                 commentList
                     .filter((item) => item.proId === proId)
-                    .map((item,index)=> (<CommentList item={item} key={item.index} index={index}/> ))
+                    .map((item)=> (<CommentList item={item} key={item.key} /> ))
                 
                 :
                 commentList
                     .filter((item) => item.proId === proId)
-                    .map((sortedItems,index)=> (<CommentList item={sortedItems} key={sortedItems.index} index={index}/> ))
+                    .map((items,index)=> (<CommentList item={items} key={items.key} index={index}/> ))
         
                 }
 
@@ -194,7 +188,8 @@ function Comment(){
                         proId,
                         userId,
                         name,
-                        commentNumbers                        
+                        commentNumbers,
+                        key                   
                         ))
                         setImg([])
                         setPreviewImg([])

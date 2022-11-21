@@ -5,7 +5,7 @@ export const LIKECOMMENT = "LIKECOMMENT"
 
 // 4. comment- commentid(pk), content, img, pro_id(fk), user_id(fk)
 
-export const addComment = (content,img,proId,userId,name,commentUniqueNumber) => {
+export const addComment = (content,img,proId,userId,name,commentUniqueNumber,key) => {
     return {
         type: ADDCOMMENT,
         content,
@@ -13,7 +13,8 @@ export const addComment = (content,img,proId,userId,name,commentUniqueNumber) =>
         proId,
         userId,
         name,
-        commentUniqueNumber
+        commentUniqueNumber,
+        key
     }
 }
 
@@ -43,7 +44,7 @@ export const likeComment = (userId,commentId) => {
 const initialState = {
     commentList : [],
     commentInput : '',    
-    
+    commentKey : 0
 }
 
 
@@ -64,15 +65,19 @@ export default function counter(state = initialState, action) {
                         commentId : action.proId.concat(action.userId,action.commentUniqueNumber),
                         like : 0,
                         likeStatus : [],
+                        key : parseInt(action.key)
                     }
                 ],
                 commentInput : '',  
+                commentKey : state.commentKey + 1
             }
         }
         case DELETECOMMENT :
             return {
                 commentList : state.commentList.filter((item) => item.commentId !== action.item.commentId),
-                commentInput : ''
+                commentInput : '',
+                commentKey : state.commentKey,
+
             }
 
         case CONTENT :
@@ -80,6 +85,7 @@ export default function counter(state = initialState, action) {
             return {
                 commentList : [...state.commentList],                
                 commentInput : action.change,
+                commentKey : state.commentKey,
             }
 
 
@@ -97,29 +103,24 @@ export default function counter(state = initialState, action) {
                     state.commentList[findIndex].likeStatus = [...state.commentList[findIndex].likeStatus,action.userId,]
                 } else {
                     state.commentList[findIndex].like -=1
-                    state.commentList[findIndex].likeStatus = state.commentList[findIndex].likeStatus.filter((item)=>item.userId !== action.userId )
+                    state.commentList[findIndex].likeStatus = state.commentList[findIndex].likeStatus.filter((item)=>item !== action.userId )
                 }
             }
 
             likeToggle()
             
-            console.log(state.commentList[findIndex].likeStatus.filter((item)=>item.userId !== action.userId))
-            
-            console.log(state.commentList[findIndex].likeStatus.map((item)=>item.userId))
-            // state.commentList[findIndex].likeStauts의 인덱스 접근을 해야함
-            if (state.commentList[findIndex].likeStatus){
-                console.log(state.commentList[findIndex].likeStatus[0])
-            }
             return {
                 
                 commentList : [...state.commentList],                
                 commentInput : state.commentInput,  
+                commentKey : state.commentKey,
             }
             
         default :
             return {
                 commentList : state.commentList,
                 commentInput: state.commentInput,
+                commentKey : state.commentKey,
             }
     }
 }
