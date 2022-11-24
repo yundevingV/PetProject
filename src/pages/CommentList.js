@@ -10,11 +10,18 @@ function CommentList({item}){
     const dispatch = useDispatch()
 
     const userId = useSelector((state) => state.login.id)
+
+    let replaceAt = function(input, index, character){
+        return input.substr(0, index) + character + input.substr(index+character.length);
+   }
+   
+   let changeName = replaceAt(item.name, 1, '*');
+
     return(
 
         <>
             
-            <Span UserId>{item.name} ({item.userId})
+            <Span UserId>{changeName}({item.userId})
                 <RecommendButton onClick={()=>dispatch(likeComment(userId,item.commentId))}>
 
                     {item.likeStatus.includes(userId) ? <Span>❤</Span> : <Span>♡</Span>} {item.like}

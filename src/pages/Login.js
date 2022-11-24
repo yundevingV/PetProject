@@ -4,6 +4,7 @@ import { Link , useNavigate } from "react-router-dom";
 
 
 import KakaoLogin from '../img/KakaoLoginImg.png'
+import eye from '../img/eye-solid.svg'
 
 import { FooterWrapper } from "../styles/FooterStyles";
 import Footer from "./Footer";
@@ -32,7 +33,8 @@ const Input = styled.input`
 display : block;
 width : 500px;
 height: 50px;
-
+text-align: left;
+overflow: hidden;
 ::placeholder {
     font-weight : bold;
     font-size : 1rem;
@@ -85,7 +87,21 @@ const TopContainer = styled.div`
 margin: 0 auto;
 display: inline-block;
 `
+const PasswordWrapper = styled.div`
+display: flex;
+justify-content: right;
 
+z-index: 1;
+opacity: 1;
+`
+const Button = styled.button`
+position: absolute;
+
+z-index: 1;
+text-align: right;
+background-color: #FFFFFF;
+border : 1px solid #000000;
+`
 function Login(){
 
     const dispatch = useDispatch()
@@ -93,10 +109,7 @@ function Login(){
     
     const id = useSelector((state) => state.login.id)
     const password = useSelector((state) => state.login.password)
-    const loginStatus = useSelector((state) => state.login.loginStatus)
-
-
-
+    
     const correctIdFunc = (correctId) => {
         if (correctId.userId === id) return true
     }    
@@ -107,7 +120,11 @@ function Login(){
             return true
     }  
 
+    const [showPassword, setShowPassword] = useState(false)
     
+    const showPasswordButton = () => {
+        showPassword === false ? setShowPassword(true) : setShowPassword(false)
+    }
 
     return(
     <>
@@ -126,12 +143,21 @@ function Login(){
                 </Wrapper>
 
                 <Wrapper marginBottom='1rem'>
+                    <PasswordWrapper>
                     <Input 
                         marginBottom='3rem' 
                         placeholder=' 비밀번호' 
-                        type='text'
+                        type={showPassword ? "text" : "password"}
                         onChange={(event)=> dispatch(handleChangePassword(event.target.value))}
                         value={password} />
+                    
+                    <Button onClick={()=>showPasswordButton()}>
+                        <img src={eye} alt='x'></img>
+                    </Button>
+
+                    </PasswordWrapper>
+
+                
                 
                 </Wrapper>
 
