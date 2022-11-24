@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/PetProject/static/css/main.21a702e1.css",
-    "main.js": "/PetProject/static/js/main.9e88b9cb.js",
+    "main.js": "/PetProject/static/js/main.c22fb9f8.js",
     "static/js/787.03a57e86.chunk.js": "/PetProject/static/js/787.03a57e86.chunk.js",
     "static/media/crown30.png": "/PetProject/static/media/crown30.fd541a2b22b234c8c52b.png",
     "static/media/slick.svg": "/PetProject/static/media/slick.2630a3e3eab21c607e21.svg",
@@ -17,11 +17,11 @@
     "static/media/google.svg": "/PetProject/static/media/google.0e03c41e9a17292d2996e977af998e30.svg",
     "static/media/user-solid.svg": "/PetProject/static/media/user-solid.6e71d4adaa02cea8df9effd12e23e01f.svg",
     "main.21a702e1.css.map": "/PetProject/static/css/main.21a702e1.css.map",
-    "main.9e88b9cb.js.map": "/PetProject/static/js/main.9e88b9cb.js.map",
+    "main.c22fb9f8.js.map": "/PetProject/static/js/main.c22fb9f8.js.map",
     "787.03a57e86.chunk.js.map": "/PetProject/static/js/787.03a57e86.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.21a702e1.css",
-    "static/js/main.9e88b9cb.js"
+    "static/js/main.c22fb9f8.js"
   ]
 }
