@@ -91,17 +91,25 @@ const PasswordWrapper = styled.div`
 display: flex;
 justify-content: right;
 
-z-index: 1;
+z-index: 2;
 opacity: 1;
 `
 const Button = styled.button`
 position: absolute;
 
-z-index: 1;
+
 text-align: right;
 background-color: #FFFFFF;
 border : 1px solid #000000;
+border-left: 0px solid #FFFFFF;
 `
+
+const Img = styled.img`
+width: 30px;
+height: 48px;
+z-index: 0;
+`
+
 function Login(){
 
     const dispatch = useDispatch()
@@ -152,7 +160,7 @@ function Login(){
                         value={password} />
                     
                     <Button onClick={()=>showPasswordButton()}>
-                        <img src={eye} alt='x'></img>
+                        <Img src={eye} alt='x'></Img>
                     </Button>
 
                     </PasswordWrapper>
