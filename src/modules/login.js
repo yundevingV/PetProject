@@ -46,23 +46,30 @@ export default function counter(state = initialState, action) {
         case LOGIN :
 
             const correctIdFunc = (id) => {
-                if (id.userId === action.id) return true
+                    if (id.userId === action.id) return true
             }    
+            
             const correctIndex = UserData.user.findIndex(correctIdFunc)
 
-            const correct = () => {
-                if(UserData.user[correctIndex].userPassword === action.password)
+            const correct = (index) => {
+                if(UserData.user[index].userPassword === action.password)
                     return true
-            }  
+            }
+            console.log(correctIndex)
 
-            const name = UserData.user[correctIndex].name
-
-            if (correct() ) {
+            if (correctIndex !== -1) {
+                correct(correctIndex)
+            } else {
+                alert('아이디를 확인해주세요.')
+            }
+                        
+            if (correct(correctIndex)) {
+                
                 return {    
                     id : action.id,
                     password : action.password,
                     loginStatus : true,
-                    name : name
+                    name : UserData.user[correctIndex].name
                 } 
             }
             else {

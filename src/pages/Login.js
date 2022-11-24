@@ -15,6 +15,9 @@ import UserData from "../json/User.json"
 import { useDispatch, useSelector } from "react-redux";
 import {loginn, handleChangeId, handleChangePassword, logout} from '../modules/login.js'
 
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 const ContainerWrapper = styled.div`
 width: 100%;
 height: 100vh;
@@ -171,10 +174,15 @@ function Login(){
 
                 <Wrapper marginBottom='0.3rem'>
                     <SubmitButton 
-                        onClick={()=>{dispatch(loginn(id,password))
-                        if (correct()){
-                            navigate('/')
-                        }
+                        onClick={()=>{
+                        dispatch(loginn(id,password))
+                            if (correct() === true){
+                                navigate('/')
+                            } else if (correctIndex) {
+                                alert('비밀번호를 확인해주세요')
+                            } else {
+                                alert('아이디를 확인해주세요.')
+                            }
                         
                         
                     }}>
