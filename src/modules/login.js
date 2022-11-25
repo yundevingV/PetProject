@@ -56,13 +56,14 @@ export default function counter(state = initialState, action) {
                     return true
             }
             console.log(correctIndex)
-
             if (correctIndex !== -1) {
-                correct(correctIndex)
+                
             } else {
                 alert('아이디를 확인해주세요.')
             }
-                        
+            
+            console.log(correct(correctIndex))
+
             if (correct(correctIndex)) {
                 
                 return {    

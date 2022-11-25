@@ -20,10 +20,12 @@ function CommentList({item}){
    
    let changeName = replaceAt(item.name, 1, '*');
 
+   console.log('user',userId)
+   console.log(commentList)
     return(
 
         <>
-            
+
             <Span UserId>{changeName}({item.userId})
                 <RecommendButton onClick={()=>{
                     if (loginStatus){
@@ -37,7 +39,7 @@ function CommentList({item}){
                 
                 </RecommendButton>
 
-                {userId === commentList[item.key-1].userId 
+                {userId === item.userId 
                 ? 
                 <DeleteButton onClick={()=>dispatch(deleteComment(item))}>
                     X
