@@ -203,6 +203,7 @@ function OrderPage(props){
     /*toast-toastify*/
     const list = useSelector((state) => state.cart.list)
     const loginStatus = useSelector((state) => state.login.loginStatus)
+    
 
 
     const notifyCart = () => {

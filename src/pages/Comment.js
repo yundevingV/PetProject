@@ -118,7 +118,7 @@ function Comment(){
 
     const key = useSelector((state)=> state.comment.commentKey)
 
-    console.log(key)
+    
     return(
         <>
             <CommentContainer>
