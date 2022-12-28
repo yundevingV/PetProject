@@ -12,6 +12,8 @@ import BestCarousel from './pages/BestCarousel';
 import User from './pages/User'
 import Comment from './pages/Comment'
 
+import Chatting from './pages/Chatting';
+
 import DogData from './json/Dog.json'
 import CatData from './json/Cat.json'
 
@@ -34,7 +36,8 @@ function App() {
       <Route path='/User' element={<User  />} />
       <Route path='/Comment' element={<Comment  />} />
       <Route path='/BestCarousel' element={<BestCarousel  />} />
-
+      
+      <Route path='/Chatting' element={<Chatting  />} />
       {/* <Route path='/Pay' element={<Pay  />} /> */}
 
       <Route path='/OrderPage/:animal/:id' element={<OrderPage data={Data} />} />

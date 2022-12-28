@@ -3,7 +3,6 @@ import Data from '../json/Cat.json'
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
-import { useSelector } from 'react-redux';
 
 const Frame = styled.div`
 width : 10rem;
