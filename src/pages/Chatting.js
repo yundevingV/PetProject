@@ -152,16 +152,21 @@ display: block;
 `
 const ChattingContent = styled.span`
 
+border-radius: 5px;
+padding: 1vh;
 ${(props) =>
     props.master &&
     css`
-    background: yellow;
+    background: #ffeb3b;
+    margin-left: 0.5rem;
+    float: left;
     `}
 
 ${(props) =>
     props.customer &&
     css`
-    background: green;
+    background: #fffaf2;
+    margin-right: 0.5rem;
     float: right;
 
     `}
@@ -193,14 +198,14 @@ ${(props) =>
 const ChattingLogWrapper = styled.div`
 display: inline-block;
 
-width: 100%;
+width : 100%;
+height: 30px;
 
-margin-bottom : 1rem;
+margin-bottom : 4vh;
 
 ${(props) =>
     props.customer &&
     css`
-        background: #000000;
     `}
 `
 
