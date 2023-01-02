@@ -70,7 +70,15 @@ function Chatting() {
                                 <ChattingLog item={item} key={item.id} />
                             ))}
                         </ChattingRoomList>
+                        
                     </ChattingRoom>
+
+                    <ChattingInputWrapper>
+                            <ChattingInput />
+                            <ChattingInputButton>
+                                전송
+                            </ChattingInputButton>
+                        </ChattingInputWrapper>
                 </ChattingRoomBackground>
                 }
                 
@@ -118,9 +126,11 @@ opacity : 1; */
 
 const ChattingRoom = styled.div`
 background: #192935;
-width : 50%;
+width : 400px;
 height : 70%;
+overflow: auto;
 
+overflow-x: hidden;
 /* 센터배치 */
 position: absolute;
 top: 50%;
@@ -131,8 +141,8 @@ z-index : 999;
 `
 
 const DeleteButton = styled.button`
-width: 7%;
-height: 7%;
+width: 5vh;
+height: 5vh;
 float : right;
 
 border : 0rem;
@@ -157,7 +167,7 @@ padding: 1vh;
 ${(props) =>
     props.master &&
     css`
-    background: #ffeb3b;
+    background: #96ff5e;
     margin-left: 0.5rem;
     float: left;
     `}
@@ -199,14 +209,50 @@ const ChattingLogWrapper = styled.div`
 display: inline-block;
 
 width : 100%;
-height: 30px;
+height: fit-content;
 
-margin-bottom : 4vh;
+margin-bottom : 3vh;
 
 ${(props) =>
     props.customer &&
     css`
     `}
 `
+
+// 채팅입력 창 && 버튼
+
+const ChattingInputWrapper = styled.div`
+width : 400px;
+
+position: absolute;
+top: 90%;
+left: 50%;
+transform: translate(-50%, -50%);
+
+background: #192935;
+
+display: block;
+`
+
+
+const ChattingInput = styled.input`
+width : 390px;
+height: 5vh;
+margin-top: 1vh;
+`
+
+const ChattingInputButton = styled.button`
+
+height: 4vh;
+width : 15vh;
+
+background: #96ff5e;
+border: 0px;
+
+float: right;
+
+
+`
+
 
 export default Chatting

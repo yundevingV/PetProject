@@ -2,7 +2,7 @@
     "test" :[
         {
             "id" : 0,
-            "content" : "안녕하세요 무엇을 도와드릴까요 ? ",
+            "content" : "안녕하세요 무엇을 도와드릴까요 ?",
             "from" : "master",
             "to" : "customer"
         },
@@ -17,13 +17,8 @@
             "content" : "알겠습니다. ",
             "from" : "master",
             "to" : "customer"
-        },
-        {
-            "id" : 3,
-            "content" : "네 수고하세요. ",
-            "from" : "customer",
-            "to" : "master"
-        }  
+        }        
+        
     ]
     
 }
